@@ -1,0 +1,42 @@
+body {
+     font-family: 'helvetica-bold';
+     font-weight: 100;
+     color: white;
+     background-color: $primary-color;
+}
+
+//CONTAINER
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;;
+
+  @include desktop {
+    position: absolute;
+    text-align: left;
+    right: 60vw;
+    width:20vw;
+    min-width: 400px;
+    height: 100vh;
+  }
+}
+
+.content {
+     overflow-y: auto;
+     overflow-x: hidden;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     text-align: left;
+
+  @include desktop {
+      position: absolute;
+      text-align: left;
+      padding-left: 50px;
+      left: 100%;
+      width: 30vw;
+      min-width: 500px;
+      height: 100vh;
+  }
+}

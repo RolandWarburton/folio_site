@@ -1,0 +1,25 @@
+//FONTS ========================================================================
+//refer to fonts.css
+
+//NAME CONTAINER ===============================================================
+.container {
+     h1 {
+      font-size: $large-font-mobile;
+      margin: 0px;
+      padding: 0px;
+           @include desktop {
+                font-size: $large-font;
+           }
+     }
+
+     h5 {
+          margin: 0px;
+       @include desktop {
+         font-size: $med-font;
+       }
+     }
+}
+
+
+
+//CONTENT CONTAINER ============================================================

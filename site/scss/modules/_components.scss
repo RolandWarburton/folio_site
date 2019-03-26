@@ -1,0 +1,131 @@
+
+      .title {
+           cursor: default;
+           padding: 40px;
+           //edpit spaces in different views
+           #title-content:after {
+                content:'Roland Developer';
+           }
+           @include desktop {
+                #title-content:after {
+                     content:'Roland. Developer.';
+                }
+           }
+
+           #subtitle {
+                color: $dim-text;
+                font-size: $small-font;
+           }
+      }
+
+#title-content:hover {
+     animation: glitch .5s infinite;
+}
+
+
+
+
+ul {
+     cursor: default;
+     margin-left: 20px;
+     margin-top: 20px;
+li {
+     font-family: arial;
+     padding: 2px;
+     font-size: $small-font;
+}
+     .list-item {
+          color: $dim-text;
+     }
+     .list-more {
+          a {
+               color: $dim-text-trim;
+          }
+     }
+}
+
+
+
+
+
+.text:hover::after {
+  animation: glitch .5s infinite;
+  text-transform: lowercase;
+}
+
+
+
+
+
+  // Glitch code taken from:
+  // codepen.io/ayamflow/pen/DCifh
+
+
+$red: rgb(192, 20, 124);
+$blue: rgb(0, 170, 255);
+$yellow: rgb(255, 238, 0);
+$green: rgb(0, 255, 128);
+$colors: $red $blue $yellow $green;
+
+@mixin random {
+     $random: random();
+}
+
+@mixin glitch {
+  $i: random(length($colors));
+  $color: nth($colors, $i);
+  $x: random(10px) - 5px;
+  text-shadow: $x 0px 0px $color;
+}
+
+@keyframes glitch {
+  @for $i from 0 through 100 {
+    $percent: 0% + $i;
+    #{$percent} {
+      @include glitch;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+// body,a {
+//   background: black;
+//
+// }
+//
+// // Now that is interesting
+// .underlined {
+//   color: white;
+//   flex: 1;
+//   font-size: 2em;
+//   line-height: 1.2;
+//   text-decoration: none;
+//   background-image: linear-gradient(to right, white 0, white 100%);
+//   background-position: 2 2.5em;
+//   background-size: 0 120%;
+//   background-repeat: no-repeat;
+//   transition: background .5s;
+//   &:hover, {
+//     background-size: 100% 120%;
+//   }
+//
+//
+//   &--reverse {
+//     background-position: 100% -0.1em;
+//     transition: background 0.5s;
+//     background-image: linear-gradient(to right, white 0, white 100%);
+//   }
+// }
+//
+//
+// underlined:hover {
+//    background-position: 100% -0.1em;
+//     transition: background 0.5s;
+//     background-image: linear-gradient(to right, white 0, white 100%);
+// }

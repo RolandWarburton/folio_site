@@ -1,0 +1,28 @@
+{
+	"version": 3,
+	"file": "../scss/main.css",
+	"sources": [
+		"../scss/main.scss",
+		"../scss/base/_variables.scss",
+		"../scss/base/_mixins.scss",
+		"../scss/base/_reset.scss",
+		"../scss/base/_base.scss",
+		"../scss/modules/_typography.scss",
+		"../scss/modules/_buttons.scss",
+		"../scss/modules/_blocks.scss",
+		"../scss/modules/_components.scss"
+	],
+	"sourcesContent": [
+		"@import 'base/_variables.scss';\r\n@import 'base/_mixins.scss';\r\n@import 'base/_reset.scss';\r\n@import 'base/_base.scss';\r\n\r\n@import 'modules/_typography.scss';\r\n@import 'modules/_buttons.scss';\r\n@import 'modules/_blocks.scss';\r\n@import 'modules/_components.scss';\r\n",
+		"$primary-color: black;\r\n$secondary-color: #ff6600;\r\n",
+		"@mixin border-radius($radius:5px) {\r\n -webkit-border-radius: $radius;\r\n -moz-border-radius: $radius;\r\n border-radius: $radius;\r\n}\r\n",
+		"* {\r\n  margin: 0;\r\n  padding: 0; \r\n}\r\n",
+		"body {\r\n  font-family: \"Courier New\", Courier, \"Lucida Sans Typewriter\", \"Lucida Typewriter\", monospace;\r\n  font-size: 14px;\r\n  color: #666;\r\n  line-height: 1.5em;\r\n}\r\n\r\n.container {\r\n  background: rgb(30,30,30);\r\n  padding-top: 10px;\r\n  @include border-radius(10px);\r\n}\r\n\r\n//setting colors\r\nheader {\r\n  background: $primary-color;\r\n}\r\n\r\n//setting colors\r\nh1, h2, h3, h4, h5 {\r\n  color: $secondary-color;\r\n}\r\n\r\n//setting colors\r\nnav {\r\n  background-color: $primary-color;\r\n\r\n  ul li a{\r\n    color: $secondary-color;\r\n  }\r\n  \r\n}\r\n\r\n//setting colors\r\n\r\n\r\n//using a mixin\r\nsection {\r\n  @include border-radius(10px);\r\n}\r\n",
+		"",
+		"",
+		"",
+		""
+	],
+	"mappings": ";AGAA,AAAA,CAAC,CAAC;EACA,MAAM,EAAE,CAAE;EACV,OAAO,EAAE,CAAE;CACZ;;;ACHD,AAAA,IAAI,CAAC;EACH,WAAW,EAAE,gFAAiF;EAC9F,SAAS,EAAE,IAAK;EAChB,KAAK,EAAE,IAAK;EACZ,WAAW,EAAE,KAAM;CACpB;;;AAED,AAAA,UAAU,CAAC;EACT,UAAU,EAAE,OAAG;EACf,WAAW,EAAE,IAAK;EFRnB,qBAAqB,EESG,IAAI;EFR5B,kBAAkB,EEQM,IAAI;EFP5B,aAAa,EEOW,IAAI;CAC5B;;;AAGD,AAAA,MAAM,CAAC;EACL,UAAU,EHfI,KAAK;CGgBpB;;;AAGD,AAAA,EAAE,EAAE,AAAA,EAAE,EAAE,AAAA,EAAE,EAAE,AAAA,EAAE,EAAE,AAAA,EAAE,CAAC;EACjB,KAAK,EHnBW,OAAO;CGoBxB;;;AAGD,AAAA,GAAG,CAAC;EACF,gBAAgB,EHzBF,KAAK;CG+BpB;;;AAPD,AAGQ,GAHL,CAGD,EAAE,CAAC,EAAE,CAAC,CAAC,CAAA;EACL,KAAK,EH3BS,OAAO;CG4BtB;;;AAQH,AAAA,OAAO,CAAC;EFpCP,qBAAqB,EEqCG,IAAI;EFpC5B,kBAAkB,EEoCM,IAAI;EFnC5B,aAAa,EEmCW,IAAI;CAC5B",
+	"names": []
+}
