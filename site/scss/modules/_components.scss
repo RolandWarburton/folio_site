@@ -1,29 +1,26 @@
 
-      .title {
-           cursor: default;
-           padding: 40px;
-           //edpit spaces in different views
-           #title-content:after {
-                content:'Roland Developer';
-           }
-           @include desktop {
-                #title-content:after {
-                     content:'Roland. Developer.';
-                }
-           }
+.title {
+     cursor: default;
+     padding: 40px;
+     //edpit spaces in different views
+     #title-content:after {
+          content:'Roland Developer';
+     }
+     @include desktop {
+          #title-content:after {
+               content:'Roland. Developer.';
+          }
+     }
 
-           #subtitle {
-                color: $dim-text;
-                font-size: $small-font;
-           }
-      }
+     #subtitle {
+          color: $dim-text;
+          font-size: $small-font;
+     }
+}
 
 #title-content:hover {
      animation: glitch .5s infinite;
 }
-
-
-
 
 ul {
      cursor: default;
@@ -86,46 +83,3 @@ $colors: $red $blue $yellow $green;
     }
   }
 }
-
-
-
-
-
-
-
-
-// body,a {
-//   background: black;
-//
-// }
-//
-// // Now that is interesting
-// .underlined {
-//   color: white;
-//   flex: 1;
-//   font-size: 2em;
-//   line-height: 1.2;
-//   text-decoration: none;
-//   background-image: linear-gradient(to right, white 0, white 100%);
-//   background-position: 2 2.5em;
-//   background-size: 0 120%;
-//   background-repeat: no-repeat;
-//   transition: background .5s;
-//   &:hover, {
-//     background-size: 100% 120%;
-//   }
-//
-//
-//   &--reverse {
-//     background-position: 100% -0.1em;
-//     transition: background 0.5s;
-//     background-image: linear-gradient(to right, white 0, white 100%);
-//   }
-// }
-//
-//
-// underlined:hover {
-//    background-position: 100% -0.1em;
-//     transition: background 0.5s;
-//     background-image: linear-gradient(to right, white 0, white 100%);
-// }
