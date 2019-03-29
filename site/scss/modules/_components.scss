@@ -2,13 +2,13 @@
 .title {
      cursor: default;
      padding: 40px;
-     //edpit spaces in different views
+     //edit spaces in different views
      #title-content:after {
-          content:'Roland Developer';
+          content:'Roland Warburton';
      }
      @include desktop {
           #title-content:after {
-               content:'Roland. Developer.';
+               content:'Roland. Warburton.';
           }
      }
 
@@ -42,21 +42,14 @@ li {
 }
 
 
-
-
-
-.text:hover::after {
-  animation: glitch .5s infinite;
-  text-transform: lowercase;
+.glitch {
+     animation: glitch .5s infinite;
 }
-
-
 
 
 
   // Glitch code taken from:
   // codepen.io/ayamflow/pen/DCifh
-
 
 $red: rgb(192, 20, 124);
 $blue: rgb(0, 170, 255);

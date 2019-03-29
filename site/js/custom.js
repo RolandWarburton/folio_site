@@ -1,12 +1,3 @@
-
-
-function resize() {
-var width = $(document).width();
-
-return width;
-}
-
-
 //START DOC LOAD
 $( document ).ready(function() {
   if (typeof jQuery == 'undefined') {alert("jQuery IS NOT loaded")}
@@ -16,15 +7,37 @@ $( document ).ready(function() {
 
   document.documentElement.setAttribute("data-browser", navigator.userAgent);
 
-  //on window resize
-  window.onresize = resize;
+
+function shuffle(array) {
+  var m = array.length, t, i;
+
+  // While there remain elements to shuffle…
+  while (m) {
+        // Pick a remaining element…
+        i = Math.floor(Math.random() * m--);
+        console.log(i)
+
+        // And swap it with the current element.
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
+}
+
+return array;
+}
 
 
+// $(".title").addClass("glitchy");
+$( '.title' ).click(function() {
+  $('.title').toggleClass('glitch');
+  var $all = $("li").removeClass("glitch");
+  // console.log($all)
+  $(shuffle($all).slice(0,3)).addClass("glitch");
 
-
+});
 
   // jQuery(this).prev("body").attr("id","title-content");
-
+//
 // setTimeout(function(){  });
 //
 // var counter = 0;
@@ -46,7 +59,7 @@ $( document ).ready(function() {
 //
 // })();
 
-
+//
 // setTimeout(function(){  });
 //
 // var counter = 0;
@@ -72,12 +85,12 @@ $( document ).ready(function() {
 // }, 1000);
 //
 // })();
-
+//
 
 
 
 // delayedAlert();
-
+//
 // function delayedAlert() {
 // timeoutID = window.setTimeout(2000);
 // $('.title').addClass("glitchy")
