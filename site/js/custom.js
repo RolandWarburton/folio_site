@@ -15,7 +15,7 @@ function shuffle(array) {
   while (m) {
         // Pick a remaining element…
         i = Math.floor(Math.random() * m--);
-        console.log(i)
+        // console.log(i)
 
         // And swap it with the current element.
         t = array[m];
@@ -27,14 +27,29 @@ return array;
 }
 
 
-// $(".title").addClass("glitchy");
-$( '.title' ).click(function() {
-  $('.title').toggleClass('glitch');
-  var $all = $("li").removeClass("glitch");
-  // console.log($all)
-  $(shuffle($all).slice(0,3)).addClass("glitch");
+function init() {
 
-});
+    var myFunction = function() {
+
+           $('.title').toggleClass('glitch');
+           var $all = $("li").removeClass("glitch");
+           console.log("test")
+           $(shuffle($all).slice(0,3)).addClass("glitch");
+
+        var rand = Math.round(Math.random() * (1000 - 500)) + 10; // generate new time (between 3sec and 500"s)
+        setTimeout(myFunction, rand);
+ }
+    myFunction();
+}
+
+
+init();
+
+
+
+
+
+
 
   // jQuery(this).prev("body").attr("id","title-content");
 //
