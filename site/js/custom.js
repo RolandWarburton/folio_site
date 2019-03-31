@@ -31,37 +31,101 @@ return array;
 // setTimeout(function(){$("li").removeClass("glitch");}, 1000);
 // console.log($all.length)
 
-function glitch() {
+function glitch($all, remove, reset ,slice) {
+      $running = true
+      // pick random elements to glitch
+       // $(shuffle($all).slice(1,2)).toggleClass("glitch");
+       $(shuffle($all).slice(0, slice)).toggleClass("glitch");
+       // remove effect
+       timer1 = Math.round(Math.random() * (100)+remove)
+       // re-run the function
+       timer2 = Math.abs(timer1 - Math.round(Math.random() * 2000)+reset)
 
-    var myFunction = function() {
-          console.log("start")
-          // select all lists
-          var $all = $("li")
+       // wait a random time and then remove all glitch classes
+       setTimeout(function(){
+             $("h5,li").removeClass("glitch");
+             $running = false
+      }, timer1);
+}
 
-          // pick between random elements to glitch
-           $(shuffle($all).slice(0,2)).toggleClass("glitch");
-           // remove effect
-           timer1 = Math.round(Math.random() * (1000)+800)
-           // re-run the function
-           timer2 = Math.abs(timer1 - Math.round(Math.random() * 2000)+1000)
+// function a() {
+//     var deferred = new $.Deferred();
+//     $all = $("li")
+//     glitch($all, 1000, 2000)
+//     console.log("test")
+//     // stuff -- resolve deferred once async method is complete
+//     setTimeout(function () {
+//         deferred.resolve();
+//     }, 2000)
+//
+//     return deferred.promise();
+// }
+//
+// function b() {
+//     console.log('b')
+//     $all = $("li")
+//     glitch($all, 1000, 2000)
+// }
+//
+//
+// a().then(b);
 
-           // wait a random time and then remove all glitch classes
-           setTimeout(function(){$("li").removeClass("glitch");}, timer1);
+$running = false
+$i = 0
+$counter = 0
 
-           if ((Math.round(Math.random()*100))<50) {
-                // TODO: random event
-          }
+function glitch_init() {
+
+var myFunction = function() {
+
+    // select all lists
+    var $all = $("h5,li")
+
+    $chance = Math.round(Math.random() * (4))
+
+    switch($chance) {
+      case 0:
+            if ($i != 0 && !$running) {
+                  glitch($all, 250, 5000, 1)
+                  console.log("short glitch")
+                  $i = 0
+            }
+            $counter++
+      break;
+      case 1:
+            if ($i != 1) {
+                  glitch($all, 450, 5000, 1)
+                  console.log("medium glitch")
+                  $i = 1
+            }
+            $counter++
+        break;
+        case 2:
+             if ($counter > 10) {
+                    glitch($all, 1000, 5000, 1)
+                    console.log("long glitch")
+                    $i = 2
+                    counter = 0
+             }
+             $counter++
+         break;
 
 
+      default:
+        console.log("skip")
+    }
 
-           // repeat for a set duration
-           setTimeout(myFunction, timer2);
- }
-    myFunction();
+    // timer2 = Math.round(Math.random()*1000)
+    timer2 = 500
+
+     // repeat for a set duration
+     setTimeout(myFunction, timer2);
+}
+myFunction();
 }
 
 
-glitch();
+glitch_init();
 
 
 
