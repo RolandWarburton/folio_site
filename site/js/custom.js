@@ -26,24 +26,42 @@ function shuffle(array) {
 return array;
 }
 
+// var $all = $("li")
+// $(shuffle($all).slice(0, $all.length-4)).toggleClass("glitch");
+// setTimeout(function(){$("li").removeClass("glitch");}, 1000);
+// console.log($all.length)
 
-function init() {
+function glitch() {
 
     var myFunction = function() {
+          console.log("start")
+          // select all lists
+          var $all = $("li")
 
-           $('.title').toggleClass('glitch');
-           var $all = $("li").removeClass("glitch");
-           console.log("test")
-           $(shuffle($all).slice(0,3)).addClass("glitch");
+          // pick between random elements to glitch
+           $(shuffle($all).slice(0,2)).toggleClass("glitch");
+           // remove effect
+           timer1 = Math.round(Math.random() * (1000)+800)
+           // re-run the function
+           timer2 = Math.abs(timer1 - Math.round(Math.random() * 2000)+1000)
 
-        var rand = Math.round(Math.random() * (1000 - 500)) + 10; // generate new time (between 3sec and 500"s)
-        setTimeout(myFunction, rand);
+           // wait a random time and then remove all glitch classes
+           setTimeout(function(){$("li").removeClass("glitch");}, timer1);
+
+           if ((Math.round(Math.random()*100))<50) {
+                // TODO: random event
+          }
+
+
+
+           // repeat for a set duration
+           setTimeout(myFunction, timer2);
  }
     myFunction();
 }
 
 
-init();
+glitch();
 
 
 
@@ -121,6 +139,6 @@ init();
 
 
 
-console.log("loaded");
+// console.log("loaded");
 
 }); //CLOSE
