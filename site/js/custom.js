@@ -31,19 +31,19 @@ return array;
 // setTimeout(function(){$("li").removeClass("glitch");}, 1000);
 // console.log($all.length)
 
-function glitch($all, remove, reset ,slice) {
+function glitch($all, remove, reset, slice_start, slice_end) {
       $running = true
       // pick random elements to glitch
        // $(shuffle($all).slice(1,2)).toggleClass("glitch");
-       $(shuffle($all).slice(0, slice)).toggleClass("glitch");
+       $(shuffle($all).slice(slice_start, slice_end)).toggleClass("glitch");
        // remove effect
-       timer1 = Math.round(Math.random() * (100)+remove)
+       timer1 = Math.round(Math.random() * (1000)+remove)
        // re-run the function
        timer2 = Math.abs(timer1 - Math.round(Math.random() * 2000)+reset)
 
        // wait a random time and then remove all glitch classes
        setTimeout(function(){
-             $("h5,li").removeClass("glitch");
+             $(".title ul li,h5").removeClass("glitch");
              $running = false
       }, timer1);
 }
@@ -79,40 +79,40 @@ function glitch_init() {
 var myFunction = function() {
 
     // select all lists
-    var $all = $("h5,li")
+    var $all = $(".title ul li,h5")
+    console.log($all)
 
-    $chance = Math.round(Math.random() * (4))
+    $chance = Math.round(Math.random() * (2))
+    console.log($counter)
 
     switch($chance) {
       case 0:
-            if ($i != 0 && !$running) {
-                  glitch($all, 250, 5000, 1)
+            if ($i == 0 && !$running) {
+                  glitch($all, 350, 5000, 0, 1)
                   console.log("short glitch")
                   $i = 0
             }
-            $counter++
+            $counter+=Math.round(Math.random() * (5))
       break;
       case 1:
-            if ($i != 1) {
-                  glitch($all, 450, 5000, 1)
-                  console.log("medium glitch")
-                  $i = 1
-            }
-            $counter++
+            // if ($i != 1 && !$running) {
+            //       glitch($all, 800, 5000, 1)
+            //       console.log("counter glitch")
+            //       $i = 1
+            // }
+            // $counter++
         break;
-        case 2:
-             if ($counter > 10) {
-                    glitch($all, 1000, 5000, 1)
-                    console.log("long glitch")
-                    $i = 2
-                    counter = 0
-             }
-             $counter++
-         break;
 
 
       default:
-        console.log("skip")
+            console.log("skip")
+            $counter+=Math.round(Math.random() * (3))
+            if ($counter > 20) {
+                  glitch($all, 550, 5000, 0, 3)
+                  console.log("long glitch")
+                  $counter = 0
+      break;
+      }
     }
 
     // timer2 = Math.round(Math.random()*1000)
