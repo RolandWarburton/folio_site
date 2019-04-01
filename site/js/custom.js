@@ -97,9 +97,29 @@ myFunction();
 glitch_init();
 
 
+// $test = $(".content ul").toArray();
+// console.log($test);
 
 
 
+// $('ul').click( function() {
+//           $(this).animate({
+//                 "height": "+=200",
+//           });
+// });
+
+function appendListItem(listName, listItemHTML){
+      $.each(listItemHTML, function( i, l ){
+            $(listItemHTML[i]).hide().appendTo('#' + listName).slideDown('slow');
+      });
+
+
+}
+
+$list = ["<li class='list-item'>new item</li>", "<li class='list-item'>new item2</li>", "<li class='list-item'>new item3</li>", "<li class='list-item'>new item4</li>"]
+
+appendListItem("articles",$list)
+// appendListItem("articles","<li class='list-item list-more'><a href='#'>more</a></li>")
 
 
 

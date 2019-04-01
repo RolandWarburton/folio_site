@@ -26,6 +26,7 @@ ul {
      cursor: default;
      margin-left: 20px;
      margin-top: 20px;
+     position: relative;
 li {
      font-family: arial;
      padding: 2px;
@@ -42,11 +43,10 @@ li {
 }
 
 
+
 .glitch {
      animation: glitch .5s infinite;
 }
-
-
 
   // Glitch code taken from:
   // codepen.io/ayamflow/pen/DCifh
