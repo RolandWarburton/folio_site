@@ -37,9 +37,9 @@ function glitch($all, remove, reset, slice_start, slice_end) {
        // $(shuffle($all).slice(1,2)).toggleClass("glitch");
        $(shuffle($all).slice(slice_start, slice_end)).toggleClass("glitch");
        // remove effect
-       timer1 = Math.round(Math.random() * (1000)+remove)
+       timer1 = Math.round(Math.random() * (1500)+remove)
        // re-run the function
-       timer2 = Math.abs(timer1 - Math.round(Math.random() * 2000)+reset)
+       timer2 = Math.abs(timer1 - Math.round(Math.random() * 2500)+reset)
 
        // wait a random time and then remove all glitch classes
        setTimeout(function(){
@@ -80,10 +80,8 @@ var myFunction = function() {
 
     // select all lists
     var $all = $(".title ul li,h5")
-    console.log($all)
 
     $chance = Math.round(Math.random() * (2))
-    console.log($counter)
 
     switch($chance) {
       case 0:
@@ -94,32 +92,20 @@ var myFunction = function() {
             }
             $counter+=Math.round(Math.random() * (5))
       break;
-      case 1:
-            // if ($i != 1 && !$running) {
-            //       glitch($all, 800, 5000, 1)
-            //       console.log("counter glitch")
-            //       $i = 1
-            // }
-            // $counter++
-        break;
-
-
       default:
-            console.log("skip")
             $counter+=Math.round(Math.random() * (3))
-            if ($counter > 20) {
-                  glitch($all, 550, 5000, 0, 3)
+            if ($counter > 20 && !$running) {
+                  glitch($all, 250, 5000, 0, 2)
                   console.log("long glitch")
                   $counter = 0
-      break;
+      } else {
+            console.log("skip")
       }
+      break;
     }
 
-    // timer2 = Math.round(Math.random()*1000)
-    timer2 = 500
-
      // repeat for a set duration
-     setTimeout(myFunction, timer2);
+     setTimeout(myFunction, 1000);
 }
 myFunction();
 }
