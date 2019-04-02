@@ -5,6 +5,10 @@ $( document ).ready(function() {
     //alert("Jquery Loaded")
   }
 
+if (jQuery.ui) {
+      // console.log("JQUI loaded")
+}
+
   document.documentElement.setAttribute("data-browser", navigator.userAgent);
 
 
@@ -126,14 +130,11 @@ glitch_init();
 
 $('.content > .list').each(function(){
       var list = $(this);
-      console.log(list)
       list.click(function()
       {
             // something
-            list.find(".list-more").text("<a>more</a>")
       }, function()
       {
-            console.log("slide down")
             button = list.find(".list-more > a");
             button.html(button.html() == 'more' ? 'less' : 'more');
 
@@ -141,6 +142,11 @@ $('.content > .list').each(function(){
       });
    });
 
+
+// $(".content").show("slide", { direction: "left" }, 1000);
+
+  // $( ".content .list" ).toggle( "slide" );
+$( ".content .list" ).hide("slide", { direction: "left" }, 1000);
 
 
 

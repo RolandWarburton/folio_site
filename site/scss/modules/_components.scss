@@ -22,23 +22,8 @@
      animation: glitch .5s infinite;
 }
 
-.content {
-      // hide the ULs in content initially
-      ul {
-            display: none;
-      }
-}
-
-.list-item {
-      color: $dim-text;
-}
-.list-more {
-      a {
-         color: $dim-text-trim;
-      }
-}
-
 ul {
+      // stop the cursor
       cursor: default;
 }
 
@@ -50,11 +35,36 @@ li {
 
 .list {
       // space each list out a bit
-      margin: 15px;
-      span {
+      margin: 10px;
+      @include desktop {
+            margin: 10px;
+      }
+}
 
-            padding: 0px;
-            font-size: $med-font;
+.list-item {
+      color: $dim-text;
+      margin: 2px;
+}
+
+.list-more {
+      a {
+         color: $dim-text-trim;
+      }
+}
+
+.content {
+      // hide the ULs in content initially
+      ul {
+            display: none;
+      }
+      .list {
+            margin-left: 10vw;
+      }
+      @include desktop {
+            .list {
+                  margin: 10px;
+            }
+
       }
 }
 
