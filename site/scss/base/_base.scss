@@ -40,3 +40,13 @@ body {
       height: 100vh;
   }
 }
+
+.content_test {
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      background-color: red;
+}

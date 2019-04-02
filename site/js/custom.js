@@ -128,29 +128,47 @@ glitch_init();
 //
 // appendListItem("articles",$list)
 
-$('.content > .list').each(function(){
-      var list = $(this);
-      list.click(function()
-      {
-            // something
-      }, function()
-      {
-            button = list.find(".list-more > a");
-            button.html(button.html() == 'more' ? 'less' : 'more');
-
-            list.find("ul").slideToggle(300);
-      });
-   });
+// $('.content > .list').each(function(){
+//       var list = $(this);
+//       list.click(function()
+//       {
+//             console.log("test")
+//             // something
+//       }, function()
+//       {
+//             button = list.find(".list-more > a");
+//             button.html(button.html() == 'more' ? 'less' : 'more');
+//
+//             list.find("ul").toggle("blind", {direction: "up" }, 300);
+//       });
+//    });
 
 
 // $(".content").show("slide", { direction: "left" }, 1000);
 
-  // $( ".content .list" ).toggle( "slide" );
-$( ".content .list" ).hide("slide", { direction: "left" }, 1000);
+// $( ".content .list" ).toggle( "slide" );
+// $( "#articles" ).hide( "slide", { direction: "left" }, 3000 );
 
 
 
 
+
+$(".list").click(function()
+{
+      var all = $('.content > .list');
+      var list = $(this)
+
+      button = list.find(".list-more > a");
+      button.html(button.html() == 'more' ? 'less' : 'more');
+
+      item = list.find("ul").slideToggle("slow");
+      not_item = all.not(item)
+      all.not(list).each(function(index, not_item){
+            console.log(not_item)
+            $(not_item).find("ul").slideUp("slow");
+      });
+
+});
 
 
 
