@@ -22,24 +22,40 @@
      animation: glitch .5s infinite;
 }
 
-ul {
-     cursor: default;
-     margin-left: 20px;
-     margin-top: 20px;
-     position: relative;
-li {
-     font-family: arial;
-     padding: 2px;
-     font-size: $small-font;
+.content {
+      // hide the ULs in content initially
+      ul {
+            display: none;
+      }
 }
-     .list-item {
-          color: $dim-text;
-     }
-     .list-more {
-          a {
-               color: $dim-text-trim;
-          }
-     }
+
+.list-item {
+      color: $dim-text;
+}
+.list-more {
+      a {
+         color: $dim-text-trim;
+      }
+}
+
+ul {
+      cursor: default;
+}
+
+li {
+      font-family: arial;
+      font-size: $small-font;
+      list-style: none;
+}
+
+.list {
+      // space each list out a bit
+      margin: 15px;
+      span {
+
+            padding: 0px;
+            font-size: $med-font;
+      }
 }
 
 

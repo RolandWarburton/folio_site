@@ -58,7 +58,7 @@ var myFunction = function() {
     // case 0 = glitch
     // case 1 = skip
     // case 2 = skip
-    $chance = Math.round(Math.random() * (2))
+    $chance = Math.round(Math.random() * (3))
 
     switch($chance)
     {
@@ -66,7 +66,7 @@ var myFunction = function() {
           if ($i == 0 && !$running)
           {
                 glitch($all, 350, 5000, 0, 1)
-                console.log("short glitch")
+                // console.log("short glitch")
                 $i = 0
           }
           $counter+=Math.round(Math.random() * (5))
@@ -78,12 +78,12 @@ var myFunction = function() {
           if ($counter > 20 && !$running)
           {
                 glitch($all, 250, 5000, 0, 2)
-                console.log("long glitch")
+                // console.log("long glitch")
                 $counter = 0
           }
           else
           {
-                console.log("skip")
+                // console.log("skip")
           }
           break;
     }
@@ -108,18 +108,38 @@ glitch_init();
 //           });
 // });
 
-function appendListItem(listName, listItemHTML){
-      $.each(listItemHTML, function( i, l ){
-            $(listItemHTML[i]).hide().appendTo('#' + listName).slideDown('slow');
+// function appendListItem(listName, listItemHTML){
+//       $.each(listItemHTML, function( i, l ){
+//             $(listItemHTML[i]).hide().appendTo('#' + listName).slideDown('slow');
+//       });
+//
+//
+// }
+//
+// $list = [
+//       "<li class='list-item'>new item1</li>",
+//       "<li class='list-item'>new item2</li>",
+//       "<li class='list-item'>new item3</li>",
+//       "<li class='list-item'>new item4</li>"]
+//
+// appendListItem("articles",$list)
+
+$('.content > .list').each(function(){
+      var list = $(this);
+      console.log(list)
+      list.click(function()
+      {
+            // something
+            list.find(".list-more").text("<a>more</a>")
+      }, function()
+      {
+            console.log("slide down")
+            button = list.find(".list-more > a");
+            button.html(button.html() == 'more' ? 'less' : 'more');
+
+            list.find("ul").slideToggle(300);
       });
-
-
-}
-
-$list = ["<li class='list-item'>new item</li>", "<li class='list-item'>new item2</li>", "<li class='list-item'>new item3</li>", "<li class='list-item'>new item4</li>"]
-
-appendListItem("articles",$list)
-// appendListItem("articles","<li class='list-item list-more'><a href='#'>more</a></li>")
+   });
 
 
 
