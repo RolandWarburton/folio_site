@@ -101,74 +101,44 @@ myFunction();
 glitch_init();
 
 
-// $test = $(".content ul").toArray();
-// console.log($test);
 
-
-
-// $('ul').click( function() {
-//           $(this).animate({
-//                 "height": "+=200",
-//           });
-// });
-
-// function appendListItem(listName, listItemHTML){
-//       $.each(listItemHTML, function( i, l ){
-//             $(listItemHTML[i]).hide().appendTo('#' + listName).slideDown('slow');
-//       });
-//
-//
-// }
-//
-// $list = [
-//       "<li class='list-item'>new item1</li>",
-//       "<li class='list-item'>new item2</li>",
-//       "<li class='list-item'>new item3</li>",
-//       "<li class='list-item'>new item4</li>"]
-//
-// appendListItem("articles",$list)
-
-// $('.content > .list').each(function(){
-//       var list = $(this);
-//       list.click(function()
-//       {
-//             console.log("test")
-//             // something
-//       }, function()
-//       {
-//             button = list.find(".list-more > a");
-//             button.html(button.html() == 'more' ? 'less' : 'more');
-//
-//             list.find("ul").toggle("blind", {direction: "up" }, 300);
-//       });
-//    });
-
-
-// $(".content").show("slide", { direction: "left" }, 1000);
-
-// $( ".content .list" ).toggle( "slide" );
-// $( "#articles" ).hide( "slide", { direction: "left" }, 3000 );
-
-
-
-
-
+// expand the list v2
 $(".list").click(function()
 {
-      var all = $('.content > .list');
-      var list = $(this)
+      var all = $(".content").find(".list")
+      var selected = $(this).find("ul");
+      all.not($(this)).each(function(index, b){
+            var animation = anime({
+                  targets: b,
+                  height: 0,
+                  easing: 'easeInOutQuad',
+                  complete: function(anim) {
+                        console.log("test")
+                  }
+            })
+      })
 
-      button = list.find(".list-more > a");
-      button.html(button.html() == 'more' ? 'less' : 'more');
-
-      item = list.find("ul").slideToggle("slow");
-      not_item = all.not(item)
-      all.not(list).each(function(index, not_item){
-            console.log(not_item)
-            $(not_item).find("ul").slideUp("slow");
-      });
 
 });
+
+
+// expand the list
+// $(".list").click(function()
+// {
+//       var all = $('.content > .list');
+//       var list = $(this)
+//
+//       button = list.find(".list-more > a");
+//       button.html(button.html() == 'more' ? 'less' : 'more');
+//
+//       item = list.find("ul").slideToggle("slow");
+//       not_item = all.not(item)
+//       all.not(list).each(function(index, not_item){
+//             console.log(not_item)
+//             $(not_item).find("ul").slideUp("slow");
+//       });
+//
+// });
 
 
 

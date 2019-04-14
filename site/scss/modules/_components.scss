@@ -53,10 +53,6 @@ li {
 }
 
 .content {
-      // hide the ULs in content initially
-      ul {
-            display: none;
-      }
       .list {
             margin-left: 10vw;
       }
@@ -74,8 +70,8 @@ li {
      animation: glitch .5s infinite;
 }
 
-  // Glitch code taken from:
-  // codepen.io/ayamflow/pen/DCifh
+// Glitch code taken from:
+// codepen.io/ayamflow/pen/DCifh
 
 $red: rgb(192, 20, 124);
 $blue: rgb(0, 170, 255);
