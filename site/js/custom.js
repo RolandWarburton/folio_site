@@ -2,7 +2,7 @@
 $( document ).ready(function() {
   if (typeof jQuery == 'undefined') {alert("jQuery IS NOT loaded")}
   else {
-    //alert("Jquery Loaded")
+    // alert("Jquery Loaded")
   }
 
 if (jQuery.ui) {
@@ -101,26 +101,48 @@ myFunction();
 glitch_init();
 
 
+function animation(b) {
+	anime({
+		targets: b,
+		// left: block,
+		easing: 'easeInOutQuad',
+		complete: function(anim) {
+			console.log("test")
+		}
+	})
+}
+
 
 // expand the list v2
-$(".list").click(function()
+$(".list-more ").click(function()
 {
-      var all = $(".content").find(".list")
-      var selected = $(this).find("ul");
-      all.not($(this)).each(function(index, b){
-            var animation = anime({
-                  targets: b,
-                  height: 0,
-                  easing: 'easeInOutQuad',
-                  complete: function(anim) {
-                        console.log("test")
-                  }
-            })
-      })
+	var all = $(".content").find(".list")
+	var element = $(this).parent()
+
+	$(all.not(element)).slideToggle(500);
+
+	// $(all.not($(this))).toggleClass("hidden", 500);
+	$(element).toggleClass("sticky", 500).promise().done(function(){
+
+		console.log("test promise");
+
+	});
+	// $(all.not($(this))).slideToggle(500)
 
 
 });
 
+
+
+
+// var animation = anime(b)({
+// 	targets: b,
+// 	height: 0,
+// 	easing: 'easeInOutQuad',
+// 	complete: function(anim) {
+// 		console.log("test")
+// 	}
+// })
 
 // expand the list
 // $(".list").click(function()
@@ -139,7 +161,6 @@ $(".list").click(function()
 //       });
 //
 // });
-
 
 
 

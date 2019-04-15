@@ -35,7 +35,7 @@ li {
 
 .list {
       // space each list out a bit
-      margin: 10px;
+      margin: 0px;
       @include desktop {
             margin: 10px;
       }
@@ -53,15 +53,20 @@ li {
 }
 
 .content {
-      .list {
-            margin-left: 10vw;
-      }
       @include desktop {
             .list {
                   margin: 10px;
             }
-
       }
+}
+
+.sticky {
+	flex-grow: 1;
+	background: red;
+}
+
+.hidden {
+	background: blue;
 }
 
 
