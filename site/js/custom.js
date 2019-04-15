@@ -114,23 +114,27 @@ function animation(b) {
 
 
 // expand the list v2
-$(".list-more ").click(function()
-{
+$(".more_button ").click(function() {
 	var all = $(".content").find(".list")
 	var element = $(this).parent()
 
 	$(all.not(element)).slideToggle(500);
-
-	// $(all.not($(this))).toggleClass("hidden", 500);
 	$(element).toggleClass("sticky", 500).promise().done(function(){
 
 		console.log("test promise");
 
 	});
-	// $(all.not($(this))).slideToggle(500)
-
 
 });
+
+function randomValues(element) {
+  anime({
+    targets: '.container',
+    translateX: anime.random(100, 570)
+
+  });
+}
+
 
 
 
@@ -150,7 +154,7 @@ $(".list-more ").click(function()
 //       var all = $('.content > .list');
 //       var list = $(this)
 //
-//       button = list.find(".list-more > a");
+//       button = list.find(".list_more > a");
 //       button.html(button.html() == 'more' ? 'less' : 'more');
 //
 //       item = list.find("ul").slideToggle("slow");

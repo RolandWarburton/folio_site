@@ -46,7 +46,7 @@ li {
       margin: 2px;
 }
 
-.list-more {
+.list_more {
       a {
          color: $dim-text-trim;
       }
@@ -62,13 +62,10 @@ li {
 
 .sticky {
 	flex-grow: 1;
-	background: red;
 }
 
-.hidden {
-	background: blue;
+.more_button {
 }
-
 
 
 .glitch {
