@@ -25,14 +25,14 @@ class Topic extends React.Component {
 	
 	render() {
 		return (
-			<div className="topic" id={this.props.heading}>
+			<section id={this.props.heading}>
 				<Link to={this.props.heading}><h3>{this.props.heading}</h3></Link>
 				<ul>
 					{this.props.items.map((item) =>
 						<ListAnchor key={item.name} name={item.name} id={item.id} />
 					)}
 				</ul>
-			</div>
+			</section>
 		);
 	}
 }
@@ -40,7 +40,7 @@ class Topic extends React.Component {
 class Index extends React.Component {
 	render() {
 		return (
-			<div className="">
+			<div className="content">
 				<Topic heading="Articles" items={indexTopics.Articles}></Topic>
 				<Topic heading="Projects" items={indexTopics.Projects}></Topic>
 				<Topic heading="Misc" items={indexTopics.Misc}></Topic>
