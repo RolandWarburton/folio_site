@@ -1,32 +1,37 @@
-import React, { Component, Suspense } from 'react';
-import {Link} from 'react-router-dom'
-import SVGIconPopup from './TextPopup';
+import React, { Suspense } from 'react';
+import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
+
+export const Test = styled.div`
+	margin: 2px;
+	min-height: 30px;
+	fill: #fff;
+
+    const Wrapper = ({ message }) => {
+        return <h1>{message}</h1>
+`
 
 function loadIcon(name) {
 	const Component = React.lazy(() =>
-	  import(`../icons/${name}.svg`)
+		import(`../icons/${name}.svg`)
 	);
 	return Component;
-  }
+}
 
-class SVGIcon extends React.Component {	  
-	  render() {
-		const Icon = loadIcon(this.props.iconName);
-		return (
-			<div>
-				<div onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
-					<div>
-					<Link to="/test">
-						<Suspense fallback={<div></div>}>
-							<Icon className="icon-svg"/>
-						</Suspense>
-					</Link>
-					</div>
-				</div>
-			</div>
-		);
-	}
+function SVGIcon(props) {
+	const Icon = loadIcon(props.iconName);
+	return (
+		<Test message="test">
+			<Suspense fallback={<div></div>}>
+				<Icon />
+			</Suspense>
+		</Test>
+	);
 }
 
 export default SVGIcon;
 
+
+{/* <Suspense fallback={<div></div>}>
+	<Icon/>
+</Suspense> */}

@@ -1,17 +1,4 @@
 {
-    "presets": ["@babel/preset-env", "@babel/preset-react"],
-    "plugins": [
-      [
-        "babel-plugin-styled-components", {
-          "pure": true,
-          "displayName": false,
-          "minify": true,
-          // use the babel spec transpiling instead
-          "transpileTemplateLiterals": false
-      },
-      "@babel/plugin-proposal-class-properties"
-      ]
-      
-  ]
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": ["babel-plugin-styled-components"]
 }
-  

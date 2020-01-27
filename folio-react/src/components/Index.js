@@ -1,52 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import indexTopics from './indexTopics.json'
+import styled from 'styled-components'
+import { HyperLink, LightHyperLink } from './styles/Links'
+import { TopicContainer } from './styles/Containers'
 
-
-class ListAnchor extends React.Component {
-	constructor(id, name) {
-		super(id, name)
-	}
-
-	render() {
-		return (
-			<li className="list-item">
-				<Link to={this.props.name}>{this.props.name}</Link>
-			</li>
-		);
-	}
+function Topic(props) {
+	return (
+		<section id={props.heading}>
+			<LightHyperLink to={props.heading}><h3>{props.heading}</h3></LightHyperLink>
+			<ul>
+				{props.items.map((item) =>
+					<HyperLink key={item.name} to={item.name}>{item.name}</HyperLink>
+				)}
+			</ul>
+		</section>
+	)
 }
 
-// super = base() from C#. Passes props to React.Component
-class Topic extends React.Component {
-	constructor(heading, items) {
-		super(heading, items)
-	}
-	
-	render() {
-		return (
-			<section id={this.props.heading}>
-				<Link to={this.props.heading}><h3>{this.props.heading}</h3></Link>
-				<ul>
-					{this.props.items.map((item) =>
-						<ListAnchor key={item.name} name={item.name} id={item.id} />
-					)}
-				</ul>
-			</section>
-		);
-	}
+function Index() {
+	return (
+		<div>
+			<TopicContainer><Topic heading="Articles" items={indexTopics.Articles}></Topic></TopicContainer>
+			<TopicContainer><Topic heading="Projects" items={indexTopics.Projects}></Topic></TopicContainer>
+			<TopicContainer><Topic heading="Misc" items={indexTopics.Misc}></Topic></TopicContainer>
+		</div>
+	)
 }
 
-class Index extends React.Component {
-	render() {
-		return (
-			<div className="content">
-				<Topic heading="Articles" items={indexTopics.Articles}></Topic>
-				<Topic heading="Projects" items={indexTopics.Projects}></Topic>
-				<Topic heading="Misc" items={indexTopics.Misc}></Topic>
-			</div>
-		);
-	}
-}
 
 export default Index;
