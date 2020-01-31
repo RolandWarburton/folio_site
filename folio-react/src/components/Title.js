@@ -2,7 +2,7 @@ import React, { Component, useContext } from 'react';
 import SVGIcon from './SVGIcon'
 import styled, { css } from 'styled-components'
 import { NormalAnchor } from './styles/Links'
-import { SVGIconContainer, FlexCenter } from './styles/Containers'
+import { SVGIconContainer, FlexCenter, LeftCol, RightCol } from './styles/Containers'
 
 const TitleContainer = styled.div`
 	text-align: center;
@@ -15,7 +15,10 @@ const a = {
 
 function Title(props) {
 	return (
-			<header>
+
+		<header>
+			<LeftCol unfocus={false}>
+				<FlexCenter>
 				<TitleContainer>
 					<h3>Roland Warburton</h3>
 					<NormalAnchor href="https://goo.gl/maps/SEBJEfeRSAbGtLmv9" id="location">Melbourne, VIC</NormalAnchor>
@@ -25,7 +28,9 @@ function Title(props) {
 					<SVGIcon iconName="email" linksTo="/test"></SVGIcon>
 					<SVGIcon iconName="cv" linksTo="/test"></SVGIcon>
 				</SVGIconContainer>
-			</header>
+				</FlexCenter>
+			</LeftCol>
+		</header >
 	);
 }
 
