@@ -109,3 +109,11 @@ body {
   @extend .HyperLink;
   color: #fff;
 }
+
+
+// svg stuff
+.SVGIcon {
+	margin: 2px;
+	min-height: 30px;
+	fill: #fff;
+}
