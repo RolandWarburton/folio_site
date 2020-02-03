@@ -16,7 +16,7 @@ const ProjectsList = [
 function Projects({ location }) {
 	return (
 		<div className="flex-column">
-			<h1 style={red}>Projects</h1>
+			<h1>Projects</h1>
 			<ul>
 				{ProjectsList.map((item) =>
 					<li key={item.name}><Link className="HyperLink" to={item.name}>{item.name}</Link></li>

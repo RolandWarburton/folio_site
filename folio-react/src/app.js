@@ -1,5 +1,6 @@
 import React, { Component, useState, useContext, useTransition, useEffect, Fragment } from 'react';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { Transition, CSSTransition } from 'react-transition-group';
+// import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { BrowserRouter, Switch, Route, withRouter } from 'react-router-dom';
 import '../styles/styles.scss'
 
@@ -8,35 +9,49 @@ import Index from './components/Index.js';
 import Articles from './components/Articles';
 import Projects from './components/Projects';
 
+const FadeIn = ({ in: inProp }) => (
+	<CSSTransition in={inProp} timeout={500} appear unmountOnExit classNames='roll'>
+		{state => (
+			<div className="RightCol FlexCenter">
+				I am {state}
+			</div>
+		)}
+	</CSSTransition>
+);
+
+const RouteMenu = ({ }) => (
+	<Switch location={location}>
+		<Route exact path="/" component={Index} />
+		<Route exact path="/Articles" component={Articles} />
+		<Route exact path="/Projects" component={Projects} />
+		{/* <Route exact path="/Misc" component={Index} /> */}
+		{/* <Route exact path="/Testing" component={Testing} /> */}
+		{/* <Route render={() => <div className="content">Page Not Found</div>} /> */}
+	</Switch>
+);
+
 function App({ location }) {
+	const [entered, setEntered] = useState(false);
+	const [path, setPath] = useState(null)
+	useEffect(() => {
+		setPath(location.pathname)
+		console.log("updated newpath to " + path)
+	});
+
 	return (
 		<Fragment>
 			<Title />
-			<TransitionGroup>
-				<CSSTransition key={location.pathname} classNames="fade" timeout={600} >
-					<div className="RightCol FlexCenter">
-						<Switch location={location}>
-							<Route exact path="/" component={Index} />
-							<Route exact path="/Articles" component={Articles} />
-							{/* <Route exact path="/Projects" component={Projects} /> */}
-							{/* <Route exact path="/Misc" component={Index} /> */}
-							{/* <Route exact path="/Testing" component={Testing} /> */}
-							{/* <Route render={() => <div className="content">Page Not Found</div>} /> */}
-						</Switch>
-					</div>
-				</CSSTransition>
-			</TransitionGroup>
+			{/* <button onClick={() => { setEntered(!entered); }}>Toggle Entered</button> */}
+			{/* <button onClick={() => { console.log(path); }}>Toggle Entered</button> */}
+			<div className="RightCol FlexCenter">
+				<RouteMenu />
+			</div>
 		</Fragment>
 	)
 }
 
 export default App;
 
-// css in js example
-// const a = {
-// 	textAlign: 'left',
-// 	color: 'purple'
-// }
 
 
 
