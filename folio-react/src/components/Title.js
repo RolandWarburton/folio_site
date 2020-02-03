@@ -1,4 +1,5 @@
 import React, { Component, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import SVGIcon from './SVGIcon'
 
 function Title(props) {
@@ -10,6 +11,7 @@ function Title(props) {
 					<div>
 						<h3>Roland Warburton</h3>
 						<div className="NormalAnchor" href="https://goo.gl/maps/SEBJEfeRSAbGtLmv9" id="location">Melbourne, VIC</div>
+						<Link className="NormalAnchor" to="/">Home</Link>
 					</div>
 					<div className="SVGIconContainer">
 						<SVGIcon iconName="github" linksTo="/test"></SVGIcon>

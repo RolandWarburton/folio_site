@@ -1,6 +1,5 @@
 import React from 'react';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { Link, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import indexTopics from './indexTopics.json'
 
 function Topic(props) {

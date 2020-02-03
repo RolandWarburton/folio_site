@@ -1,19 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const red = {
-	margin: '40px',
-	background: red
-};
+const ProjectsList = [
+	{
+		"name": "StatsV2 - Life statistics"
+	},
+	{
+		"name": "Robbiefincham - Commission website"
+	},
+	{
+		"name": "Portfolio - My old cluttered portfolio site"
+	}
+]
 
-
-function Projects() {
+function Projects({ location }) {
 	return (
 		<div className="flex-column">
-			<h1>Projects</h1>
+			<h1 style={red}>Projects</h1>
 			<ul>
-				<li className="list-item">StatsV2 - Life statistics</li>
-				<li className="list-item">Robbiefincham - Commission website</li>
-				<li className="list-item">Portfolio - My old cluttered portfolio site</li>
+				{ProjectsList.map((item) =>
+					<li key={item.name}><Link className="HyperLink" to={item.name}>{item.name}</Link></li>
+				)}
 			</ul>
 		</div>
 	)
