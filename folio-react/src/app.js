@@ -31,12 +31,17 @@ const RouteMenu = ({ }) => (
 );
 
 function App({ location }) {
-	const [entered, setEntered] = useState(false);
-	const [path, setPath] = useState(null)
+	const [prevPath, setPrevPath] = useState(null);
+	const [path, setPath] = useState(location.pathname)
+	
 	useEffect(() => {
-		setPath(location.pathname)
-		console.log("updated newpath to " + path)
-	});
+		const thisPath = location.pathname
+		const prevPath = path
+		if(thisPath != path) {
+			setPath(location.pathname)
+			setPrevPath(path)
+		}
+	}, [location.pathname]);
 
 	return (
 		<Fragment>
