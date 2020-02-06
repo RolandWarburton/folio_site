@@ -85,6 +85,47 @@ body {
   transition: opacity 200ms ease-in;
 }
 
+.fade-enter-done {
+  // background-color: red;
+}
+
+
+// transform transition
+
+.transform-exit {
+  // transform: translateX(-25vw);
+  // transition: all 700ms ease-in-out;
+  transform: translateX(-25vw);
+  // background-color: green;
+}
+
+.transform-exit-active {
+  transition: all 700ms ease-in-out;
+  transform: translateX(0);
+  // background: red;
+}
+
+.transform-exit-done {
+  transition: all 700ms ease-in-out;
+  transform: translateX(0);
+  // background: blue;
+}
+
+.transform-enter {
+  // transform: translateX(0);
+}
+
+.transform-enter-active {
+  transform: translateX(-25vw);
+  transition: all 700ms ease-in-out;
+}
+
+// finish entering here
+.transform-enter-done {
+  transition: all 700ms ease-in-out;
+  transform: translateX(-25vw);
+}
+
 // typography
 .NormalLink {
   list-style-type: none;

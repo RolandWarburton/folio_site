@@ -38,15 +38,13 @@ function App({ location }) {
 
 	return (
 		<Fragment>
-			<Title />
+			<Title location={location} />
 			<div className="RightCol FlexCenter">
-				<TransitionGroup>
-					<SwitchTransition mode="out-in">
-						<CSSTransition timeout={timeout} classNames="fade" key={location.key}>
-							<RouteMenu location={location} />
-						</CSSTransition>
-					</SwitchTransition>
-				</TransitionGroup>
+				<SwitchTransition mode="out-in">
+					<CSSTransition timeout={timeout} classNames="fade" key={location.key}>
+						<RouteMenu location={location} />
+					</CSSTransition>
+				</SwitchTransition>
 			</div>
 		</Fragment>
 	)
