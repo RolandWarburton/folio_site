@@ -70,35 +70,20 @@ body {
 }
 
 // React Transitions
-.fade-enter,
 .fade-exit {
-  transition: 0.6s ease opacity;
-}
-.fade-enter,
-.fade-exit-active {
-  opacity: 0;
-}
-.fade-enter-active {
   opacity: 1;
 }
 
-// .fade-appear{
-//   opacity:0;
-// }
-// .fade-enter{
-//   opacity:0;
-// }
-// .fade-enter-done{
-//   opacity:1;
-//   transition: 0.5s ease opacity;
-// }
-// .fade-exit{
-//   opacity:1;
-// }
-// .fade-exit-active{
-//   opacity: 0;
-//   transition: 0.5s ease opacity;
-// }
+.fade-enter,
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 100ms ease-in;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
 
 // typography
 .NormalLink {
