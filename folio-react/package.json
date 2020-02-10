@@ -17,6 +17,7 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
+    "babel-plugin-emotion": "^10.0.27",
     "css-loader": "^3.4.0",
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.20.0",
@@ -29,6 +30,9 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
