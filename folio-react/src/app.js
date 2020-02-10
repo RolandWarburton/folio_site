@@ -26,24 +26,10 @@ const RouteMenu = ({ location }) => (
 function App({ location }) {
 	// Set the timeout for the CSSTransition
 	const timeout = { enter: 200, exit: 100 }
-
-	// This is my attempt at the slide animation...
-	// sets the path to true if its defined
-	const path = (location.pathname == "/") ? true : false
-	const [onPageRoot, setOnPageRoot] = useState(path)
-
-	// Flip between true and false to set the onPageRoot state. I pass this to the 'Title' component's CSSTransition
-	useEffect(() => {
-		if (location.pathname != "/") {
-			setOnPageRoot(true)
-		} else {
-			setOnPageRoot(false)
-		}
-	}, [location.pathname]);
-
+	
 	return (
 		<Fragment>
-			<Title location={location} onPageRoot />
+			<Title location={location} />
 			<div className="RightCol">
 				<SwitchTransition mode="out-in">
 					<CSSTransition timeout={timeout} classNames="fade" key={location.key}>

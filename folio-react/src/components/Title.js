@@ -14,19 +14,29 @@ const SVGContent = () => {
 	)
 }
 
-function Title({ location, onPageRoot }) {
+function Title({ location }) {
 	// Define a timeout for the page slide transition
 	const timeout = { enter: 700, exit: 700 };
+	
+	// This is my attempt at the slide animation...
+	// create a hook for when the location changes
+	const [onPageRoot, setOnPageRoot] = useState(() => (location.pathname != "/") ? true : false)
+
+	// Flip between true and false to set the onPageRoot state.
+	useEffect(() => {
+		setOnPageRoot(() => (location.pathname != "/") ? true : false)
+	}, [location.pathname]);
 
 	return (
-		// <CSSTransition disabled timeout={timeout} in={onPageRoot} classNames="transform" key={location.key}>
+		<CSSTransition timeout={timeout} in={onPageRoot} classNames="transform" key={location.key}>
 			<header className="LeftCol">
-				<h3>Roland Warburton</h3>
+				<h3 className="tester">Roland Warburton</h3>
 				<div className="NormalAnchor" href="https://goo.gl/maps/SEBJEfeRSAbGtLmv9" id="location">Melbourne, VIC</div>
 				<SVGContent />
 				<Link className="DarkHyperLink" to='/' >click me (home)</Link>
+				{/* <button onClick={() => setState(!state)}>manually set state</button> */}
 			</header >
-		// </CSSTransition >
+		</CSSTransition >
 	);
 }
 
