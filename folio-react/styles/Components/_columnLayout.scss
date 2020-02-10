@@ -1,0 +1,41 @@
+// Align the container in the middle Ver and Hoz
+.FlexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+// Base class to define the positioning styles for the Mobile and Desktop views
+.ContentContainer {
+  // In mobile view the columns are relative and stack on each other
+  position: relative;
+
+  // In desktop view they become absolute and are aligned though .column and its extended classes
+  @include desktop {
+    position: absolute;
+    height: 100vh;
+  }
+}
+
+// Center Ver and Hor. And offset the columns in desktop view
+@mixin column($colOffset, $offsetPercentage) {
+  @extend .ContentContainer;
+  @extend .FlexCenter;
+  @include desktop {
+    min-width: 20vw;
+    // left: 50% or right: 50%
+    #{$colOffset}: $offsetPercentage;
+  }
+}
+
+// based on column mixin
+.LeftCol {
+  @include column(right, 50%);
+}
+
+// based on column mixin
+.RightCol {
+  @include column(left, 50%);
+}

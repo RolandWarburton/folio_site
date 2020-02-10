@@ -1,0 +1,39 @@
+// Transform Transition
+
+.transform-exit {
+  transform: translateX(-25vw);
+}
+
+.transform-exit-active {
+  transition: transform 700ms ease-in-out;
+  transform: translateX(0);
+}
+
+.transform-exit-done {
+  transition: transform 700ms ease-in-out;
+  transform: translateX(0);
+}
+
+.transform-enter-active {
+  transform: translateX(-25vw);
+  transition: transform 700ms ease-in-out;
+}
+
+.transform-enter-done {
+  transition: transform 700ms ease-in-out;
+  transform: translateX(-25vw);
+}
+
+
+// http://reactcommunity.org/react-transition-group/css-transition
+// classNames={{
+//     appear: 'my-appear',
+//     appearActive: 'my-active-appear',
+//     appearDone: 'my-done-appear',
+//     enter: 'my-enter',
+//     enterActive: 'my-active-enter',
+//     enterDone: 'my-done-enter',
+//     exit: 'my-exit',
+//     exitActive: 'my-active-exit',
+//     exitDone: 'my-done-exit',
+// }}

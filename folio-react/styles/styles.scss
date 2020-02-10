@@ -1,9 +1,13 @@
 // make sure to load these in the correct order (mixins before _base)
 
+@import 'base/_variables.scss';
 @import 'base/_mixins.scss';
 @import 'base/_base.scss';
-// @import 'base/_variables.scss';
-// @import 'base/_reset.scss';
+@import 'base/_reset.scss';
+@import 'Components/columnLayout.scss';
+@import 'Components/_pageFadeTransition.scss';
+@import 'Components/_pageSlideTransition.scss';
+@import 'Components/hyperlinks';
 
 // @import 'modules/_typography.scss';
 // @import 'modules/_buttons.scss';

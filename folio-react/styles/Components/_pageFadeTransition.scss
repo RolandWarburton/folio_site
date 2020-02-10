@@ -1,0 +1,28 @@
+// React Transitions
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-enter,
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 100ms ease-in;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+// http://reactcommunity.org/react-transition-group/css-transition
+// classNames={{
+//     appear: 'my-appear',
+//     appearActive: 'my-active-appear',
+//     appearDone: 'my-done-appear',
+//     enter: 'my-enter',
+//     enterActive: 'my-active-enter',
+//     enterDone: 'my-done-enter',
+//     exit: 'my-exit',
+//     exitActive: 'my-active-exit',
+//     exitDone: 'my-done-exit',
+// }}

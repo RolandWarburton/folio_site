@@ -2,13 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import indexTopics from './indexTopics.json'
 
+// =========================================
+// This is the index page that renders on the Right Hand Column.
+// It contains a list of pages that can be found in "indexTopics.json"
+// =========================================
+
+
 function Topic(props) {
 	return (
 		<section id={props.heading}>
 			<Link className="LightHyperLink" to={props.heading}><h3>{props.heading}</h3></Link>
 			<ul>
 				{props.items.map((item) =>
-					<li key={item.name}><Link className="HyperLink" key={item.name} to={item.name}>{item.name}</Link></li>
+					<li key={item.name}><Link className="DarkHyperLink" key={item.name} to={item.name}>{item.name}</Link></li>
 				)}
 			</ul>
 		</section>

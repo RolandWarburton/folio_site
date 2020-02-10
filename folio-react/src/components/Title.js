@@ -1,47 +1,44 @@
-import React, { Component, useState, Children, useEffect } from 'react';
+import React, { Component, useState, Children, useEffect, createContext, useContext, Fragment } from 'react';
 import { TransitionGroup, CSSTransition, Transition, SwitchTransition } from 'react-transition-group'
 import { Link } from 'react-router-dom';
 import SVGIcon from './SVGIcon'
 
-const transitionStyles = {
-	entering: { opacity: 1 },
-	entered: { opacity: 1 },
-	exiting: { opacity: 0.5 },
-	exited: { opacity: 0.5 },
-};
+// Container for the SVG links on the Left Hand Column 
+const SVGContent = () => {
+	return (
+		<div className="SVGIconContainer">
+			<SVGIcon iconName="github" linksTo="/test"></SVGIcon>
+			<SVGIcon iconName="email" linksTo="/test"></SVGIcon>
+			<SVGIcon iconName="cv" linksTo="/test"></SVGIcon>
+		</div>
+	)
+}
 
-function Title({ location }) {
-	// let notOnRoot = false;
-	const path = (location.pathname) ? true : false
-	const [state, setState] = useState(path)
-	let timeout = { enter: 700, exit: 700 }
-	// const path = location.pathname
-
-	const animWrapper = {
-		transform: "translateX(-25vw)"
-	}
-
-	useEffect(() => {
-		setState(!state)
-	}, [location.pathname]);
+function Title({ location, onPageRoot }) {
+	// Define a timeout for the page slide transition
+	const timeout = { enter: 700, exit: 700 };
 
 	return (
-		<CSSTransition disabled timeout={timeout} in={state} classNames="transform" key={location.key}>
-			<header className="LeftCol FlexCenter">
-				<div>
-					<h3>Roland Warburton</h3>
-					<div className="NormalAnchor" href="https://goo.gl/maps/SEBJEfeRSAbGtLmv9" id="location">Melbourne, VIC</div>
-					<Link className="NormalAnchor" to="/">Home</Link>
-					<button onClick={() => setState(false)}>state</button>
-				</div>
-				<div className="SVGIconContainer">
-					<SVGIcon iconName="github" linksTo="/test"></SVGIcon>
-					<SVGIcon iconName="email" linksTo="/test"></SVGIcon>
-					<SVGIcon iconName="cv" linksTo="/test"></SVGIcon>
-				</div>
+		// <CSSTransition disabled timeout={timeout} in={onPageRoot} classNames="transform" key={location.key}>
+			<header className="LeftCol">
+				<h3>Roland Warburton</h3>
+				<div className="NormalAnchor" href="https://goo.gl/maps/SEBJEfeRSAbGtLmv9" id="location">Melbourne, VIC</div>
+				<SVGContent />
+				<Link className="DarkHyperLink" to='/' >click me (home)</Link>
 			</header >
-		</CSSTransition>
+		// </CSSTransition >
 	);
 }
 
 export default Title;
+
+// THIS IS A REMINDER FOR ME ON HOW TO USE HOOKS...
+// const [state, setState] = useState(path)
+// useEffect(() => {
+// 	// console.log(location.pathname)
+// 	if (location.pathname != "/") {
+// 		setState(true)
+// 	} else {
+// 		setState(false)
+// 	}
+// }, [location.pathname]);

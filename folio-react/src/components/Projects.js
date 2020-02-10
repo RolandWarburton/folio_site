@@ -19,7 +19,7 @@ function Projects({ location }) {
 			<h1>Projects</h1>
 			<ul>
 				{ProjectsList.map((item) =>
-					<li key={item.name}><Link className="HyperLink" to={item.name}>{item.name}</Link></li>
+					<li key={item.name}><Link className="DarkHyperLink" to={item.name}>{item.name}</Link></li>
 				)}
 			</ul>
 		</div>

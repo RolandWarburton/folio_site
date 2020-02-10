@@ -1,162 +1,28 @@
 body {
-  font-size: calc(12px + 1vw);
-  background-color: #121212;
+  background-color: $mainBackground;
   font-weight: 100;
-  color: #fff;
+  color: $lightText;
 
-  * {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 0px;
-  }
-
-  // desktop
+  // handle some font sizes
   font-size: calc(12px + 2vw);
   @include desktop {
-    // font-size: 1vw;
     font-size: calc(12px + 0.75vw);
   }
 }
 
-.FlexCenter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
+// Pad the containers for each index topic (Articles, Projects, etc...)
+.TopicContainer {
+  margin: 10px 0px;
 }
 
-.ContentContainer {
-  position: relative;
-
-  @include desktop {
-    position: absolute;
-    height: 100vh;
-  }
-}
-
-.LeftCol {
-  @extend .ContentContainer;
-
-  @include desktop {
-    right: 52%;
-  }
-}
-
-.RightCol {
-  @extend .ContentContainer;
-
-  @include desktop {
-    left: 52%;
-  }
-}
-
+// SVG stuff
 .SVGIconContainer {
   display: flex;
   justify-content: center;
 }
 
-.TopicContainer {
-  margin: 10px 0px;
-}
-
-// React Transitions
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-enter,
-.fade-exit.fade-exit-active {
-  opacity: 0;
-  transition: opacity 100ms ease-in;
-}
-
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 200ms ease-in;
-}
-
-.fade-enter-done {
-  // background-color: red;
-}
-
-
-// transform transition
-
-.transform-exit {
-  // transform: translateX(-25vw);
-  // transition: all 700ms ease-in-out;
-  transform: translateX(-25vw);
-  // background-color: green;
-}
-
-.transform-exit-active {
-  transition: all 700ms ease-in-out;
-  transform: translateX(0);
-  // background: red;
-}
-
-.transform-exit-done {
-  transition: all 700ms ease-in-out;
-  transform: translateX(0);
-  // background: blue;
-}
-
-.transform-enter {
-  // transform: translateX(0);
-}
-
-.transform-enter-active {
-  transform: translateX(-25vw);
-  transition: all 700ms ease-in-out;
-}
-
-// finish entering here
-.transform-enter-done {
-  transition: all 700ms ease-in-out;
-  transform: translateX(-25vw);
-}
-
-// typography
-.NormalLink {
-  list-style-type: none;
-  text-decoration: none;
-  color: #fff;
-}
-
-.NormalAnchor {
-  list-style-type: none;
-  text-decoration: none;
-  color: #fff;
-}
-.HyperLink {
-  list-style-type: none;
-  text-decoration: none;
-  color: #959595;
-  &:hover {
-    color: #fff;
-    transition: color 0.5s ease;
-  }
-}
-
-.LightHyperLink {
-  @extend .HyperLink;
-  color: #fff;
-}
-
-
-// svg stuff
 .SVGIcon {
-	margin: 2px;
+  margin: 2px;
   min-height: 4vh;
-	fill: #fff;
+  fill: $lightText;
 }
