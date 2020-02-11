@@ -26,7 +26,7 @@ const RouteMenu = ({ location }) => (
 function App({ location }) {
 	// Set the timeout for the CSSTransition
 	const timeout = { enter: 200, exit: 100 }
-	
+
 	return (
 		<Fragment>
 			<Title location={location} />
