@@ -22,7 +22,7 @@ function Title({ location }) {
 	// create a hook for when the location changes
 	const [onPageRoot, setOnPageRoot] = useState(() => (location.pathname != "/") ? true : false)
 
-	let testStyle = (onPageRoot) ? {transform: "translateX(0)"} : {transform: "translate(-25vw)"}
+	let testStyle = (onPageRoot) ? {transform: "translate(-25vw)"} : {transform: "translateX(0)"}
 
 	// Flip between true and false to set the onPageRoot state.
 	useEffect(() => {
