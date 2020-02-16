@@ -11,6 +11,8 @@
 .ContentContainer {
   // In mobile view the columns are relative and stack on each other
   position: relative;
+  // pad the containers a bit
+  padding: 20px;
 
   // In desktop view they become absolute and are aligned though .column and its extended classes
   @include desktop {
@@ -32,10 +34,10 @@
 
 // based on column mixin
 .LeftCol {
-  @include column(right, 50%);
+  @include column(right, 50vw);
 }
 
 // based on column mixin
 .RightCol {
-  @include column(left, 50%);
+  @include column(left, 50vw);
 }
