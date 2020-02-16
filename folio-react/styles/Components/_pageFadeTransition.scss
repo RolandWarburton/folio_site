@@ -1,17 +1,27 @@
-// React Transitions
 .fade-exit {
   opacity: 1;
 }
 
-.fade-enter,
-.fade-exit.fade-exit-active {
-  opacity: 0;
-  transition: opacity 100ms ease-in;
+.fade-exit-active {
+  transform: translateY(-40px);
+  transition: opacity 200ms ease-in, transform 200ms ease-in-out;
 }
 
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 200ms ease-in;
+.fade-exit-done {
+  //
+}
+
+.fade-enter-active {
+  //
+}
+
+.fade-enter-done {
+  transition: opacity 200ms ease-in, transform 200ms ease-in-out;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: translateY(40px);
 }
 
 // http://reactcommunity.org/react-transition-group/css-transition
