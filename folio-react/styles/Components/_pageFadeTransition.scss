@@ -1,20 +1,22 @@
-  .fadeX-exit {
+// @include desktop {
+  .fade-exit {
     opacity: 0;
   }
   
-  .fadeX-exit-active {
+  .fade-exit-active {
     opacity: 0;
   }
-
-  .fadeX-enter-done {
+  
+  .fade-enter-done {
     opacity: 1;
     transition: opacity $enterAnimationSpeed ease-in;
   }
   
-  .fadeX-enter {
+  .fade-enter {
     opacity: 0;
     transform: translateX($translationXAmountIN);
   }
+// }
 
 
 // http://reactcommunity.org/react-transition-group/css-transition

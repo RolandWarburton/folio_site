@@ -9,6 +9,7 @@ import Index from './components/Index.js';
 import Articles from './components/Articles';
 import Projects from './components/Projects';
 
+// is there a way to read `Component: Index` as a component and not a string in real json?
 const routes = [
 	{ path: '/', name: 'Home', name: "Home", Component: Index },
 	{ path: '/Articles', name: 'Articles', Component: Articles },
@@ -17,22 +18,20 @@ const routes = [
 
 function App({ location }) {
 	// Set the timeout for the CSSTransition
-	const timeout = { enter: 200, exit: 200 }
+	const timeout = { enter: 100, exit: 100 }
 
 	return (
-		// <SwitchTransition mode="out-in">
-			<Fragment>
+		<Fragment>
 			{routes.map(({ path, Component }) => (
 				<Route key={path} exact path={path}>
 					{({ match }) => (
-						<CSSTransition in={match != null} timeout={timeout} classNames={(path == "/") ? "fadeY" : "fadeX"} unmountOnExit>
-							<Component location={location}/>
+						<CSSTransition in={match != null} timeout={timeout} classNames="fade" unmountOnExit>
+							<Component location={location} />
 						</CSSTransition>
 					)}
 				</Route>
 			))}
 		</Fragment>
-			
 	)
 }
 

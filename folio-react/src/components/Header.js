@@ -1,20 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import indexTopics from './indexTopics.json'
+import routes from './Routes.json'
 
 function Header() {
-
-    return(
-        <div>
-            <nav>
-                <ul>
-                    <li>test</li>
-                    {/* <li>Roland</li>
-                    <li>text</li> */}
-                    {/* <Link className="DarkHyperLink" to='/' >click me (home)</Link> */}
-                </ul>
-            </nav>
-        </div>
+    return (
+        <nav>
+            <ul>
+                {routes.map(({ path, name, Component }) => (
+                    <li key={path}><Link to={path} className="DarkHyperLink">{name}</Link></li>
+                ))}
+            </ul>
+        </nav>
     )
 }
 

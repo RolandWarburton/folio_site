@@ -5,10 +5,12 @@
 @import 'base/_base.scss';
 @import 'base/_reset.scss';
 @import 'Components/columnLayout.scss';
-@import 'Components/_pageFadeTransitionX.scss';
-@import 'Components/_pageFadeTransitionY.scss';
+@import 'Components/_navigation.scss';
+@import 'Components/_pageFadeTransition.scss';
 @import 'Components/_pageDebugTransition.scss';
 @import 'Components/hyperlinks';
+// @import 'Components/_pageFadeTransitionX.scss';
+// @import 'Components/_pageFadeTransitionY.scss';
 
 // @import 'modules/_typography.scss';
 // @import 'modules/_buttons.scss';

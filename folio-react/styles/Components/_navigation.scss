@@ -1,0 +1,12 @@
+nav {
+    background-color: $mainBackground;
+
+    li {
+        display: inline;
+        padding: 0px 1em;
+    }
+
+    li:first-child, li:last-child {
+        padding: 0px;
+    }
+}

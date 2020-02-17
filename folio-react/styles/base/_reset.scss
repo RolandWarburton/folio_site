@@ -1,13 +1,13 @@
 // Reset some of the base HTML tags
-* {
-  overflow: hidden;
+*::-webkit-scrollbar {
+  display: none;
 }
 body {
   * {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    overflow: hidden;
+    // overflow: hidden;
   }
   h1,
   h2,
