@@ -1,27 +1,29 @@
-.fade-exit {
+
+.fadeX-exit {
   opacity: 1;
 }
 
-.fade-exit-active {
-  transform: translateY(-40px);
-  transition: opacity 200ms ease-in, transform 200ms ease-in-out;
-}
-
-.fade-exit-done {
-  //
-}
-
-.fade-enter-active {
-  //
-}
-
-.fade-enter-done {
-  transition: opacity 200ms ease-in, transform 200ms ease-in-out;
-}
-
-.fade-enter {
+.fadeX-exit-active {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateX($translationXAmountOUT);
+  transition: opacity $exitAnimationSpeed ease-in, transform $exitAnimationSpeed ease-in-out;
+}
+
+.fadeX-exit-done {
+  //
+}
+
+.fadeX-enter-active {
+  //
+}
+
+.fadeX-enter-done {
+  transition: opacity $enterAnimationSpeed ease-in, transform $enterAnimationSpeed ease-in-out;
+}
+
+.fadeX-enter {
+  opacity: 0;
+  transform: translateX($translationXAmountIN);
 }
 
 // http://reactcommunity.org/react-transition-group/css-transition
