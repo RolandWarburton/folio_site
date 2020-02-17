@@ -16,21 +16,15 @@ const SVGContent = () => {
 	)
 }
 
-function Title({ location }) {
-	const [onPageRoot, setOnPageRoot] = useState(() => (location.pathname != "/") ? true : false)
-
-	// Flip between true and false to set the onPageRoot state.
-	useEffect(() => {
-		setOnPageRoot(() => (location.pathname != "/") ? true : false)
-	}, [location.pathname]);
-
+function Title() {
 	return (
-		<header className="LeftCol">
-			<h3 className="tester">Roland Warburton</h3>
+		<div className="LeftCol">
+			<h3>Roland Warburton</h3>
 			<div className="NormalAnchor" href="https://goo.gl/maps/SEBJEfeRSAbGtLmv9" id="location">Melbourne, VIC</div>
 			<SVGContent />
-			<Link className="DarkHyperLink" to='/' >click me (home)</Link>
-		</header >
+			{/* <Link className="DarkHyperLink" to='/' >click me (home)</Link>
+			<Link className="DarkHyperLink" to='/Articles' >click me (Articles)</Link> */}
+		</div>
 	);
 }
 

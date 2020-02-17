@@ -1,43 +1,44 @@
-// Align the container in the middle Ver and Hoz
+// Align the containers content in the middle Ver and Hoz
 .FlexCenter {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
-  height: 100%;
 }
 
-// Base class to define the positioning styles for the Mobile and Desktop views
-.ContentContainer {
+// Defines the positioning styles for the Mobile and Desktop views inside the Center Column
+@mixin ContentContainer($colOffset, $offsetPercentage) {
+  @extend .FlexCenter;
   // In mobile view the columns are relative and stack on each other
   position: relative;
-  // pad the containers a bit
-  padding: 20px;
 
-  // In desktop view they become absolute and are aligned though .column and its extended classes
   @include desktop {
+    // Left and Right columns are positioned absolutely left or right of their wrapper
     position: absolute;
-    height: 100vh;
-  }
-}
-
-// Center Ver and Hor. And offset the columns in desktop view
-@mixin column($colOffset, $offsetPercentage) {
-  @extend .ContentContainer;
-  @extend .FlexCenter;
-  @include desktop {
-    min-width: 20vw;
+    height: 100%;
     // left: 50% or right: 50%
     #{$colOffset}: $offsetPercentage;
   }
 }
 
-// based on column mixin
+// based on ContentContainer mixin
 .LeftCol {
-  @include column(right, 50vw);
+  @include ContentContainer(right, 55%);
+  // the Left Columns items look nicer in the center
+  align-items: center;
 }
 
-// based on column mixin
+// based on ContentContainer mixin
 .RightCol {
-  @include column(left, 50vw);
+  @include ContentContainer(left, 55%);
+}
+
+// Center column wrapper for all other columns
+.centerCol {
+  position: relative;
+  padding: 20px;
+  @include desktop {
+    max-width: 60vw;
+    margin: auto;
+    height: 100vh;
+  }
 }
