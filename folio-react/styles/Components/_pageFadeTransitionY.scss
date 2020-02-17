@@ -1,41 +1,43 @@
-.fadeY-exit {
-  // opacity: 0;
-  transform: translateY($translationYAmountOUT);
-  transition: opacity $exitAnimationSpeed ease-in, transform $exitAnimationSpeed ease-in-out;
-}
+@include desktop {
+  .fadeY-exit {
+    opacity: 1;
+    transform: translateY($translationYAmountOUT);
+    transition: opacity $exitAnimationSpeed ease-in, transform $exitAnimationSpeed ease-in-out;
+  }
 
-.fadeY-exit-active {
-  // opacity: 0;
-  transform: translateY($translationYAmountOUT);
-  transition: opacity $exitAnimationSpeed ease-in, transform $exitAnimationSpeed ease-in-out;
-  // background: green;
-}
+  .fadeY-exit-active {
+    opacity: 0;
+    transform: translateY($translationYAmountOUT);
+    transition: opacity $exitAnimationSpeed ease-in, transform $exitAnimationSpeed ease-in-out;
+    // background: green;
+  }
 
-.fadeY-exit-done {
-  // opacity: 0;
-  // background: green;
-}
+  .fadeY-exit-done {
+    // opacity: 0;
+    // background: green;
+  }
 
-.fadeY-enter-active {
-  // opacity: 0;
-  // background: green;
-}
+  .fadeY-enter-active {
+    // opacity: 0;
+    // background: green;
+  }
 
-.fadeY-appear {
-  // opacity: 0;
-  // background: red;
-}
+  .fadeY-appear {
+    // opacity: 0;
+    // background: red;
+  }
 
-.fadeY-enter-done {
-  opacity: 1;
-  transition: opacity $enterAnimationSpeed ease-in, transform $enterAnimationSpeed ease-in-out;
-  // background: red;
-}
+  .fadeY-enter-done {
+    opacity: 1;
+    transition: opacity $enterAnimationSpeed ease-in, transform $enterAnimationSpeed ease-in-out;
+    // background: red;
+  }
 
-.fadeY-enter {
-  opacity: 0;
-  transform: translateY($translationYAmountIN);
-  // background: red;
+  .fadeY-enter {
+    opacity: 0;
+    transform: translateY($translationYAmountIN);
+    // background: red;
+  }
 }
 
 // http://reactcommunity.org/react-transition-group/css-transition

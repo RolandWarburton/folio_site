@@ -35,7 +35,9 @@
 // Center column wrapper for all other columns
 .centerCol {
   position: relative;
-  padding: 20px;
+  padding: 0px 20px;
+  // background: blue;
+  height: 100vh;
   @include desktop {
     max-width: 60vw;
     margin: auto;

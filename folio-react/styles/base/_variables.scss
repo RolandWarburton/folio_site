@@ -3,13 +3,13 @@ $mainBackground: #121212;
 $lightText: #fff;
 $darkText: #959595;
 
-$enterAnimationSpeed: 300ms;
-$exitAnimationSpeed: 300ms;
+$enterAnimationSpeed: 200ms;
+$exitAnimationSpeed: 200ms;
 
 // Amount of travel distance for X axis fade animations
-$translationXAmountIN: 40px;
-$translationXAmountOUT: -200px;
+$translationXAmountIN: 60px;
+$translationXAmountOUT: -60px;
 
 // Amount of travel distance for Y axis fade animations
-$translationYAmountIN: 40px;
-$translationYAmountOUT: -40px;
+$translationYAmountIN: 60px;
+$translationYAmountOUT: -20px;

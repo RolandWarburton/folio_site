@@ -1,30 +1,31 @@
+// @include desktop {
+  .fadeX-exit {
+    opacity: 0;
+  }
+  
+  .fadeX-exit-active {
+    opacity: 0;
+  }
+  
+  .fadeX-exit-done {
+    //
+  }
+  
+  .fadeX-enter-active {
+    //
+  }
+  
+  .fadeX-enter-done {
+    opacity: 1;
+    transition: opacity $enterAnimationSpeed ease-in, transform $enterAnimationSpeed ease-in-out;
+  }
+  
+  .fadeX-enter {
+    opacity: 0;
+    transform: translateX($translationXAmountIN);
+  }
+// }
 
-.fadeX-exit {
-  opacity: 1;
-}
-
-.fadeX-exit-active {
-  opacity: 0;
-  transform: translateX($translationXAmountOUT);
-  transition: opacity $exitAnimationSpeed ease-in, transform $exitAnimationSpeed ease-in-out;
-}
-
-.fadeX-exit-done {
-  //
-}
-
-.fadeX-enter-active {
-  //
-}
-
-.fadeX-enter-done {
-  transition: opacity $enterAnimationSpeed ease-in, transform $enterAnimationSpeed ease-in-out;
-}
-
-.fadeX-enter {
-  opacity: 0;
-  transform: translateX($translationXAmountIN);
-}
 
 // http://reactcommunity.org/react-transition-group/css-transition
 // classNames={{
