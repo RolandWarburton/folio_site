@@ -2,9 +2,6 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import indexTopics from './indexTopics.json'
 import Title from './Title.js';
-import Header from './Header';
-import { TransitionGroup, CSSTransition, Transition, SwitchTransition } from 'react-transition-group'
-import SVGIcon from './SVGIcon'
 
 // =========================================
 // This is the index page that renders on the Right Hand Column.

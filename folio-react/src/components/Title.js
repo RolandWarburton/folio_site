@@ -22,8 +22,6 @@ function Title() {
 			<h3>Roland Warburton</h3>
 			<a className="darkHyperLink" href="https://goo.gl/maps/SEBJEfeRSAbGtLmv9" id="location">Melbourne, VIC</a>
 			<SVGContent />
-			{/* <Link className="DarkHyperLink" to='/' >click me (home)</Link>
-			<Link className="DarkHyperLink" to='/Articles' >click me (Articles)</Link> */}
 		</div>
 	);
 }

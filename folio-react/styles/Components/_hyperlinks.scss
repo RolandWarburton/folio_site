@@ -1,18 +1,18 @@
 .HyperLink {
-    list-style-type: none;
-    text-decoration: none;
-    &:hover {
-      color: #fff;
-      transition: color 0.5s ease;
-    }
+  list-style-type: none;
+  text-decoration: none;
+  &:hover {
+    color: #fff;
+    transition: color 0.5s ease;
   }
-  
-  .LightHyperLink {
-    @extend .HyperLink;
-    color: $lightText;
-  }
-  
-  .DarkHyperLink {
-    @extend .HyperLink;
-    color: $darkText;
-  }
+}
+
+.lightHyperLink {
+  @extend .HyperLink;
+  color: $lightText;
+}
+
+.darkHyperLink {
+  @extend .HyperLink;
+  color: $darkText;
+}
