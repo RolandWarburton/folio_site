@@ -1,5 +1,0 @@
-[
-    { "path": "/", "name": "Home", "Component": "Index" },
-    { "path": "/Articles", "name": "Articles", "Component": "Articles" },
-    { "path": "/Projects", "name": "Projects", "Component": "Projects" }
-]

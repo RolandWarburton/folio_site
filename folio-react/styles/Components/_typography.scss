@@ -1,0 +1,11 @@
+.darkText {
+    color: $darkText;
+}
+
+.lightText {
+    color: $lightText;
+}
+
+p {
+    @extend .darkText;
+}

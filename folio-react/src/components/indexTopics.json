@@ -1,16 +1,58 @@
-{
-    "Articles": [
-        {"id": 1, "name": "How to install a webserver"}, 
-        {"id": 2, "name": "Pre-conditioning the mind for work"},
-        {"id": 3, "name": "how to run 5km in 20mins"},
-        {"id": 4, "name": "Keyboard shortcuts are useful"}
-    ],
-    "Projects": [
-        {"id": 1, "name": "StatsV2 - Life statistics"}, 
-        {"id": 2, "name": "Robbiefincham - Commission website"},
-        {"id": 3, "name": "Portfolio - My old cluttered portfolio site"}  
-    ],
-    "Misc": [
-        {"id": 1, "name": "thoughts on features for this page"}
-    ]
-}
+[
+    {
+        "path": "/",
+        "name": "Index",
+        "Component": "Index",
+        "topics": [
+        ]
+    },
+    {
+        "path": "/Notes",
+        "name": "Notes",
+        "Component": "Notes",
+        "topics": [
+            {
+                "id": 1,
+                "name": "How to install a webserver",
+                "path": "/Notes/test"
+            },
+            {
+                "id": 2,
+                "name": "Pre-conditioning the mind for work",
+                "path": "/Notes/test"
+            },
+            {
+                "id": 3,
+                "name": "how to run 5km in 20mins",
+                "path": "/Notes/test"
+            },
+            {
+                "id": 4,
+                "name": "Keyboard shortcuts are useful",
+                "path": "/Notes/test"
+            }
+        ]
+    },
+    {
+        "path": "/Blog",
+        "name": "Blog",
+        "Component": "Blog",
+        "topics": [
+            {
+                "id": 1,
+                "name": "StatsV2 - Life statistics",
+                "path": "/Blog/test"
+            },
+            {
+                "id": 2,
+                "name": "Robbiefincham - Commission website",
+                "path": "/Blog/test"
+            },
+            {
+                "id": 3,
+                "name": "Portfolio - My old cluttered portfolio site",
+                "path": "/Blog/test"
+            }
+        ]
+    }
+]

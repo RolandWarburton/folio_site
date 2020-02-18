@@ -20,7 +20,7 @@ function Title() {
 	return (
 		<div className="LeftCol">
 			<h3>Roland Warburton</h3>
-			<div className="NormalAnchor" href="https://goo.gl/maps/SEBJEfeRSAbGtLmv9" id="location">Melbourne, VIC</div>
+			<a className="darkHyperLink" href="https://goo.gl/maps/SEBJEfeRSAbGtLmv9" id="location">Melbourne, VIC</a>
 			<SVGContent />
 			{/* <Link className="DarkHyperLink" to='/' >click me (home)</Link>
 			<Link className="DarkHyperLink" to='/Articles' >click me (Articles)</Link> */}

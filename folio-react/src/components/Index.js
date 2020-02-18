@@ -11,27 +11,46 @@ import SVGIcon from './SVGIcon'
 // It contains a list of pages that can be found in "indexTopics.json"
 // =========================================
 
-// Returns a topic title and all of its subheadings
-function Topic(props) {
-	return (
-		<section id={props.heading}>
-			<Link className="LightHyperLink" to={props.heading}><h3>{props.heading}</h3></Link>
+function TopicName({ name }) {
+	if (name != "Index") {
+		return (
+			<Link className="lightHyperLink" to={name}>
+				<h3>
+					{name}
+				</h3>
+			</Link>
+		)
+	}
+	return (null)
+}
+
+// Returns a list of topic subheadings
+// needs an array of "topics" to map
+function TopicSubheadings({ topics }) {
+	if (name != "index") {
+		return (
 			<ul>
-				{props.items.map((item) =>
-					<li key={item.name}><Link className="DarkHyperLink" key={item.name} to={item.name}>{item.name}</Link></li>
-				)}
+				{topics.map(({ id, name, path }) => (
+					<li key={id}>
+						<Link className="darkHyperLink" key={id} to={path}>{name}</Link>
+					</li>
+				))}
 			</ul>
-		</section>
-	)
+		)
+	}
+	return (null)
 }
 
 // returns all the topics that link to other pages
 function Topics() {
 	return (
 		<div className="RightCol">
-			<div className="TopicContainer"> <Topic heading="Articles" items={indexTopics.Articles} /></div>
-			<div className="TopicContainer"> <Topic heading="Projects" items={indexTopics.Projects} /></div>
-			<div className="TopicContainer"> <Topic heading="Misc" items={indexTopics.Misc} /></div>
+			{indexTopics.slice(1).map(({ name, topics }) => (
+				<div className="TopicContainer" key={name}>
+					<TopicName name={name} />
+					<TopicSubheadings name={name} topics={topics} />
+				</div>
+			))}
 		</div>
 	)
 }
