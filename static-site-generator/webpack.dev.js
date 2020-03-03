@@ -8,5 +8,5 @@ const config = merge(...pages, devserver, moduleRules, {
     devtool: "eval-source-map",
     stats: 'errors-only'
 });
-
+console.log(config.plugins)
 module.exports = config;

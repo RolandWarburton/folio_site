@@ -6,7 +6,7 @@ const getTemplate = require('./getTemplate')
 const generateTemplateMap = require('./generateTemplateMap')
 
 // path where all the views are stored
-const viewsDir = path.resolve(__dirname, '../src/views')
+const viewsDir = path.resolve(process.cwd(), 'src/views')
 
 // get a list of templates that each file wants to use
 const templateMap = generateTemplateMap()
@@ -22,21 +22,36 @@ readFiles(viewsDir, ({ title, filepath }) => {
 
 
 routes.forEach((route, i) => {
+	// console.log(route.filepath.split("/static-site-generator/src/views/")[1])
 	const template = getTemplate(templateMap, route.title)
-	const currentDir = route.filepath.split("/")[0]
+	// const currentDir = route.filepath.split("/")[0]
 	const nextDir = (routes[i + 1] !== undefined) ? routes[i + 1].filepath.split("/")[0] : ''
 	const prevDir = (routes[i - 1] !== undefined) ? routes[i - 1].filepath.split("/")[0] : ''
+	console.log(route.filepath)
 	pages.push(generatePage({
-		path: (route.title === 'index') ? '' : route.filepath, //where to write the file to in dist
-		template: template, // the base template to use
-		title: route.title, // the title of the page
-		target: route.filepath, // tells EJS to use this js file to populate its template body 
+		// Path needs to take a path without an extension. Examples: about, notes/blog
+		//where to write the file in dist
+		path: (route.title === 'index') ? '' : route.filepath, 
+		// the base template to use
+		template: template,
+		// the title of the page
+		title: route.title,
+		 // tells EJS to use this js file to populate its template body 
+		target: route.filepath,
 		previous: (prevDir && prevDir != 'index') ? routes[i - 1] : '',
 		next: (nextDir && nextDir != 'index') ? routes[i + 1] : ''
 	}))
-	console.log(`${route.title}.
-	prev: ${(routes[i - 1] != undefined) ? routes[i - 1].title : ''}. 
-	next: ${(routes[i + 1] != undefined) ? routes[i + 1].title : ''}`)
 })
 
+console.log(templateMap)
+console.log(routes)
+// console.log(pages)
 module.exports = pages;
+
+// ,
+//     {
+//         "title": "notes",
+//         "directory": false,
+//         "path": "",
+//         "templatePath": "./template-notes.ejs"
+//     }
