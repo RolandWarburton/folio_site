@@ -2,15 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const generatePage = require('./generatePage')
 const readFiles = require('./readFiles')
-const readFile = require('./readFile')
 const getTemplate = require('./getTemplate')
 const generateTemplateMap = require('./generateTemplateMap')
 
 // path where all the views are stored
 const viewsDir = path.resolve(process.cwd(), 'src/views')
-
-// get a list of templates that each file wants to use
-const templateMap = generateTemplateMap()
 
 // list of HtmlWebpackPlugin pages for building 
 const pages = []
@@ -20,6 +16,9 @@ const routes = []
 readFiles(viewsDir, ({ title, filepath }) => {
 	routes.push({ title, filepath })
 });
+
+// get a list of templates that each file wants to use
+const templateMap = generateTemplateMap(routes)
 
 const getNav = (route, filepath) => {
 	const doesExist = (route) => {
@@ -35,7 +34,6 @@ const getNav = (route, filepath) => {
 
 routes.forEach((route, i) => {
 	const template = getTemplate(templateMap, route.title)
-	// navigation = getPrevAndNextInDir(routes, i)
 	pages.push(generatePage({
 		// Path needs to take a path without an extension. Examples: about, notes/blog
 		//where to write the file in dist
@@ -58,11 +56,3 @@ routes.forEach((route, i) => {
 // console.log(routes)
 // console.log(pages)
 module.exports = pages;
-
-// ,
-//     {
-//         "title": "notes",
-//         "directory": false,
-//         "path": "",
-//         "templatePath": "./template-notes.ejs"
-//     }
