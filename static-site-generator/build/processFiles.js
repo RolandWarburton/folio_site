@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const generatePage = require('./generatePage')
 const readFiles = require('./readFiles')
+const readFile = require('./readFile')
 const getTemplate = require('./getTemplate')
 const generateTemplateMap = require('./generateTemplateMap')
 
@@ -20,31 +21,39 @@ readFiles(viewsDir, ({ title, filepath }) => {
 	routes.push({ title, filepath })
 });
 
+const getNav = (route, filepath) => {
+	const doesExist = (route) => {
+		return route != undefined
+	}
+
+	const isInSameFileDir = (route, filepath) => {
+		return path.parse(route.filepath).dir == path.parse(filepath).dir
+	}
+	
+	return (doesExist(route) && isInSameFileDir(route, filepath)) ? route : ''
+}
 
 routes.forEach((route, i) => {
-	// console.log(route.filepath.split("/static-site-generator/src/views/")[1])
 	const template = getTemplate(templateMap, route.title)
-	// const currentDir = route.filepath.split("/")[0]
-	const nextDir = (routes[i + 1] !== undefined) ? routes[i + 1].filepath.split("/")[0] : ''
-	const prevDir = (routes[i - 1] !== undefined) ? routes[i - 1].filepath.split("/")[0] : ''
-	console.log(route.filepath)
+	// navigation = getPrevAndNextInDir(routes, i)
 	pages.push(generatePage({
 		// Path needs to take a path without an extension. Examples: about, notes/blog
 		//where to write the file in dist
-		path: (route.title === 'index') ? '' : route.filepath, 
+		path: (route.title === 'index') ? '' : route.filepath,
 		// the base template to use
 		template: template,
 		// the title of the page
 		title: route.title,
-		 // tells EJS to use this js file to populate its template body 
+		// tells EJS to use this js file to populate its template body 
 		target: route.filepath,
-		previous: (prevDir && prevDir != 'index') ? routes[i - 1] : '',
-		next: (nextDir && nextDir != 'index') ? routes[i + 1] : ''
+		// previous and next in same route dir (if there is one)
+		previous: getNav(routes[i - 1], route.filepath),
+		next: getNav(routes[i + 1], route.filepath),
 	}))
 })
 
-console.log(templateMap)
-console.log(routes)
+// console.log(templateMap)
+// console.log(routes)
 // console.log(pages)
 module.exports = pages;
 

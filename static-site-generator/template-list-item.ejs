@@ -8,9 +8,11 @@
 </head>
 <body>
   <div id="content">
+    template list items
     <%= require(`./src/views/partials/router.js`) %>
+    <!-- <%= require(`./src/views/partials/navLinks.js`)(htmlWebpackPlugin.options.prev, htmlWebpackPlugin.options.next) %> -->
     <%= require(`./src/views/partials/navLinks.js`)(htmlWebpackPlugin.options.previous, htmlWebpackPlugin.options.next) %>
-    <%= require(`./src/views/${htmlWebpackPlugin.options.target}.js`) %>
+    <%= require(`./src/views/${htmlWebpackPlugin.options.target}`) %>
   </div>
 </body>
 </html>
