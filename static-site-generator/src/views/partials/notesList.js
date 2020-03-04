@@ -1,4 +1,6 @@
 const fs = require('fs')
+
+// Returns an entire list of notes in the /src/views/notes dir
 module.exports = (args) => {
 
     // get the entire map of every route
@@ -19,7 +21,6 @@ module.exports = (args) => {
 
     return (
         `
-        <h1>notes list partial:</h1>
         ${output}`
     )
 }

@@ -49,6 +49,7 @@ routes.forEach((route, i) => {
 		// previous and next in same route dir (if there is one)
 		previous: getNav(routes[i - 1], route.filepath),
 		next: getNav(routes[i + 1], route.filepath),
+		// favicon requires config.output.publicPath = '/' in webpack to work
 		favicon: './src/media/favicon.ico'
 	}))
 })

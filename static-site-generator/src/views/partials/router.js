@@ -1,11 +1,9 @@
 const router = `
-<nav>
-  <ul>
-    <li><a href="/">Go to index page</a></li>
-    <li><a href="/about">Go to about page</a></li>
-    <li><a href="/about/whois">Go whois subpage</a></li>
-    <li><a href="/notes">Go notes page</a></li>
-  </ul>
+<nav id="router">
+    <li><a class="darkHyperLink" href="/">Home</a></li>
+    <li><a class="darkHyperLink" href="/about">Roland</a></li>
+    <li><a class="darkHyperLink" href="/notes">Notes</a></li>
+    <li><a class="darkHyperLink" href="/notes">Blog</a></li>
 </nav>
 `;
 
