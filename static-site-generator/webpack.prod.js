@@ -16,7 +16,8 @@ const config = merge(devserver, optimization, moduleRules, ...pages, {
       },
     output: {
         filename: 'bundle.js',
-        path: __dirname + '/dist'
+        path: __dirname + '/dist',
+        publicPath: '/'
     }
 });
 

@@ -6,7 +6,16 @@ const moduleRules = require('./build/moduleRules');
 
 const config = merge(...pages, devserver, moduleRules, {
     devtool: "eval-source-map",
-    stats: 'errors-only'
+    stats: 'errors-only',
+    entry: {
+        app: './src/index.js'
+    },
+    output: {
+        filename: 'bundle.js',
+        path: __dirname + '/dist',
+        publicPath: '/'
+    }
 });
-console.log(config.plugins)
+
+// console.log(config)
 module.exports = config;
