@@ -4,5 +4,17 @@
         "directory": false,
         "path": "",
         "templatePath": "./template.ejs"
+    },
+    {
+        "title": "notes",
+        "directory": true,
+        "path": "notes",
+        "templatePath": "./template-list-item.ejs"
+    },
+    {
+        "title": "notes",
+        "directory": false,
+        "path": "",
+        "templatePath": "./template-list-notes.ejs"
     }
 ]
