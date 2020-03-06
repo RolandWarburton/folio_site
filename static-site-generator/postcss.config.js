@@ -1,5 +1,8 @@
 module.exports = {
     plugins: {
-        'postcss-import': {}
+        // support @import on css/sass modules
+        'postcss-import': {},
+        // minify
+        'cssnano': {}
     }
 }
