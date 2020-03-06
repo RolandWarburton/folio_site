@@ -5,15 +5,33 @@ body {
 }
 
 #content {
-  margin: 5rem 30vw;
+  margin: 5rem 10vw;
   display: grid;
+  // background-color: lighten($mainBackground, 10%) ;
+  @include desktop {
+    margin: 5rem 25vw;
+  }
 }
 
 .avatar {
-  background-image: url("../media/avatar.png");
+  background-image: url("../media/avatar.svg");
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 300px;
   height: 300px;
+  width: auto;
+}
+
+.imageAndTextWrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  
+  :first-child {
+    grid-column: 1;
+    // background-color: blue;
+  }
+
+  :last-child {
+    grid-column: 2;
+    background-position: right;
+    // background-color: red;
+  }
 }

@@ -12,6 +12,9 @@ module.exports = {
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader,
+						options: {
+							publicPath: 'dist',
+						}
 					},
 					'css-loader',
 					'postcss-loader',
