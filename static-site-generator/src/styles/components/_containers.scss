@@ -1,0 +1,23 @@
+.imageAndTextWrapper {
+    display: grid;
+    overflow: visible;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "content picture";
+
+    :first-child {
+      grid-column: 1;
+      grid-area: 'content';
+    }
+  
+    :last-child {
+        display: none;
+
+      @include desktop {
+        display: grid;
+        grid-column: 2;
+        background-position: right;
+        grid-area: 'picture';
+        min-width: 110px;
+      }
+    }
+  }
