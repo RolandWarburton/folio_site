@@ -11,7 +11,7 @@
     <%= require(`./src/views/partials/router.js`) %>
     <!-- <h1><%= htmlWebpackPlugin.options.title || '' %></h1> -->
     <%= require(`./src/views/${htmlWebpackPlugin.options.target}`) %>
-    <%= require(`./src/views/partials/notesList.js`)('args') %>
+    <%= require(`./src/views/partials/listFilesInDir.js`)('notes/') %>
   </div>
 </body>
 </html>
