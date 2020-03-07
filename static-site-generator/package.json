@@ -6,7 +6,11 @@
 	"scripts": {
 		"prod": "webpack --config webpack.prod --mode production",
 		"dev-server": "webpack-dev-server --config webpack.dev --mode development",
-		"test": "jest"
+		"test": "jest",
+		"test:debug": "node --inspect node_modules/.bin/jest --runInBand"
+	},
+	"jest": {
+		"testEnvironment": "node"
 	},
 	"keywords": [],
 	"author": "",
