@@ -7,6 +7,7 @@ const optimization = require('./build/optimization');
 const config = merge(devserver, optimization, moduleRules, ...pages, {
     devtool: '',
     stats: 'errors-only',
+    target: "web",
     output: {
         crossOriginLoading: 'anonymous'
     },
