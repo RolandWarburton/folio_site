@@ -1,4 +1,4 @@
-const notes1 = `
+const bucketlist = `
 <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum congue erat a elementum. 
     Fusce accumsan, ante non elementum imperdiet, risus mauris malesuada sem, at fermentum libero tellus eu odio. 
@@ -6,7 +6,6 @@ const notes1 = `
     Curabitur facilisis rutrum diam id lobortis. 
     Aenean vitae mi at mi euismod tempus et vel purus. 
     Ut id sapien elit. Fusce egestas justo vitae turpis accumsan, vel vulputate dui consequat. 
-</p>
-`;
+</p>`;
 
-module.exports = notes1;
+module.exports = bucketlist;

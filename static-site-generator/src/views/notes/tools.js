@@ -1,4 +1,4 @@
-const notes3 = `
+const tools = `
 <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum congue erat a elementum. 
     Fusce accumsan, ante non elementum imperdiet, risus mauris malesuada sem, at fermentum libero tellus eu odio. 
@@ -9,4 +9,4 @@ const notes3 = `
 </p>
 `;
 
-module.exports = notes3;
+module.exports = tools;

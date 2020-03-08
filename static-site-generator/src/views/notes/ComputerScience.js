@@ -1,4 +1,4 @@
-const notes2 = `
+const computerScience = `
 <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum congue erat a elementum. 
     Fusce accumsan, ante non elementum imperdiet, risus mauris malesuada sem, at fermentum libero tellus eu odio. 
@@ -8,4 +8,4 @@ const notes2 = `
     Ut id sapien elit. Fusce egestas justo vitae turpis accumsan, vel vulputate dui consequat. 
 </p>`;
 
-module.exports = notes2;
+module.exports = computerScience;
