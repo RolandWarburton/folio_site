@@ -1,3 +1,4 @@
+<% var templateMap = require('./temp/templateMap'); %>
 <!DOCTYPE html>
 <html lang="<%= htmlWebpackPlugin.options.lang || 'en' %>">
 <head>
@@ -8,7 +9,7 @@
 </head>
 <body>
   <div id="content">
-    <%= require(`./src/views/partials/backLinkTitle.js`)(htmlWebpackPlugin.options.title, htmlWebpackPlugin.options.filename) %>
+    <%= require(`./src/views/partials/backLinkTitle.js`)(htmlWebpackPlugin.options.title, htmlWebpackPlugin.options.filename, templateMap) %>
     <%= require(`./src/views/partials/navLinks.js`)(htmlWebpackPlugin.options.previous, htmlWebpackPlugin.options.next) %>
     <%= require(`./src/views/${htmlWebpackPlugin.options.target}`) %>
   </div>
