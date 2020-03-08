@@ -3,18 +3,18 @@
         "title": "about",
         "directory": false,
         "path": "",
-        "templatePath": "./template.ejs"
+        "templatePath": "./templates/template.ejs"
     },
     {
         "title": "notes",
         "directory": true,
         "path": "notes",
-        "templatePath": "./template-list-item.ejs"
+        "templatePath": "./templates/template-list-item.ejs"
     },
     {
         "title": "notes",
         "directory": false,
         "path": "",
-        "templatePath": "./template-list-notes.ejs"
+        "templatePath": "./templates/template-list-notes.ejs"
     }
 ]

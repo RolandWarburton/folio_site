@@ -1,0 +1,22 @@
+<% var path = require('path'); %>
+<% var templateMap = require('../temp/templateMap'); %>
+<% var title = htmlWebpackPlugin.options.title; %>
+<% var filename = htmlWebpackPlugin.options.filename; %>
+<% var previous = htmlWebpackPlugin.options.previous; %>
+<% var next = htmlWebpackPlugin.options.next; %>
+<!DOCTYPE html>
+<html lang="<%= htmlWebpackPlugin.options.lang || 'en' %>">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title || '' %></title>
+</head>
+<body>
+  <div id="content">
+    <%= require(`../src/views/partials/backLinkTitle.js`)(title, filename, templateMap) %>
+    <%= require(`../src/views/partials/navLinks.js`)(previous, next) %>
+    <%= require(`../src/views/${htmlWebpackPlugin.options.target}`) %>
+  </div>
+</body>
+</html>

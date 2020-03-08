@@ -8,10 +8,10 @@
 </head>
 <body>
   <div id="content">
-    <%= require(`./src/views/partials/router.js`) %>
+    <%= require(`../src/views/partials/router.js`) %>
     <!-- <h1><%= htmlWebpackPlugin.options.title || '' %></h1> -->
-    <%= require(`./src/views/${htmlWebpackPlugin.options.target}`) %>
-    <%= require(`./src/views/partials/listFilesInDir.js`)('notes/') %>
+    <%= require(`../src/views/${htmlWebpackPlugin.options.target}`) %>
+    <%= require(`../src/views/partials/listFilesInDir.js`)('notes/') %>
   </div>
 </body>
 </html>

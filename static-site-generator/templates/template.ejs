@@ -18,9 +18,9 @@
 		-->
 		
 		<!-- router which shows navigation links -->
-		<%= require(`./src/views/partials/router.js`) %>
+		<%= require(`../src/views/partials/router.js`) %>
 		<!-- the javascript page to target in /src/views/* -->
-		<%= require(`./src/views/${htmlWebpackPlugin.options.target}`) %>
+		<%= require(`../src/views/${htmlWebpackPlugin.options.target}`) %>
 	</div>
 </body>
 
@@ -28,35 +28,3 @@
 
 <!-- get -r /home/roland/Documents/Projects/nodeTidbits/express-static-app-boilerplate/static-site-generator/dist/* /home/roland -->
 
-
-<!-- [
-  {
-    title: 'whois',
-    targetPath: 'about/whois',
-    templatePath: './template-list-item.ejs'
-  },
-  {
-    title: 'about',
-    targetPath: undefined,
-    templatePath: './template-list-item.ejs'
-  },
-  {
-    title: 'notes1',
-    targetPath: 'notes/notes1',
-    templatePath: './template-list-item.ejs'
-  },
-  {
-    title: 'notes2',
-    targetPath: 'notes/notes2',
-    templatePath: './template-list-item.ejs'
-  },
-  {
-    title: 'notes3',
-    targetPath: 'notes/notes3',
-    templatePath: './template-list-item.ejs'
-  },
-  {
-    title: 'notes',
-    targetPath: undefined,
-    templatePath: './template-notes.ejs'
-  } -->
