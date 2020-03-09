@@ -1,41 +1,26 @@
-const path = require('path')
 const fs = require('fs')
-const getPrevRoute = require('../build/getPrevRoute')
-const filepathHelper = require('../build/filepathHelper')
+const ListFilesInDir = require('../build/listFilesInDir')
 
+const notesSlashTools = [
+    {
+        "filepath": "notes/tools/toolsIntro",
+        "title": "toolsIntro"
+    },
+]
 
-// takes a filepath relative to src/views/... and will return all pages in that directory
-const ListAllFilesInDir = function (templateMap, filepath) {
-    const targetMap = './temp/templateMap.json'
-    const routes = JSON.parse(fs.readFileSync(targetMap))
-    const result = []
-
-    routes.forEach((route) => {
-        route.filepath = filepathHelper.sanitizeHTMLfilepath(route.filepath)
-
-        if (filepathHelper.lengthOfRoute(route.filepath) === filepathHelper.lengthOfRoute(filepath)) {
-            RouteA = route.filepath
-            RouteB = filepath
-            if (RouteA === RouteB) {
-                result.push(route)
-            }
-        }
-    })
-    return result
-}
+// const notes = ['bookmarks', 'bucketlist', 'ComputerScience', 'tools']
+const notes = [
+    { "filepath": "notes/ComputerScience", "title": "ComputerScience" }, 
+    { "filepath": "notes/bookmarks", "title": "bookmarks" }, 
+    { "filepath": "notes/bucketlist", "title": "bucketlist" }, 
+    { "filepath": "notes/tools", "title": "tools" }
+]
 
 describe("Test ListAllFilesInDir", () => {
     test("return an object of routes in a given directory", () => {
-        const expected = [
-            {
-                "filepath": "about",
-                "title": "about",
-                "filepath": "notes/tools",
-                "templatePath": "./templates/template-list-item.ejs",
-                "title": "tools",
-            },
-        ]
-        const data = ListAllFilesInDir('../temp/templateMap.json', 'notes/tools')
-        expect(data).toEqual(expected);
+
+        const targetMap = JSON.parse(fs.readFileSync('./temp/templateMap.json'))
+        expect(ListFilesInDir('notes/tools/')).toEqual(notesSlashTools);
+        expect(ListFilesInDir('notes/')).toEqual(notes);
     });
 });
