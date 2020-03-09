@@ -1,12 +1,14 @@
 const fp = require('./filepathHelper')
+const fs = require('fs')
 const getPrevRoute = require('./getPrevRoute')
 
 // takes returns all page titles and filepaths in the given directory
 module.exports = (targetMap, filepath) => {
     filepath = fp.sanitizeHTMLfilepath(filepath)
+    // const initData = JSON.parse(fs.readFileSync('./temp/templateMap.json'));
     const result = []
     targetMap.forEach((route) => {
-        if (fp.lengthOfRoute(route.filepath) > fp.lengthOfRoute(filepath)) {
+        if (fp.lengthOfRoute(route.filepath) == fp.lengthOfRoute(filepath) + 1) {
             if (getPrevRoute(targetMap, route.filepath) == filepath) {
                 result.push(route)
             }

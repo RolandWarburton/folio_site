@@ -15,6 +15,6 @@
         "title": "notes",
         "directory": false,
         "path": "",
-        "templatePath": "./templates/template-list-notes.ejs"
+        "templatePath": "./templates/template.ejs"
     }
 ]
