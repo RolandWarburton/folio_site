@@ -13,7 +13,7 @@ const lengthOfRoute = function (filepath) {
 }
 
 // Returns an entire list of notes in the /src/views/notes dir
-// takes a filepath and will return all files from that point onwards
+// takes a filepath relative to src/views/... and will return all pages in that directory
 // EG: 'notes/' will return: 'notes/notes1', 'notes/notes2'
 module.exports = (path) => {
 
