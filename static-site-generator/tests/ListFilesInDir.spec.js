@@ -10,14 +10,12 @@ const notesSlashTools = [
     },
 ]
 
-// const notes = ['bookmarks', 'bucketlist', 'ComputerScience', 'tools']
 const notes = [
-    { "filepath": "notes/ComputerScience", "templatePath": "./templates/template-list-item.ejs", "title": "ComputerScience" }, 
-    { "filepath": "notes/bookmarks", "templatePath": "./templates/template-list-item.ejs", "title": "bookmarks" }, 
-    { "filepath": "notes/bucketlist", "templatePath": "./templates/template-list-item.ejs", "title": "bucketlist" }, 
-    { "filepath": "notes/tools", "templatePath": "./templates/template-list-item.ejs", "title": "tools" }]
-
-
+    { "filepath": "notes/ComputerScience", "templatePath": "./templates/template-list-item.ejs", "title": "ComputerScience" },
+    { "filepath": "notes/bookmarks", "templatePath": "./templates/template-list-item.ejs", "title": "bookmarks" },
+    { "filepath": "notes/bucketlist", "templatePath": "./templates/template-list-item.ejs", "title": "bucketlist" },
+    { "filepath": "notes/tools", "templatePath": "./templates/template-list-item.ejs", "title": "tools" }
+]
 
 describe("Test ListAllFilesInDir", () => {
     test("return an object of routes in a given directory", () => {
