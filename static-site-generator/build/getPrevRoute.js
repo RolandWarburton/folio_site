@@ -7,6 +7,9 @@ module.exports = (targets, filepath) => {
     // remove index.html from the filepath
     filepath = filepathHelper.sanitizeHTMLfilepath(filepath)
 
+    // return the filepath if its length is 1 (is on the root dir)
+    if(filepathHelper.lengthOfRoute(filepath) == 1) return filepath
+
     // convert it into an array
     currentPathArray = filepathHelper.filepathToArray(filepath)
 
