@@ -5,7 +5,7 @@ const readFile = require('./readFile')
 
 
 
-module.exports = (routes) => {
+module.exports = () => {
 	const targets = JSON.parse(fs.readFileSync('templateTargets.json'));
 	const viewsDir = path.resolve(process.cwd(), 'src/views')
 

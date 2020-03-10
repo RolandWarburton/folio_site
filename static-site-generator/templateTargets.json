@@ -1,5 +1,11 @@
 [
     {
+        "title": "index",
+        "directory": false,
+        "path": "",
+        "templatePath": "./templates/template.ejs"
+    },
+    {
         "title": "about",
         "directory": false,
         "path": "",
