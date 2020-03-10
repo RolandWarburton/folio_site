@@ -1,3 +1,5 @@
+const marked = require('marked')
+
 const linux = `
 <p>
     linux notes

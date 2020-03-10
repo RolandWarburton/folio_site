@@ -8,7 +8,7 @@ The tools that i used to create anything in general. Listed in no particular ord
 
 # Web Dev Tools
 ### DomainHack
-[DomainHack.me](https://www.domainhack.me/) is a tool for finding domain hacks
+[DomainHack.me](https://www.domainhack.me/) is a tool for finding domain hacks. 
 
 # CyberSecurity CTFs
 ### Over the wire

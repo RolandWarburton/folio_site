@@ -16,3 +16,8 @@
   @extend .HyperLink;
   color: $darkText;
 }
+
+a {
+  @extend .HyperLink;
+  color: $darkText;
+}

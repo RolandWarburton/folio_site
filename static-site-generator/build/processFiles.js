@@ -15,7 +15,7 @@ const viewsDir = path.resolve(process.cwd(), 'src/views')
 const pages = []
 
 // get a list of templates that each file wants to use
-const templateMap = generateTemplateMap(routes)
+const templateMap = generateTemplateMap()
 console.log(`Read in ${templateMap.length} files`)
 
 templateMap.forEach((route, i) => {
