@@ -14,17 +14,11 @@ const viewsDir = path.resolve(process.cwd(), 'src/views')
 // list of HtmlWebpackPlugin pages for building 
 const pages = []
 
-// list of avaliable routes (views)
-const routes = []
-readFiles(viewsDir, ({ title, filepath }) => {
-	routes.push({ title, filepath })
-});
-
 // get a list of templates that each file wants to use
 const templateMap = generateTemplateMap(routes)
 console.log(`Read in ${templateMap.length} files`)
 
-routes.forEach((route, i) => {
+templateMap.forEach((route, i) => {
 	const template = getTemplate(templateMap, route.title)
 
 	// get a next and previous route for the filepath in the current directory
