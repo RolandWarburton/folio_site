@@ -9,7 +9,7 @@ module.exports = (targetMap, filepath) => {
     const result = []
     targetMap.forEach((route) => {
         if (fp.lengthOfRoute(route.filepath) == fp.lengthOfRoute(filepath) + 1) {
-            if (getPrevRoute(targetMap, route.filepath) == filepath) {
+            if (route.filepath.includes(filepath)) {
                 result.push(route)
             }
         }
