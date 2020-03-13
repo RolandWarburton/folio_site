@@ -23,7 +23,7 @@ module.exports = (targets, filepath) => {
     if (fpLength == 0 ) {
         return ''
     } else if (fpLength == 1) {
-        return '/'
+        return ''
     } else {
         do {
             // keep removing the last element of the filepath until a matching filepath is found
