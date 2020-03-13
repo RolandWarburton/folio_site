@@ -6,8 +6,8 @@ module.exports = (previous, next) => {
         ${(prevLink || nextLink) ? 
         `
             <nav id="dynamic-nav">
-                <li id="nav-prev-link">${prevLink}</li>
-                <li id="nav-next-link">${nextLink}</li>
+                ${(prevLink) ? `<li id="nav-prev-link">${prevLink}</li>` : ''}
+                ${(nextLink) ? `<li id="nav-next-link">${nextLink}</li>` : ''}
             </nav>
         ` : ''
         }

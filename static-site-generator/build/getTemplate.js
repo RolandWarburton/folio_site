@@ -1,4 +1,4 @@
-// find the template based on the routes title in the list of templates (/templateMap.json)
+// find the template based on the routes title in the list of templates (/routeMap.json)
 // if the key doesnt exist return a default template
 
 module.exports = getTemplate = (templates, key) => {

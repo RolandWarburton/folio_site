@@ -7,7 +7,7 @@ const listFilesInDir = require('../../../build/listFilesInDir')
 module.exports = (filepath) => {
 
     // get the entire map of every route
-    const initData = JSON.parse(fs.readFileSync('./temp/templateMap.json'));
+    const initData = JSON.parse(fs.readFileSync('./temp/routeMap.json'));
     const results = listFilesInDir(initData, filepath)
 
     return (

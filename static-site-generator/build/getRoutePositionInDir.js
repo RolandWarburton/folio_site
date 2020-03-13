@@ -2,7 +2,7 @@ const filepathHelper = require('../build/filepathHelper')
 const listFilesInDir = require('../build/listFilesInDir')
 const getPrevRoute = require('../build/getPrevRoute')
 
-// return the index of a filepath relative to its siblings in a directory in the templateMap
+// return the index of a filepath relative to its siblings in a directory in the routeMap
 module.exports = (targets, filepath) => {
     // filepath = 'notes/tools'
     // console.log(`${filepath}:`)

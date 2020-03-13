@@ -9,7 +9,7 @@ module.exports = () => {
 	const targets = JSON.parse(fs.readFileSync('templateTargets.json'));
 	const viewsDir = path.resolve(process.cwd(), 'src/views')
 
-	const templateMap = []
+	const routeMap = []
 	targets.forEach((target) => {
 		// used to resolve the path that this template is in
 		const templatePath = target.templatePath
@@ -19,7 +19,7 @@ module.exports = () => {
 
 		if (target.directory) {
 			readFiles(targetPath, ({ filepath, title }) => {
-				templateMap.push({
+				routeMap.push({
 					title: title,
 					filepath: filepath,
 					templatePath: templatePath
@@ -29,7 +29,7 @@ module.exports = () => {
 			// this template target isnt a directory. it is a file
 			const fileURL = targetPath + '/' + target.title + '.js'
 			readFile(fileURL, ({ filepath, title }) => {
-				templateMap.push({
+				routeMap.push({
 					title: title,
 					filepath: filepath,
 					templatePath: templatePath
@@ -38,7 +38,7 @@ module.exports = () => {
 		}
 	})
 	// console.log("Done generating template map...")
-	// console.log(templateMap)
-	fs.writeFileSync(process.cwd() + '/temp/templateMap.json', JSON.stringify(templateMap))
-	return templateMap
+	// console.log(routeMap)
+	fs.writeFileSync(process.cwd() + '/temp/routeMap.json', JSON.stringify(routeMap))
+	return routeMap
 }

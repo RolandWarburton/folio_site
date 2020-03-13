@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const filepathHelper = require('../build/filepathHelper')
 
 describe("Test filepathHelper", () => {
@@ -48,10 +49,10 @@ describe("Test filepathHelper", () => {
 
 describe("Test filepathHelper", () => {
     test("Check if a path exists", () => {
-        templateMap = JSON.parse(fs.readFileSync('./temp/templateMap.json'))
+        const routeMap = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'temp/routeMap.json')))
 
-        expect(filepathHelper.checkIfPathExists(templateMap, 'notes/')).toEqual(true);
-        expect(filepathHelper.checkIfPathExists(templateMap, 'notes/bookmarks')).toEqual(true);
-        expect(filepathHelper.checkIfPathExists(templateMap, 'notes/bookmarks/')).toEqual(true);
+        expect(filepathHelper.checkIfPathExists(routeMap, 'notes/')).toEqual(true);
+        expect(filepathHelper.checkIfPathExists(routeMap, 'notes/bookmarks')).toEqual(true);
+        expect(filepathHelper.checkIfPathExists(routeMap, 'notes/bookmarks/')).toEqual(true);
     });
 });

@@ -1,30 +1,32 @@
 const fs = require('fs')
+const path = require('path')
 const ListFilesInDir = require('../build/listFilesInDir')
-const generateTemplateMap = require('../build/generateTemplateMap')
+const generateRouteMap = require('../build/generateRouteMap')
+// const routeMap = require('../temp/routeMap.json')
 
 const notesSlashTools = [
     {
         "filepath": "notes/tools/toolsIntro",
-        "templatePath": "./templates/template-list-item.ejs",
+        "template":  "templates/template.ejs",
         "title": "toolsIntro"
     },
 ]
 
 const notes = [
-    { "filepath": "notes/ComputerScience", "templatePath": "./templates/template-list-item.ejs", "title": "ComputerScience" },
-    { "filepath": "notes/bookmarks", "templatePath": "./templates/template-list-item.ejs", "title": "bookmarks" },
-    { "filepath": "notes/bucketlist", "templatePath": "./templates/template-list-item.ejs", "title": "bucketlist" },
-    { "filepath": "notes/tools", "templatePath": "./templates/template-list-item.ejs", "title": "tools" }
+    { "filepath": "notes/ComputerScience", "template": "templates/template.ejs", "title": "ComputerScience" },
+    { "filepath": "notes/bookmarks", "template": "templates/template.ejs", "title": "bookmarks" },
+    { "filepath": "notes/bucketlist", "template": "templates/template.ejs", "title": "bucketlist" },
+    { "filepath": "notes/tools", "template": "templates/template.ejs", "title": "tools" }
 ]
 
 describe("Test ListAllFilesInDir", () => {
     test("return an object of routes in a given directory", () => {
-        let tpmap = generateTemplateMap()
+        // let tpmap = generateTemplateMap()
         // console.log(tpmap)
 
-        const targetMap = JSON.parse(fs.readFileSync('./temp/templateMap.json'))
-        expect(ListFilesInDir(tpmap, 'notes/tools/')).toEqual(notesSlashTools);
-        expect(ListFilesInDir(tpmap, 'notes/')).toEqual(notes);
-        expect(ListFilesInDir(tpmap, 'notes')).toEqual(notes);
+        const routeMap = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'temp/routeMap.json')))
+        expect(ListFilesInDir(routeMap, 'notes/tools/')).toEqual(notesSlashTools);
+        expect(ListFilesInDir(routeMap, 'notes/')).toEqual(notes);
+        expect(ListFilesInDir(routeMap, 'notes')).toEqual(notes);
     });
 });

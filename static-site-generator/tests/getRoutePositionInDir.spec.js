@@ -1,6 +1,7 @@
 const fs = require('fs')
+const path = require('path')
 const ListFilesInDir = require('../build/listFilesInDir')
-const generateTemplateMap = require('../build/generateTemplateMap')
+const generateRouteMap = require('../build/generateRouteMap')
 const listFilesInDir = require('../build/listFilesInDir')
 const getRoutePositionInDir = require('../build/getRoutePositionInDir')
 
@@ -9,9 +10,9 @@ const getRoutePositionInDir = require('../build/getRoutePositionInDir')
 
 describe("Test ListAllFilesInDir", () => {
     test("returns the index of an a filepath in its own directory", () => {
-        let templateMap = generateTemplateMap()
 
-        expect(getRoutePositionInDir(templateMap, 'notes/tools')).toEqual(3);
-        expect(getRoutePositionInDir(templateMap, 'notes/tools/toolsIntro')).toEqual(0);
+        const routeMap = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'temp/routeMap.json')))
+        expect(getRoutePositionInDir(routeMap, 'notes/tools')).toEqual(3);
+        expect(getRoutePositionInDir(routeMap, 'notes/tools/toolsIntro')).toEqual(0);
     });
 });

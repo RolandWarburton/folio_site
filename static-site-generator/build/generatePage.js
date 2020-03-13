@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // target is derrived from template.ejs
 // it should be the path name of the file 
-const generatePage = ({ path, template, title, target, previous, next, favicon } = {}) => ({
+const generatePage = ({ path, template, title, target, previous, next, favicon }) => ({
 	plugins: [
 		new HtmlWebpackPlugin({
 			filename: `${path && path + '/'}index.html`, // output file to here

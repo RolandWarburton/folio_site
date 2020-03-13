@@ -1,7 +1,7 @@
 // return the HtmlWebpackPlugin page title and the parent of the filepath
 
-// takes a json object of templateMap 'targets' and a filepath array and returns true if it exists
-// return true if the filepath exists in templateMap.json
+// takes a json object of routeMap 'targets' and a filepath array and returns true if it exists
+// return true if the filepath exists in routeMap.json
 const checkIfPathExists = function (targets, currentPathArray) {
     // result needs to be declared here and set later 
     // because if 'return false' is at the bottom the function it will always return false
