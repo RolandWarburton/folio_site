@@ -11,6 +11,7 @@ describe("Test readFile", () => {
         expect(getPrevRoute(routeMap, 'notes/linux/linuxIntro/index.html')).toEqual('notes');
         expect(getPrevRoute(routeMap, 'notes/tools/toolsIntro/index.html')).toEqual('notes/tools');
         expect(getPrevRoute(routeMap, 'notes/tools/toolsIntro')).toEqual('notes/tools');
-        expect(getPrevRoute(routeMap, 'notes')).toEqual('notes');
+        expect(getPrevRoute(routeMap, 'notes')).toEqual('');
+        expect(getPrevRoute(routeMap, '')).toEqual('');
     });
 });

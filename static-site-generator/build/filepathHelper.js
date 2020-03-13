@@ -32,6 +32,32 @@ const checkIfPathExists = function (targets, filepath) {
     return result
 }
 
+// // returns true if the filepath is in a directory
+// // return true if the filepath exists in routeMap.json
+// const checkIfRouteExistsInDir = function (targets, filepath) {
+//     // result needs to be declared here and set later 
+//     // because if 'return false' is at the bottom the function it will always return false
+//     filepath = sanitizeHTMLfilepath(filepath)
+//     let result = false
+//     if (checkIfPathExists(targets, filepath)) {
+//         targets.forEach((route) => {
+//             const filepathArray = filepathToArray(filepath)
+//             if (filepathArray[filepathArray.length - 1]) {
+
+//             }
+//         })
+//     } else {
+//         result = false
+//     }
+//     return result
+// }
+
+// return the last element of a filepath
+const last = function (filepath) {
+    if (!Array.isArray(filepath)) filepath = filepathToArray(filepath)
+    return filepath[filepath.length - 1];
+}
+
 // takes a filepath and returns it as a string
 // EG: ["file", "to", "path"] OUTPUTS: "file/to/path"
 const filepathToString = function (filepath) {
@@ -65,6 +91,12 @@ const filepathToArray = function (filepath) {
         result = filepath
     }
 
+    // return 0 if the filepath splits into: ["",] 
+    // (IE. is on the root path and had '' or '/' passed to it)
+    if (result.length == 1 && (result[0] == '' || result[0] == '/')) {
+        result = []
+    }
+
     return result
 }
 
@@ -77,19 +109,23 @@ const sanitizeHTMLfilepath = function (filepath) {
     const stripDotHtml = (filepath) => {
         let temp = filepath.split('/')
         temp.splice(-1, 1)
-        return temp
+        return filepathToString(temp)
     }
 
-    
+
     if (filepath.includes('.html')) {
-        result = stripDotHtml(filepath)
-    }
-    
-    if (filepath.substring(filepath.length - 1) == '/') {
-        result = filepath.substring(0, filepath.length - 1);
+        filepath = stripDotHtml(filepath)
     }
 
-    return filepathToString(result)
+    if (filepath.substring(filepath.length - 1) == '/') {
+        filepath = filepath.substring(0, filepath.length - 1);
+    }
+
+    if (filepath.substring(0, 1) == '/') {
+        filepath = filepath.substring(1, filepath.length);
+    }
+
+    return filepathToString(filepath)
 }
 
 module.exports = {

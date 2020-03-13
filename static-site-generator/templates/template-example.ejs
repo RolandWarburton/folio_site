@@ -1,5 +1,4 @@
-<% var path = require('path'); %>
-<% var routeMap = require('../temp/routeMap'); %>
+<% var templateMap = require('../temp/routeMap'); %>
 <% var title = htmlWebpackPlugin.options.title; %>
 <% var filename = htmlWebpackPlugin.options.filename; %>
 
@@ -15,8 +14,17 @@
 
 <body>
 	<div id="content">
+		<!-- example of if statement in EJS -->
+		<!-- 
+		<% if (htmlWebpackPlugin.options.target) { %>
+			<h2><%= `previous ${htmlWebpackPlugin.options.previous}` %></h2>
+		<% } %> 
+		-->
+		
+		<!-- router which shows navigation links -->
 		<%= require(`../src/views/partials/router.js`) %>
-		<%= require(`../src/views/partials/backLinkTitle.js`)(title, filename, routeMap) %>
+		<%= require(`../src/views/partials/backLinkTitle.js`)(title, filename, templateMap) %>
+		<!-- the javascript page to target in /src/views/* -->
 		<%= require(`../src/views/${htmlWebpackPlugin.options.target}`) %>
 	</div>
 </body>

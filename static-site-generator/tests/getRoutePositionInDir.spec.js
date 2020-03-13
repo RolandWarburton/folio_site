@@ -2,7 +2,6 @@ const fs = require('fs')
 const path = require('path')
 const ListFilesInDir = require('../build/listFilesInDir')
 const generateRouteMap = require('../build/generateRouteMap')
-const listFilesInDir = require('../build/listFilesInDir')
 const getRoutePositionInDir = require('../build/getRoutePositionInDir')
 
 // listFilesInDir() will return a list of all the files in a directory

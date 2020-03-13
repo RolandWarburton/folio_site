@@ -7,7 +7,7 @@ const generateRouteMap = require('../build/generateRouteMap')
 const notesSlashTools = [
     {
         "filepath": "notes/tools/toolsIntro",
-        "template":  "templates/template.ejs",
+        "template": "./templates/template-list-item.ejs",
         "title": "toolsIntro"
     },
 ]
@@ -19,8 +19,27 @@ const notes = [
     { "filepath": "notes/tools", "template": "templates/template.ejs", "title": "tools" }
 ]
 
+const root = [
+    {
+        "filepath": "about",
+        "template": "templates/template.ejs",
+        "title": "about",
+    },
+    {
+        "filepath": "index",
+        "template": "./templates/template.ejs",
+        "title": "index",
+    },
+    {
+        "filepath": "notes",
+        "template": "templates/template.ejs",
+        "title": "notes",
+    },
+
+]
+
 describe("Test ListAllFilesInDir", () => {
-    test("return an object of routes in a given directory", () => {
+    test("return an array of routes in a given directory", () => {
         // let tpmap = generateTemplateMap()
         // console.log(tpmap)
 
@@ -28,5 +47,6 @@ describe("Test ListAllFilesInDir", () => {
         expect(ListFilesInDir(routeMap, 'notes/tools/')).toEqual(notesSlashTools);
         expect(ListFilesInDir(routeMap, 'notes/')).toEqual(notes);
         expect(ListFilesInDir(routeMap, 'notes')).toEqual(notes);
+        expect(ListFilesInDir(routeMap, '/')).toEqual(root);
     });
 });

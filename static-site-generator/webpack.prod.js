@@ -4,7 +4,7 @@ const devserver = require('./build/devserver');
 const moduleRules = require('./build/moduleRules');
 const optimization = require('./build/optimization');
 
-const config = merge(devserver, optimization, moduleRules, ...pages, {
+const config = merge(optimization, moduleRules, ...pages, {
     devtool: '',
     stats: 'errors-only',
     target: "web",

@@ -1,58 +1,65 @@
 const fs = require('fs')
 const path = require('path')
-const filepathHelper = require('../build/filepathHelper')
+const fp = require('../build/filepathHelper')
 
-describe("Test filepathHelper", () => {
+describe("Test filePath", () => {
     test("converts any filepath To String", () => {
         const expected = 'notes/linux/linuxIntro/index.html'
 
         const filepathString = 'notes/linux/linuxIntro/index.html'
         const filepathArray = ["notes", "linux", "linuxIntro", "index.html"]
 
-        expect(filepathHelper.filepathToString(filepathString)).toEqual(expected);
-        expect(filepathHelper.filepathToString(filepathArray)).toEqual(expected);
+        expect(fp.filepathToString('notes/linux/linuxIntro/index.html')).toEqual(expected);
+        expect(fp.filepathToString(["notes", "linux", "linuxIntro", "index.html"])).toEqual(expected);
     });
 });
 
-describe("Test filepathHelper", () => {
+describe("Test filePath", () => {
     test("converts any filepath To Array", () => {
         const expected = ["notes", "linux", "linuxIntro"]
 
         const filepathString = 'notes/linux/linuxIntro/index.html'
         const filepathArray = ["notes", "linux", "linuxIntro", "index.html"]
 
-        expect(filepathHelper.filepathToArray(filepathString)).toEqual(expected);
-        expect(filepathHelper.filepathToArray(filepathArray)).toEqual(expected);
-        expect(filepathHelper.filepathToArray('notes/')).toEqual(['notes']);
+        expect(fp.filepathToArray(filepathString)).toEqual(expected);
+        expect(fp.filepathToArray(filepathArray)).toEqual(expected);
+        expect(fp.filepathToArray('notes/')).toEqual(['notes']);
+        expect(fp.filepathToArray('')).toEqual([]);
+        expect(fp.filepathToArray('/')).toEqual([]);
     });
 });
 
-describe("Test filepathHelper", () => {
+describe("Test filePath", () => {
     test("sanitizes HTML filepaths", () => {
         const expected = 'notes/linux/linuxIntro'
 
-        expect(filepathHelper.sanitizeHTMLfilepath('notes/')).toEqual('notes');
-        expect(filepathHelper.sanitizeHTMLfilepath('notes/linux/linuxIntro/index.html')).toEqual(expected);
-        expect(filepathHelper.sanitizeHTMLfilepath('notes/linux/linuxIntro')).toEqual(expected);
-        expect(filepathHelper.sanitizeHTMLfilepath(["notes", "linux", "linuxIntro", "index.html"])).toEqual(expected);
-        expect(filepathHelper.sanitizeHTMLfilepath(["notes", "linux", "linuxIntro"])).toEqual(expected);
+        expect(fp.sanitizeHTMLfilepath('notes/')).toEqual('notes');
+        expect(fp.sanitizeHTMLfilepath('notes/linux/linuxIntro/index.html')).toEqual(expected);
+        expect(fp.sanitizeHTMLfilepath('notes/linux/linuxIntro')).toEqual(expected);
+        expect(fp.sanitizeHTMLfilepath(["notes", "linux", "linuxIntro", "index.html"])).toEqual(expected);
+        expect(fp.sanitizeHTMLfilepath(["notes", "linux", "linuxIntro"])).toEqual(expected);
+        expect(fp.sanitizeHTMLfilepath('/notes/linux/linuxIntro')).toEqual(expected);
     });
 });
 
-describe("Test filepathHelper", () => {
+describe("Test filePath", () => {
     test("Gets correct route length", () => {
 
-        expect(filepathHelper.lengthOfRoute('notes/')).toEqual(1);
-        expect(filepathHelper.lengthOfRoute('notes/bookmarks')).toEqual(2);
+        expect(fp.lengthOfRoute('notes/')).toEqual(1);
+        expect(fp.lengthOfRoute('notes/bookmarks')).toEqual(2);
+        expect(fp.lengthOfRoute('')).toEqual(0);
+        expect(fp.lengthOfRoute('/')).toEqual(0);
+        expect(fp.lengthOfRoute('/notes/test')).toEqual(2);
+        expect(fp.lengthOfRoute('notes')).toEqual(1);
     });
 });
 
-describe("Test filepathHelper", () => {
+describe("Test filePath", () => {
     test("Check if a path exists", () => {
         const routeMap = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'temp/routeMap.json')))
 
-        expect(filepathHelper.checkIfPathExists(routeMap, 'notes/')).toEqual(true);
-        expect(filepathHelper.checkIfPathExists(routeMap, 'notes/bookmarks')).toEqual(true);
-        expect(filepathHelper.checkIfPathExists(routeMap, 'notes/bookmarks/')).toEqual(true);
+        expect(fp.checkIfPathExists(routeMap, 'notes/')).toEqual(true);
+        expect(fp.checkIfPathExists(routeMap, 'notes/bookmarks')).toEqual(true);
+        expect(fp.checkIfPathExists(routeMap, 'notes/bookmarks/')).toEqual(true);
     });
 });
