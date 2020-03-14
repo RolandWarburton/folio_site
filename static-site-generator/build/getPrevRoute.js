@@ -17,12 +17,10 @@ module.exports = (targets, filepath) => {
 
     // if the length of the filepath is 0 or 1 then going back to the previous path will put you on the root
     // all filepaths are treated as directories
-    // EG: 'notes' OUTPUT: 'index.html'
+    // EG: 'notes' OUTPUT: ''
     // EG: '' OUTPUT: ''
     // EG: 'notes/mynotes' OUTPUT: 'notes'
-    if (fpLength == 0 ) {
-        return ''
-    } else if (fpLength == 1) {
+    if (fpLength <= 1) {
         return ''
     } else {
         do {
