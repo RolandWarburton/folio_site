@@ -4,6 +4,7 @@ const getPrevRoute = require('../../../build/getPrevRoute')
 module.exports = (title, filepath, routeMap) => {
     let backLink = getPrevRoute(routeMap, filepath)
     if (backLink == '') backLink = '/'
+    else backLink = '/' + backLink
 
     // backlink will render as a clickable link if it isnt on root (ie backlink != '' as returned by getPrevRoute)
     return (
