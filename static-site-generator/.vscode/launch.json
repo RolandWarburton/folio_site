@@ -26,10 +26,16 @@
         ],
         "console": "integratedTerminal",
         "internalConsoleOptions": "neverOpen",
-        "disableOptimisticBPs": true,
-        "windows": {
-          "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-        }
+        "disableOptimisticBPs": true
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Launch webpack",
+        "program": "${workspaceFolder}/node_modules/webpack/bin/webpack.js",
+        "args": [
+          "--config", "webpack.dev.js"
+       ]
       }
     ]
   }
