@@ -36,6 +36,15 @@
         "args": [
           "--config", "webpack.dev.js"
        ]
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "launch processFiles",
+        "program": "${workspaceFolder}/build/processFiles.js",
+        "skipFiles": [
+          "<node_internals>/**"
+        ]
       }
     ]
   }

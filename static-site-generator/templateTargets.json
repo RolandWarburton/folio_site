@@ -6,8 +6,14 @@
         "templatePath": "./templates/template-home.ejs"
     },
     {
+        "title": "notes",
+        "directory": false,
+        "path": "notes",
+        "templatePath": "./templates/template-list-item.ejs"
+    },
+    {
         "title": "bookmarks",
-        "directory": true,
+        "directory": false,
         "path": "notes/bookmarks",
         "templatePath": "./templates/template-list-item.ejs"
     },

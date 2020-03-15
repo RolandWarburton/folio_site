@@ -1,7 +1,9 @@
+const fs = require('fs')
 const getPrevRoute = require('../../../build/getPrevRoute')
 
 // return the HtmlWebpackPlugin page title and the parent of the filepath
-module.exports = (title, filepath, routeMap) => {
+module.exports = (title, filepath) => {
+    const routeMap = JSON.parse(fs.readFileSync('../../../temp/routeMap.json'))
     let backLink = getPrevRoute(routeMap, filepath)
     if (backLink == '') backLink = '/'
     else backLink = '/' + backLink

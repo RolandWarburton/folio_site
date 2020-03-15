@@ -11,12 +11,9 @@
 
 <body>
 	<div id="contentWrapper">
-		<div class="center">
-			<%- contentPath%>
-		</div>
+		<%- include(process.cwd() + '/templates/partials/backLink.ejs', {filepath, backLink, title}) %>
+		<%- contentPath%>
 	</div>
 </body>
 
 </html>
-
-<!-- get -r /home/roland/Documents/Projects/nodeTidbits/express-static-app-boilerplate/static-site-generator/dist/* /home/roland -->

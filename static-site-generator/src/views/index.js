@@ -13,15 +13,7 @@ marked.setOptions({
   });
 
 const index = `
-  <aside id="left">
-    <div>
-      <h1>Roland Warburton</h1>
-      <p>Melbourne, Australia</p>
-    </div>
-  </aside>
-  <aside id="right">
     ${listFilesInDir('')}
-  </aside>
 `;
 
 module.exports = index;

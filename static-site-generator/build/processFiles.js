@@ -1,15 +1,42 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
-const generatePage = require('./generatePage')
 const readFiles = require('./readFiles')
 const getTemplate = require('./getTemplate')
 const generateRouteMap = require('./generateRouteMap')
-const getRoutePositionInDir = require('./getRoutePositionInDir')
-const listFilesInDir = require('./listFilesInDir')
+const generateHtmlPage = require('./generateHtmlPage')
 const getPrevRoute = require('./getPrevRoute')
+const sass = require('node-sass');
 
-// path where all the views are stored
+
+// get some file directories to use later
 const viewsDir = path.resolve(process.cwd(), 'src/views')
+const appRootPath = path.resolve(process.cwd())
+
+// make the distribution dir if it doesnt exist
+const distPath = path.resolve(appRootPath, 'dist')
+if (!fs.existsSync(distPath)) {
+	fs.mkdirSync(distPath);
+}
+
+fs.copy(path.resolve(appRootPath, 'src/media'), path.resolve(appRootPath, 'dist/media'), function (err) {
+	if (err) {
+		console.log('An error occured while copying the folder.')
+		return console.error(err)
+	}
+	console.log('Copied media to dist')
+});
+
+sass.render({
+	file: path.resolve(appRootPath, 'src/styles/styles.scss'),
+	outFile: path.resolve(appRootPath, 'dist/app.css'),
+	outputStyle: 'compressed'
+}, function (error, result) {
+	if (!error) {
+		fs.writeFile(path.resolve(appRootPath, 'dist/app.css'), result.css, function (err) {
+			if (!err) {console.log('Copied styles to dist')}
+		});
+	}
+});
 
 // list of HtmlWebpackPlugin pages for building 
 const pages = []
@@ -20,12 +47,20 @@ console.log(`Read in ${routeMap.length} custom template targets`)
 
 // generate the list of routes
 const routes = []
-readFiles(viewsDir, ({filepath, title}) => {
+readFiles(viewsDir, ({ filepath, title }) => {
+	// push the route to an array to be used later
 	routes.push({
 		title: title,
 		filepath: filepath,
 		template: getTemplate(routeMap, title)
 	})
+	// greate a folder in dist for writing to later
+	// get the folder path we want to create
+	const folderFilepath = path.resolve(appRootPath, distPath, filepath)
+	// if it doesnt exist. recursively create the folder
+	if (!fs.existsSync(folderFilepath) && filepath != 'index') {
+		fs.mkdirSync(folderFilepath, { recursive: true });
+	}
 })
 console.log(`Got ${routes.length} routes`)
 
@@ -33,37 +68,28 @@ console.log(`Got ${routes.length} routes`)
 fs.writeFileSync(process.cwd() + '/temp/routeMap.json', JSON.stringify(routes))
 
 routes.forEach((route, i) => {
-	// const template = getTemplate(routeMap, route.title)
-
-	// get a next and previous route for the filepath in the current directory
-	// if no route is found or the relative index +-1 becomes undefined it will not be rendered
-	// relativeIndex gets the position the the current routes filepath. eg 0, 1 etc within its directory
-	const relativeIndex = getRoutePositionInDir(routes, route.filepath)
-
-	// get all the files in the parent of this filepath
-	const filesInDir = listFilesInDir(routes, getPrevRoute(routes, route.filepath))
-
-	// set next/prev filepath to one of the files in the parent directory of this filepath
-	// +-1 to get the offset neighbour from its relative index in the parent directory 
-	const next = filesInDir[relativeIndex + 1]
-	const prev = filesInDir[relativeIndex - 1]
-	
-	pages.push(generatePage({
-		// Path needs to take a path without an extension. Examples: about, notes/blog
-		//where to write the file in dist
-		path: (route.title === 'index') ? '' : route.filepath,
-		// the base template to use
-		template: route.template,
-		// the title of the page
+	// const templateData = { user: 'john smith' }
+	const templateData = {
+		user: 'john smith',
 		title: route.title,
-		// tells EJS to use this js file to populate its template body 
-		target: route.filepath,
-		// previous and next in same route dir (if there is one)
-		previous: prev,
-		next: next,
-		// favicon requires config.output.publicPath = '/' in webpack to work
-		favicon: './src/media/favicon.ico'
-	}))
+		filepath: route.filepath,
+		backLink: getPrevRoute(routes, route.filepath),
+		css: 'app.css'
+	}
+
+
+	// if the filepath happens to be the index file then drop 'index' from the last part of its file path
+	// so the url will only be www.example.com/ not www.example.com/index
+	const indexAppend = (route.filepath == 'index') ? '' : 'index'
+
+	// get the exact filepath to write to
+	// EG: .../dist/notes/notes.html for the URL www.example.com/notes
+	const writePath = path.resolve(appRootPath, distPath, route.filepath, indexAppend) + '.html'
+
+	const html = generateHtmlPage(route.template, templateData, route.filepath)
+	pages.push(html)
+	fs.writeFileSync(writePath, html, 'utf8');
+	// console.log(pages[i])
 })
 
 console.log(`Exported ${pages.length} HTML page templates!`)
