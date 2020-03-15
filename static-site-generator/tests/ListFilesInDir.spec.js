@@ -32,7 +32,7 @@ const root = [
     },
     {
         "filepath": "notes",
-        "template": "templates/template.ejs",
+        "template": "./templates/template-home.ejs",
         "title": "notes",
     },
 
