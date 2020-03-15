@@ -1,7 +1,14 @@
 const marked = require('marked')
-const renderer = new marked.Renderer();
-const content = 
-`
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    smartLists: true,
+    smartypants: false,
+    xhtml: false
+});
+
+const content =
+    `
 # Tools
 * [UI Gradients](https://uigradients.com/#BackToEarth)
 * [PhotoMosh](https://photomosh.com/)

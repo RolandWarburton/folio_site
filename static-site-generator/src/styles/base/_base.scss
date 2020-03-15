@@ -2,14 +2,18 @@ body {
   background-color: #121212;
   font-family: sans-serif;
   color: #dedede;
+  // remove the scrollbar when its not needed
+  overflow: auto;
 }
 
 #content {
-  margin: 5rem 10vw;
-  display: grid;
-  // background-color: lighten($mainBackground, 10%) ;
+  margin: 0 10vw;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+
   @include desktop {
-    margin: 5rem 25vw;
+    margin: 0 25vw;
   }
 }
 

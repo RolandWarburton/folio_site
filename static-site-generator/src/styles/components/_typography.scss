@@ -1,8 +1,12 @@
-body {
+.font {
   font-size: calc(12px + 2vw);
   @include desktop {
     font-size: calc(1rem + 0.25vw);
   }
+}
+
+body {
+  @extend .font;
 }
 
 .title {

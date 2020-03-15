@@ -15,6 +15,7 @@
 
 <body>
 	<div id="content">
+		<!-- <%= require(`../src/views/partials/router.js`) %> -->
 		<%= require(`../src/views/partials/backLinkTitle.js`)(title, filename, routeMap) %>
 		<%= require(`../src/views/${htmlWebpackPlugin.options.target}`) %>
 	</div>

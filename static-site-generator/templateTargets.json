@@ -3,7 +3,7 @@
         "title": "index",
         "directory": false,
         "path": "",
-        "templatePath": "./templates/template.ejs"
+        "templatePath": "./templates/template-home.ejs"
     },
     {
         "title": "bookmarks",

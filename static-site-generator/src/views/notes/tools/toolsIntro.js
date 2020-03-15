@@ -1,5 +1,7 @@
+const listFilesInDir = require('../../partials/listFilesInDir')
+
 const toolsintro = `
-<h1>tools intro</h1>
+${listFilesInDir('notes/tools/')}
 `;
 
 module.exports = toolsintro;

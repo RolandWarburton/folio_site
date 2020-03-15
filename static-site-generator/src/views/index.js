@@ -2,6 +2,7 @@ const marked = require('marked')
 const renderer = new marked.Renderer();
 const highlightjs = require('highlight.js')
 var fs = require("fs")
+const listFilesInDir = require('./partials/listFilesInDir')
 var str = fs.readFileSync("./src/markdown/notes.md", "utf8")
 // const style1 = fs.readFileSync('./node_modules/highlight.js/styles/solarized-dark.css', "utf8");
 
@@ -12,10 +13,19 @@ marked.setOptions({
   });
 
 const index = `
-<h1>Page 1 (index)</h1>
-${marked('some markdown rendered by **marked**.')}
-${marked(str)}
-<div class='avatar'></div>
+  <aside id="left">
+    <div>
+      <h1>Roland Warburton</h1>
+      <p>Melbourne, Australia</p>
+    </div>
+  </aside>
+  <aside id="right">
+    ${listFilesInDir('')}
+  </aside>
 `;
 
 module.exports = index;
+
+// ${marked('some markdown rendered by **marked**.')}
+// ${marked(str)}
+// <div class='avatar'></div>

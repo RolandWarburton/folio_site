@@ -6,6 +6,9 @@ module.exports = (title, filepath, routeMap) => {
     if (backLink == '') backLink = '/'
     else backLink = '/' + backLink
 
+    // personal preference to not render the index pages title
+    if (title == 'index') title = ''
+
     // backlink will render as a clickable link if it isnt on root (ie backlink != '' as returned by getPrevRoute)
     return (
         `

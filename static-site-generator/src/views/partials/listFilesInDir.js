@@ -1,5 +1,6 @@
 const fs = require('fs')
 const listFilesInDir = require('../../../build/listFilesInDir')
+// const getRoutePositionInDir = require('../../../build/getRoutePositionInDir')
 
 // Returns an entire list of notes in the /src/views/notes dir
 // takes a filepath relative to src/views/... and will return all pages in that directory
@@ -8,7 +9,13 @@ module.exports = (filepath) => {
 
     // get the entire map of every route
     const initData = JSON.parse(fs.readFileSync('./temp/routeMap.json'));
-    const results = listFilesInDir(initData, filepath)
+    let results = listFilesInDir(initData, filepath)
+    
+    // remove 'index' route from the if you are on the index
+    // because if you are on the root path there is no need to navigate to the index
+    results.forEach((route, i) => {
+      if (route.filepath == 'index') results.splice(i, 1)
+    }) 
 
     return (
     `

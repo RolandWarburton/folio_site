@@ -11,7 +11,7 @@ const about = `
         </p>
         <br />
         <p>
-            I am studying a BA of Computer Science in cybersecurity and network design at university.
+            I am studying a BA of Computer Science in cybersecurity and network design at a university in Melbourne Australia.
         </p>
     </aside>
     <svg class='avatar'/>
