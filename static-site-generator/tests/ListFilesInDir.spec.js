@@ -27,12 +27,12 @@ const root = [
     },
     {
         "filepath": "index",
-        "template": "./templates/template.ejs",
+        "template": "./templates/template-home.ejs",
         "title": "index",
     },
     {
         "filepath": "notes",
-        "template": "./templates/template-home.ejs",
+        "template": "templates/template.ejs",
         "title": "notes",
     },
 
