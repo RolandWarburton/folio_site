@@ -7,8 +7,8 @@ const filepathHelper = require('../build/filepathHelper')
 describe("Test readFile", () => {
     test("gets a valid back link", () => {
         const routeMap = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'temp/routeMap.json')))
-        expect(getPrevRoute(routeMap, 'notes/linux/linuxIntro')).toEqual('notes');
-        expect(getPrevRoute(routeMap, 'notes/linux/linuxIntro/index.html')).toEqual('notes');
+        expect(getPrevRoute(routeMap, 'notes/linux/linuxIntro')).toEqual('notes/linux');
+        expect(getPrevRoute(routeMap, 'notes/linux/linuxIntro/index.html')).toEqual('notes/linux');
         expect(getPrevRoute(routeMap, 'notes/tools/toolsIntro/index.html')).toEqual('notes/tools');
         expect(getPrevRoute(routeMap, 'notes/tools/toolsIntro')).toEqual('notes/tools');
         expect(getPrevRoute(routeMap, 'notes')).toEqual('');

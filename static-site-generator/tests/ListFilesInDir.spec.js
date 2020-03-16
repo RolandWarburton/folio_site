@@ -13,9 +13,10 @@ const notesSlashTools = [
 ]
 
 const notes = [
-    { "filepath": "notes/ComputerScience", "template": "templates/template.ejs", "title": "ComputerScience" },
-    { "filepath": "notes/bookmarks", "template": "templates/template.ejs", "title": "bookmarks" },
+    { "filepath": "notes/bookmarks", "template": "./templates/template-list-item.ejs", "title": "bookmarks" },
     { "filepath": "notes/bucketlist", "template": "templates/template.ejs", "title": "bucketlist" },
+    { "filepath": "notes/computerScience", "template": "templates/template.ejs", "title": "computerScience" },
+    { "filepath": "notes/linux", "template": "templates/template.ejs", "title": "linux" },
     { "filepath": "notes/tools", "template": "templates/template.ejs", "title": "tools" }
 ]
 
@@ -32,7 +33,7 @@ const root = [
     },
     {
         "filepath": "notes",
-        "template": "templates/template.ejs",
+        "template": "./templates/template-list-item.ejs",
         "title": "notes",
     },
 

@@ -9,9 +9,11 @@ const getRoutePositionInDir = require('../build/getRoutePositionInDir')
 
 describe("Test ListAllFilesInDir", () => {
     test("returns the index of an a filepath in its own directory", () => {
-
         const routeMap = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'temp/routeMap.json')))
-        expect(getRoutePositionInDir(routeMap, 'notes/tools')).toEqual(3);
+
+        // notes/tools referring to notes/tools.html (not the directory notes/tools)
+        expect(getRoutePositionInDir(routeMap, 'notes/tools')).toEqual(4);
+        expect(getRoutePositionInDir(routeMap, 'index')).toEqual(1);
         expect(getRoutePositionInDir(routeMap, 'notes/tools/toolsIntro')).toEqual(0);
     });
 });
