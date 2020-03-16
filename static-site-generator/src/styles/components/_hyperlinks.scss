@@ -1,24 +1,45 @@
-.HyperLink {
-  list-style-type: none;
-  text-decoration: none;
+@mixin test($foreground, $background) {
+  background: $background;
+  color: $foreground;
   &:hover {
-    color: $mainBackground;
-    // transition: color 0.125s ease;
-    background-color: $lightText;
+    color: $lightText;
+    background-color: $mainBackground;
+    text-decoration: underline;
   }
 }
 
-.lightHyperLink {
-  @extend .HyperLink;
-  color: $lightText;
+.HyperLink {
+  list-style-type: none;
+  text-decoration: none;
+  padding: 0 1ch;
 }
 
+// em links: white background
+.emLink {
+  @extend .HyperLink;
+  @include test($mainBackground, $lightText);
+}
+
+.emLinks {
+  a {
+    @extend .emLink;
+  }
+}
+
+// dark hyperlinks: dark background. 
+// usually underlined as a style rule :)
 .darkHyperLink {
   @extend .HyperLink;
-  color: $darkText;
+  @include test($lightText, $mainBackground);
 }
 
+.darkHyperLinks {
+  a {
+    @extend .darkHyperLink;
+  }
+}
+
+// global fallback for any links that arent styled 
 a {
-  @extend .HyperLink;
-  color: $darkText;
+  @extend .emLink;
 }

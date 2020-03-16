@@ -1,3 +1,7 @@
+html {
+  display: block;
+}
+
 body {
   background-color: #121212;
   font-family: sans-serif;
@@ -23,6 +27,7 @@ body {
 // generic wrapper. DO NOT make full height
 #contentWrapper {
   margin: auto 10vw;
+  overflow-wrap: break-word;
 
   @include desktop {
     margin: 0 30vw;
@@ -34,4 +39,8 @@ body {
   background-repeat: no-repeat;
   height: 300px;
   width: auto;
+}
+
+ul, li {
+  margin: 0.5rem 0;
 }

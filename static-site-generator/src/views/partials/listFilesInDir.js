@@ -19,9 +19,9 @@ module.exports = (filepath) => {
 
     return (
     `
-    <ul>
+    <ul class="darkHyperLinks">
         ${results.map((route, i) => `
-        <li><a class="lightHyperLink underline" href="/${route.filepath}">${route.title}</a></li>
+        <li><a class="underline" href="/${route.filepath}">${route.title}</a></li>
       `.trim()).join('')}
     </ul>
     `)

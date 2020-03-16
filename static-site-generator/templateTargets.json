@@ -18,21 +18,27 @@
         "templatePath": "./templates/template-list-item.ejs"
     },
     {
-        "title": "linux",
+        "title": "bookmarks",
         "directory": true,
-        "path": "notes/linux",
-        "templatePath": "./templates/template-list-item.ejs"
+        "path": "notes/bookmarks",
+        "templatePath": "./templates/template-dynamic-nav.ejs"
     },
     {
         "title": "computerScience",
         "directory": true,
         "path": "notes/computerScience",
-        "templatePath": "./templates/template-list-item.ejs"
+        "templatePath": "./templates/template-dynamic-nav.ejs"
+    },
+    {
+        "title": "linux",
+        "directory": true,
+        "path": "notes/linux",
+        "templatePath": "./templates/template-dynamic-nav.ejs"
     },
     {
         "title": "tools",
         "directory": true,
         "path": "notes/tools",
-        "templatePath": "./templates/template-list-item.ejs"
+        "templatePath": "./templates/template-dynamic-nav.ejs"
     }
 ]

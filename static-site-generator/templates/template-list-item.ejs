@@ -6,20 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="By Roland">
-	<link rel="icon" type="image/png" href="/media/favicon.ico">
-  <link rel="stylesheet" type="text/css" href="/app.css">
+  <link rel="icon" type="image/png" href="/media/favicon.ico">
   <title><%= title || '' %></title>
+  <style>
+    html {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="/app.css">
 </head>
 
 <body>
   <div id="contentWrapper">
-    <!-- <div class="center"> -->
-      <!-- <div> -->
-        <%- include(process.cwd() + '/templates/partials/backLink.ejs', {filepath, backLink, title}) %>
-        <%- contentPath%>
-      <!-- </div> -->
-    <!-- </div> -->
+    <%- include(process.cwd() + '/templates/partials/backLink.ejs', {filepath, backLink, title}) %>
+    <%- contentPath%>
   </div>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </body>
 
 </html>

@@ -5,13 +5,21 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="By Roland">
+	<link rel="icon" type="image/png" href="/media/favicon.ico">
+	<title><%= title || '' %></title>
+	<style>
+		html {
+			display: none;
+		}
+	</style>
 	<link rel="stylesheet" type="text/css" href="/app.css">
-	<title></title>
 </head>
 
 <body>
 	<div id="contentWrapper">
 		<%- include(process.cwd() + '/templates/partials/backLink.ejs', {filepath, backLink, title}) %>
+		<%- include(process.cwd() + '/templates/partials/navLinks.ejs', {prev, next}) %>
 		<%- contentPath%>
 	</div>
 </body>

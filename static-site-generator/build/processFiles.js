@@ -5,7 +5,10 @@ const getTemplate = require('./getTemplate')
 const generateRouteMap = require('./generateRouteMap')
 const generateHtmlPage = require('./generateHtmlPage')
 const getPrevRoute = require('./getPrevRoute')
+const getRoutePositionInDir = require('./getRoutePositionInDir')
+const listFilesInDir = require('./listFilesInDir')
 const sass = require('node-sass');
+var minify = require('html-minifier').minify;
 
 // get some file directories to use later
 const viewsDir = path.resolve(process.cwd(), 'src/views')
@@ -75,12 +78,23 @@ fs.writeFileSync(process.cwd() + '/temp/routeMap.json', JSON.stringify(routes))
 
 // genereate HTML for every route that we picked up in src/views and stored in routes
 routes.forEach((route, i) => {
+	// relativeIndex gets the position the the current routes filepath. eg 0, 1 etc within its directory
+	const relativeIndex = getRoutePositionInDir(routes, route.filepath)
+	// get all the files in the parent of this filepath
+	const filesInDir = listFilesInDir(routes, getPrevRoute(routes, route.filepath))
+	// set next/prev filepath to one of the files in the parent directory of this filepath
+	// +-1 to get the offset neighbour from its relative index in the parent directory 
+	const next = (filesInDir[relativeIndex + 1] != undefined) ? '/' + filesInDir[relativeIndex + 1].filepath : ''
+	const prev = (filesInDir[relativeIndex - 1] != undefined) ? '/' + filesInDir[relativeIndex - 1].filepath : ''
+
 	const templateData = {
 		user: 'john smith',
 		title: route.title,
 		filepath: route.filepath,
 		backLink: getPrevRoute(routes, route.filepath),
-		css: 'app.css'
+		css: 'app.css',
+		prev: prev,
+		next: next
 	}
 
 	// if the filepath happens to be the index file then drop 'index' from the last part of its file path
@@ -92,7 +106,19 @@ routes.forEach((route, i) => {
 	const writePath = path.resolve(appRootPath, distPath, route.filepath, indexAppend) + '.html'
 
 	// create page HTML here
-	const html = generateHtmlPage(route.template, templateData, route.filepath)
+	let html = generateHtmlPage(route.template, templateData, route.filepath)
+
+	// make it small and sharp!
+	html = minify(html, {
+		removeAttributeQuotes: true,
+		collapseWhitespace: true,
+		html5: true,
+		minifyCSS: true,
+		removeEmptyElements: true,
+		removeComments: true,
+		useShortDoctype: true
+	})
+
 	// push the html to an array if we need to access it later
 	pages.push(html)
 	// write the html file to its path in dist

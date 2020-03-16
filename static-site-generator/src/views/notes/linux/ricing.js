@@ -1,15 +1,14 @@
 const marked = require('marked')
-const content = marked(
-    `
-    # Ricing
-    * [eti desktops collection](https://eti.tf/desktops/)
-    `    
-) 
+const content =
+`
+# Resources for inspiration
+* [eti desktops collection](https://eti.tf/desktops/)
+`
 
 const ricing = `
-<p>
-    ${content}
-</p>
+<article class="emLinks">
+    ${marked(content)}
+</article>
 `;
 
 module.exports = ricing;

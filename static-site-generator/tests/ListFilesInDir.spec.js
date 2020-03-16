@@ -7,7 +7,7 @@ const generateRouteMap = require('../build/generateRouteMap')
 const notesSlashTools = [
     {
         "filepath": "notes/tools/toolsIntro",
-        "template": "./templates/template-list-item.ejs",
+        "template": "./templates/template-dynamic-nav.ejs",
         "title": "toolsIntro"
     },
 ]

@@ -31,7 +31,9 @@ const content =
 `
 
 const webDevBookmarks = `
-${marked(content)}
+<article class="darkHyperLinks">
+    ${marked(content)}
+</article>
 `;
 
 module.exports = webDevBookmarks;
