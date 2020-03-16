@@ -24,59 +24,17 @@
   }
 }
 
-// generic base for absolute columns
-// extend it and position it how you like!
-// .column {
-//   height: 100%;
-//   display: flex;
-//   align-items: center;
-//   // background-color: red;
-// }
-
-// // for putting things in an absolute left or right column
-// #left {
-//   @extend .column;
-//   @include desktop {
-//     position: absolute;
-//     right: 51%;
-//   }
-// }
-
-// #right {
-//   @extend .column;
-//   @include desktop {
-//     position: absolute;
-//     left: 51%;
-//   }
-// }
-
+// center things. attach this to the body tag to work
 .center {
-  margin: auto;
-  // align-content: center;
-  height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  // background-color: green;
-}
-
-.leftCol {
-  position: absolute;
-  right: 51%;
-  // flex: auto;
-  // padding: 1rem;
-  // grid-column: 1;
-  // display: flex;
-  // align-self: center;
-  // flex-direction: column;
-  // text-align: right;
-  // background-color: red;
-}
-
-.rightCol {
-  position: absolute;
-  left: 51%;
-  // padding: 1rem;
-  // flex: auto;
-  // background-color: green;
+  justify-content: center;
+  // ULs will display as rows
+  ul {
+    display: flex;
+    flex-direction: row;
+    li {
+      padding: 2rem;
+    }
+  }
 }

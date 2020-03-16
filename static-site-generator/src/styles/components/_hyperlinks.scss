@@ -2,8 +2,9 @@
   list-style-type: none;
   text-decoration: none;
   &:hover {
-    color: #fff;
-    transition: color 0.5s ease;
+    color: $mainBackground;
+    // transition: color 0.125s ease;
+    background-color: $lightText;
   }
 }
 

@@ -21,7 +21,7 @@ module.exports = (filepath) => {
     `
     <ul>
         ${results.map((route, i) => `
-        <li><a class="darkHyperLink" href="/${route.filepath}">${route.title}</a></li>
+        <li><a class="lightHyperLink underline" href="/${route.filepath}">${route.title}</a></li>
       `.trim()).join('')}
     </ul>
     `)

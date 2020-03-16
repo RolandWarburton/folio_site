@@ -1,27 +1,31 @@
 body {
   background-color: #121212;
   font-family: sans-serif;
-  color: #dedede;
+  color: $lightText;
+  // account for borders when calculating width
+  box-sizing: border-box;
   // remove the scrollbar when its not needed
   overflow: auto;
+
+  // ULs that go directly after the body (IE. not in a #contentWrapper) should be centered
+  &ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-#contentWrapper {
-  // margin: auto 10vw;
-  // display: flex;
-  // flex-flow: column;
+// for making a container full height
+.fullHeight {
   height: 100vh;
-  // justify-content: center;
-  // align-items: center;
-  // justify-content: center;
-  // background-color: orange;
+}
+
+// generic wrapper. DO NOT make full height
+#contentWrapper {
+  margin: auto 10vw;
 
   @include desktop {
-    margin: 0 25vw;
-  }
-
-  .container {
-    padding: 5rem 0;
+    margin: 0 30vw;
   }
 }
 

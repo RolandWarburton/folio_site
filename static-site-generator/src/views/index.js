@@ -13,7 +13,7 @@ marked.setOptions({
   });
 
 const index = `
-    ${listFilesInDir('')}
+  ${listFilesInDir('')}
 `;
 
 module.exports = index;
