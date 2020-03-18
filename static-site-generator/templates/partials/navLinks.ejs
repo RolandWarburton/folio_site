@@ -1,17 +1,13 @@
 <nav id="dynamic-nav emLinks">
-    <% if (prev) { %>
-    <li id="nav-prev-link"><a href="<%=prev%>">prev</a></li>
+    <% if (links.prev) { %>
+    <li id="nav-prev-link"><a href="/<%=links.prev.filepath.replace(/\s/g, '')%>"><%=links.prev.title%></a></li>
     <% } else { %>
     <li id="nav-next-link">-</li>
     <% } %>
 
-    <% if (next) { %>
-    <li id="nav-next-link"><a href="<%=next%>">next</a></li>
+    <% if (links.next) { %>
+    <li id="nav-next-link"><a href="/<%=links.next.filepath.replace(/\s/g, '')%>"><%=links.next.title%></a></li>
     <% } else { %>
     <li id="nav-next-link">-</li>
     <% } %>
 </nav>
-
-<!-- <% if (next != undefined) { %>
-    <li id="nav-prev-link"><a href="<%=next%>">next</a></li>
-    <% } %> -->

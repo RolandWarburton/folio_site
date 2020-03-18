@@ -8,7 +8,8 @@ const getPrevRoute = require('./getPrevRoute')
 const getRoutePositionInDir = require('./getRoutePositionInDir')
 const listFilesInDir = require('./listFilesInDir')
 const sass = require('node-sass');
-var minify = require('html-minifier').minify;
+const minify = require('html-minifier').minify;
+const renderSass = require('./renderSass');
 
 // get some file directories to use later
 const viewsDir = path.resolve(process.cwd(), 'src/views')
@@ -29,20 +30,8 @@ fs.copy(path.resolve(appRootPath, 'src/media'), path.resolve(appRootPath, 'dist/
 	console.log('Copied media to dist')
 });
 
-// render out sass and write it to the dist folder
-sass.render({
-	file: path.resolve(appRootPath, 'src/styles/styles.scss'),
-	outFile: path.resolve(appRootPath, 'dist/app.css'),
-	outputStyle: 'compressed'
-}, function (error, result) {
-	if (!error) {
-		fs.writeFile(path.resolve(appRootPath, 'dist/app.css'), result.css, function (err) {
-			if (!err) { console.log('Copied styles to dist') }
-		});
-	} else {
-		console.log(error)
-	}
-});
+renderSass('src/styles/styles.scss', 'dist/app.css')
+renderSass('src/styles/light.scss', 'dist/lightTheme.css')
 
 // list of HTML pages
 const pages = []
@@ -58,6 +47,7 @@ readFiles(viewsDir, ({ filepath, title }) => {
 	routes.push({
 		title: title,
 		filepath: filepath,
+		distpath: filepath.replace(/\s/g, ''),
 		template: getTemplate(routeMap, title)
 	})
 })
@@ -66,9 +56,9 @@ console.log(`Got ${routes.length} routes`)
 // create folders in dist for writing to later
 routes.forEach(route => {
 	// get the folder path we want to create
-	const folderFilepath = path.resolve(appRootPath, distPath, route.filepath)
-	// if it doesnt exist. recursively create the folder
-	if (!fs.existsSync(folderFilepath) && route.filepath != 'index') {
+	const folderFilepath = path.resolve(appRootPath, distPath, route.distpath)
+	// if it doesn't exist. recursively create the folder
+	if (!fs.existsSync(folderFilepath) && route.distpath != 'index') {
 		fs.mkdirSync(folderFilepath, { recursive: true });
 	}
 })
@@ -76,16 +66,15 @@ routes.forEach(route => {
 // write the routes to the routeMap file for later reference
 fs.writeFileSync(process.cwd() + '/temp/routeMap.json', JSON.stringify(routes))
 
-// genereate HTML for every route that we picked up in src/views and stored in routes
+// generate HTML for every route that we picked up in src/views and stored in routes
 routes.forEach((route, i) => {
 	// relativeIndex gets the position the the current routes filepath. eg 0, 1 etc within its directory
 	const relativeIndex = getRoutePositionInDir(routes, route.filepath)
 	// get all the files in the parent of this filepath
 	const filesInDir = listFilesInDir(routes, getPrevRoute(routes, route.filepath))
 	// set next/prev filepath to one of the files in the parent directory of this filepath
-	// +-1 to get the offset neighbour from its relative index in the parent directory 
-	const next = (filesInDir[relativeIndex + 1] != undefined) ? '/' + filesInDir[relativeIndex + 1].filepath : ''
-	const prev = (filesInDir[relativeIndex - 1] != undefined) ? '/' + filesInDir[relativeIndex - 1].filepath : ''
+	const next = filesInDir[relativeIndex + 1]
+	const prev = filesInDir[relativeIndex - 1]
 
 	const templateData = {
 		user: 'john smith',
@@ -93,17 +82,16 @@ routes.forEach((route, i) => {
 		filepath: route.filepath,
 		backLink: getPrevRoute(routes, route.filepath),
 		css: 'app.css',
-		prev: prev,
-		next: next
+		links: {prev: prev, next: next}
 	}
 
 	// if the filepath happens to be the index file then drop 'index' from the last part of its file path
 	// so the url will only be www.example.com/ not www.example.com/index
 	const indexAppend = (route.filepath == 'index') ? '' : 'index'
+	
+	// create the filepath to write the index.html file to in dist
+	const writePath = (path.resolve(appRootPath, distPath, route.distpath, indexAppend) + '.html')
 
-	// create the exact filepath to write to. Append 'index' where needed to target that file
-	// EG: [...]/dist/notes/notes.html for the URL www.example.com/notes
-	const writePath = path.resolve(appRootPath, distPath, route.filepath, indexAppend) + '.html'
 
 	// create page HTML here
 	let html = generateHtmlPage(route.template, templateData, route.filepath)
@@ -122,6 +110,9 @@ routes.forEach((route, i) => {
 	// push the html to an array if we need to access it later
 	pages.push(html)
 	// write the html file to its path in dist
+	// console.log(`${route.distpath}`)
+	// fs.mkdirSync(route.filepath, { recursive: true });
+
 	fs.writeFileSync(writePath, html, 'utf8');
 })
 

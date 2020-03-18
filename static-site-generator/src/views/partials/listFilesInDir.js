@@ -5,7 +5,7 @@ const listFilesInDir = require('../../../build/listFilesInDir')
 // Returns an entire list of notes in the /src/views/notes dir
 // takes a filepath relative to src/views/... and will return all pages in that directory
 // EG: 'notes/' will return: 'notes/notes1', 'notes/notes2'
-module.exports = (filepath) => {
+module.exports = (filepath, linkstyles = 'darkHyperLinks') => {
 
     // get the entire map of every route
     const initData = JSON.parse(fs.readFileSync('./temp/routeMap.json'));
@@ -19,9 +19,9 @@ module.exports = (filepath) => {
 
     return (
     `
-    <ul class="darkHyperLinks">
+    <ul class="${linkstyles}">
         ${results.map((route, i) => `
-        <li><a class="underline" href="/${route.filepath}">${route.title}</a></li>
+        <li><a class="underline" href="/${route.distpath}">${route.title}</a></li>
       `.trim()).join('')}
     </ul>
     `)

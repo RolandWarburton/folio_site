@@ -13,13 +13,13 @@
 			display: none;
 		}
 	</style>
-	<link rel="stylesheet" type="text/css" href="/app.css">
+	<link rel="stylesheet" type="text/css" href="/lightTheme.css">
 </head>
 
 <body>
 	<div id="contentWrapper">
 		<%- include(process.cwd() + '/templates/partials/backLink.ejs', {filepath, backLink, title}) %>
-		<%- include(process.cwd() + '/templates/partials/navLinks.ejs', {prev, next}) %>
+		<%- include(process.cwd() + '/templates/partials/navLinks.ejs', {links}) %>
 		<%- contentPath%>
 	</div>
 </body>

@@ -14,29 +14,18 @@ const notesSlashTools = [
 
 const notes = [
     { "filepath": "notes/bookmarks", "template": "./templates/template-list-item.ejs", "title": "bookmarks" },
-    { "filepath": "notes/bucketlist", "template": "templates/template.ejs", "title": "bucketlist" },
     { "filepath": "notes/computerScience", "template": "templates/template.ejs", "title": "computerScience" },
     { "filepath": "notes/linux", "template": "templates/template.ejs", "title": "linux" },
-    { "filepath": "notes/tools", "template": "templates/template.ejs", "title": "tools" }
+    { "filepath": "notes/tools", "template": "templates/template.ejs", "title": "tools" },
+    { "filepath": "notes/university", "template": "templates/template.ejs", "title": "university" }
 ]
 
-const root = [
-    {
-        "filepath": "about",
-        "template": "templates/template.ejs",
-        "title": "about",
-    },
-    {
-        "filepath": "index",
-        "template": "./templates/template-home.ejs",
-        "title": "index",
-    },
-    {
-        "filepath": "notes",
-        "template": "./templates/template-list-item.ejs",
-        "title": "notes",
-    },
 
+const root = [
+    { "filepath": "about", "template": "templates/template.ejs", "title": "about" },
+    { "filepath": "index", "template": "./templates/template-home.ejs", "title": "index" },
+    { "filepath": "notes", "template": "./templates/template-list-item.ejs", "title": "notes" },
+    { "filepath": "writing", "template": "templates/template.ejs", "title": "writing" }
 ]
 
 describe("Test ListAllFilesInDir", () => {

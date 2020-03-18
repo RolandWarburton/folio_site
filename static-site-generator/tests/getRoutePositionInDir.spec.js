@@ -12,7 +12,7 @@ describe("Test ListAllFilesInDir", () => {
         const routeMap = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'temp/routeMap.json')))
 
         // notes/tools referring to notes/tools.html (not the directory notes/tools)
-        expect(getRoutePositionInDir(routeMap, 'notes/tools')).toEqual(4);
+        expect(getRoutePositionInDir(routeMap, 'notes/tools')).toEqual(3);
         expect(getRoutePositionInDir(routeMap, 'index')).toEqual(1);
         expect(getRoutePositionInDir(routeMap, 'notes/tools/toolsIntro')).toEqual(0);
     });
