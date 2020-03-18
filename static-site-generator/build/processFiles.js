@@ -7,9 +7,9 @@ const generateHtmlPage = require('./generateHtmlPage')
 const getPrevRoute = require('./getPrevRoute')
 const getRoutePositionInDir = require('./getRoutePositionInDir')
 const listFilesInDir = require('./listFilesInDir')
-const sass = require('node-sass');
 const minify = require('html-minifier').minify;
 const renderSass = require('./renderSass');
+const emojified = require('node-emoji');
 
 // get some file directories to use later
 const viewsDir = path.resolve(process.cwd(), 'src/views')
@@ -107,11 +107,8 @@ routes.forEach((route, i) => {
 		useShortDoctype: true
 	})
 
-	// push the html to an array if we need to access it later
-	pages.push(html)
-	// write the html file to its path in dist
-	// console.log(`${route.distpath}`)
-	// fs.mkdirSync(route.filepath, { recursive: true });
+	// parse it through and look for emojis 👀
+	html = emojified.emojify(html)
 
 	fs.writeFileSync(writePath, html, 'utf8');
 })

@@ -38,7 +38,7 @@ This stage in my react development took quite a white of reading to understand. 
 ## CSS in JS
 This was short lived for me. I decided this was not the best option for my website due to that i had spent a lot of time getting used to sass and making use of its mixins, nesting, and variables which WERE supported in CSS in JS but only through additional layers and frameworks (see styled components).
 
-## Styled Components
+## Styled Components :nail_care:
 Styled components were very interesting to me. I ended up re-writing my entire site in styled components just to get a feel for them. I remember thinking about all the ways of creating dynamic styles on the fly to address different problems that my site would have.
 
 ## Bundlephobia and overhead
