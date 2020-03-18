@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background-color: #121212;
+  background-color: $mainBackground;
   font-family: sans-serif;
   color: $lightText;
   // account for borders when calculating width
@@ -32,6 +32,9 @@ body {
   @include desktop {
     margin: 0 30vw;
   }
+  @include tablet {
+    margin: 0 20vw;
+  }
 }
 
 .avatar {
@@ -43,4 +46,8 @@ body {
 
 ul, li {
   margin: 0.5rem 0;
+}
+
+article {
+  margin: 5rem 0;
 }

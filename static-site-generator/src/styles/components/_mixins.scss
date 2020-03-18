@@ -6,8 +6,8 @@
   }
 }
 
-$tablet-width: 1000px;
-$desktop-width: 1000px;
+$tablet-width: 800px;
+$desktop-width: 1081px;
 
 @mixin tablet {
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {

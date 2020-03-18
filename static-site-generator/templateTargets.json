@@ -40,5 +40,17 @@
         "directory": true,
         "path": "notes/tools",
         "templatePath": "./templates/template-dynamic-nav.ejs"
+    },
+    {
+        "title": "university",
+        "directory": true,
+        "path": "notes/university",
+        "templatePath": "./templates/template-dynamic-nav.ejs"
+    },
+    {
+        "title": "writing",
+        "directory": true,
+        "path": "writing",
+        "templatePath": "./templates/template-dynamic-nav.ejs"
     }
 ]
