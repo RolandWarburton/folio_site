@@ -48,9 +48,18 @@ article {
     padding: 0.125rem 2ch;
   }
 
-  pre code {
-    color: $darkText;
-    font-weight: bolder;
+  pre {
+    // color: $darkText;
+    // font-weight: bolder;
+    background-color: invert($mainBackground);
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  code {
+    article li * {
+      margin-left: 0;
+    }
   }
 
   // style OLs

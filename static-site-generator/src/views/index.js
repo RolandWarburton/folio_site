@@ -7,10 +7,10 @@ var str = fs.readFileSync("./src/markdown/notes.md", "utf8")
 // const style1 = fs.readFileSync('./node_modules/highlight.js/styles/solarized-dark.css', "utf8");
 
 marked.setOptions({
-    highlight: function(code) {
-      return highlightjs.highlightAuto(code).value;
-    }
-  });
+  highlight: function (code) {
+    return highlightjs.highlightAuto(code).value;
+  }
+});
 
 const index = `
   ${listFilesInDir('')}
