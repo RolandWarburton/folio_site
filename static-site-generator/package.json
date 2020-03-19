@@ -8,7 +8,7 @@
 		"dev-server": "webpack-dev-server --config webpack.dev --mode development",
 		"test": "jest",
 		"build": "rm -rf ./dist && node ./build/processFiles.js",
-		"build:monitor": "rm -rf ./dist && concurrently \"nodemon ./build/processFiles.js -e scss,js,json,ejs\" \"node ./server.js\" ",
+		"build:monitor": "rm -rf ./dist && concurrently \"nodemon ./build/processFiles.js -e scss,js,json,ejs,md\" \"node ./server.js\" ",
 		"debug": "webpack --config webpack.prod --mode production --inspect"
 	},
 	"keywords": [],
