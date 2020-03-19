@@ -75,10 +75,14 @@ class UserCard extends HTMLElement {
 window.customElements.define("user-card", UserCard)
 ```
 
-# Styling web components and the Shadow DOM 
-The above element is not using the shadow DOM. It will inherit global styles.
+![Simple Web Component](./../media/SimpleComponent.png)
 
-Using the shadow DOM will separate it from the global css so that the component will not inherit any styles.
+# Styling web components and the Shadow DOM 
+The above element is not using the shadow DOM. It will inherit global styles and does not have access to the shadow DOMs life cycle methods. Using the shadow DOM in this example will separate it from the global styles so that the component will not inherit any styles and will have its own subtree in the DOM to manipulate.
+
+Note that i have noticed that the Shadow DOM does not play nicely with the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) Plugin on VS Code. So if doesn't work there, try experimenting with it on [JSFiddle](https://jsfiddle.net/RolandFiddles/zs2aeLv5/6/).
+
+Also remember to put a semicolon at the end of the template literal! This caused as lot of headaches.
 
 ```html
 <!-- this style only applies to the vanilla h3 -->
@@ -104,11 +108,10 @@ template.innerHTMl = `
   }
 </style>
 
-<div class="user-card">
-    <img />
+<div class="myClass">
     <h3></h3>
 </div>
-`
+`;
 
 class UserCard extends HTMLElement {
   constructor() {
@@ -127,8 +130,9 @@ class UserCard extends HTMLElement {
   }
 }
 
-window.customElements.define("user-card", UserCard)
+window.customElements.define("user-card", UserCard);
 ```
+![Shadow Dom](./../media/ShadowDom.png)
 
 # Multi attribute Web Components
 You can pass multiple arguments to a component.
@@ -254,7 +258,7 @@ template.innerHTML = `
 
 <h1 id="targetMe"><slot name="message" /></h1>
 <h3></h3>
-<button id="toggle">Click Me</button>
+<button id="toggle">Hide</button>
 `;
 
 
