@@ -28,10 +28,9 @@ const content =
 * [Avanier (folio/blog)](https://avanier.now.sh/index.html)
 `
 
-const webDevBookmarks = `
+module.exports = `
 <article class="darkHyperLinks">
     ${marked(content)}
 </article>
 `;
 
-module.exports = webDevBookmarks;

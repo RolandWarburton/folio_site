@@ -1,7 +1,7 @@
 const listFilesInDir = require('./partials/listFilesInDir')
 
 const notes = `
-${listFilesInDir('notes/')}
+${listFilesInDir('Notes/')}
 `;
 
 module.exports = notes;

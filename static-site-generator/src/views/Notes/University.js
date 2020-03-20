@@ -13,12 +13,11 @@ holistic and self contained, i will rewrite them as a tool for reference,
 rather than as a tool for learning.
 `
 
-const university = `
+module.exports = `
 <article>
     ${marked(content)}
 </article>
 ${listFilesInDir('notes/university', 'emLinks')}
 `;
 
-module.exports = university;
 

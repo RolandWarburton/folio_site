@@ -4,28 +4,29 @@ const ListFilesInDir = require('../build/listFilesInDir')
 const generateRouteMap = require('../build/generateRouteMap')
 // const routeMap = require('../temp/routeMap.json')
 
-const notesSlashTools = [
+const NotesSlashTools = [
     {
-        "filepath": "notes/tools/toolsIntro",
+        "distpath": "Notes/Tools/ToolsIntro",
+        "filepath": "Notes/Tools/ToolsIntro",
         "template": "./templates/template-dynamic-nav.ejs",
-        "title": "toolsIntro"
+        "title": "ToolsIntro"
     },
 ]
 
-const notes = [
-    { "filepath": "notes/bookmarks", "template": "./templates/template-list-item.ejs", "title": "bookmarks" },
-    { "filepath": "notes/computerScience", "template": "templates/template.ejs", "title": "computerScience" },
-    { "filepath": "notes/linux", "template": "templates/template.ejs", "title": "linux" },
-    { "filepath": "notes/tools", "template": "templates/template.ejs", "title": "tools" },
-    { "filepath": "notes/university", "template": "templates/template.ejs", "title": "university" }
+const Notes = [
+    { "distpath": "Notes/Bookmarks", "filepath": "Notes/Bookmarks", "template": "./templates/template-list-item.ejs", "title": "Bookmarks" },
+    { "distpath": "Notes/Linux", "filepath": "Notes/Linux", "template": "templates/template.ejs", "title": "Linux" },
+    { "distpath": "Notes/Programming", "filepath": "Notes/Programming", "template": "templates/template.ejs", "title": "Programming" },
+    { "distpath": "Notes/Tools", "filepath": "Notes/Tools", "template": "templates/template.ejs", "title": "Tools" },
+    { "distpath": "Notes/University", "filepath": "Notes/University", "template": "templates/template.ejs", "title": "University" }
 ]
 
 
 const root = [
-    { "filepath": "about", "template": "templates/template.ejs", "title": "about" },
-    { "filepath": "index", "template": "./templates/template-home.ejs", "title": "index" },
-    { "filepath": "notes", "template": "./templates/template-list-item.ejs", "title": "notes" },
-    { "filepath": "writing", "template": "templates/template.ejs", "title": "writing" }
+    { "distpath": "About", "filepath": "About", "template": "templates/template.ejs", "title": "About" },
+    { "distpath": "Notes", "filepath": "Notes", "template": "./templates/template-list-item.ejs", "title": "Notes" },
+    { "distpath": "Writing", "filepath": "Writing", "template": "templates/template.ejs", "title": "Writing" },
+    { "distpath": "index", "filepath": "index", "template": "./templates/template-home.ejs", "title": "index" }
 ]
 
 describe("Test ListAllFilesInDir", () => {
@@ -34,9 +35,9 @@ describe("Test ListAllFilesInDir", () => {
         // console.log(tpmap)
 
         const routeMap = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'temp/routeMap.json')))
-        expect(ListFilesInDir(routeMap, 'notes/tools/')).toEqual(notesSlashTools);
-        expect(ListFilesInDir(routeMap, 'notes/')).toEqual(notes);
-        expect(ListFilesInDir(routeMap, 'notes')).toEqual(notes);
+        expect(ListFilesInDir(routeMap, 'Notes/Tools/')).toEqual(NotesSlashTools);
+        expect(ListFilesInDir(routeMap, 'Notes/')).toEqual(Notes);
+        expect(ListFilesInDir(routeMap, 'Notes')).toEqual(Notes);
         expect(ListFilesInDir(routeMap, '/')).toEqual(root);
     });
 });

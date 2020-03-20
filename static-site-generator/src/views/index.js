@@ -13,7 +13,13 @@ marked.setOptions({
 });
 
 const index = `
-  ${listFilesInDir('')}
+
+
+<main>
+  <nav style="margin: 0">
+    ${listFilesInDir('')}
+  </nav>
+</main>
 `;
 
 module.exports = index;

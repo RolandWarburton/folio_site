@@ -67,6 +67,7 @@ routes.forEach(route => {
 fs.writeFileSync(process.cwd() + '/temp/routeMap.json', JSON.stringify(routes))
 
 // generate HTML for every route that we picked up in src/views and stored in routes
+console.log("Writing HTML")
 routes.forEach((route, i) => {
 	// relativeIndex gets the position the the current routes filepath. eg 0, 1 etc within its directory
 	const relativeIndex = getRoutePositionInDir(routes, route.filepath)
@@ -109,6 +110,10 @@ routes.forEach((route, i) => {
 
 	// parse it through and look for emojis 👀
 	html = emojified.emojify(html)
+
+	// push the html to an array in case i need it later
+	pages.push(html)
+	console.log(route.filepath)
 
 	fs.writeFileSync(writePath, html, 'utf8');
 })

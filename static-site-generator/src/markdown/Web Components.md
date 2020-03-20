@@ -75,7 +75,7 @@ class UserCard extends HTMLElement {
 window.customElements.define("user-card", UserCard)
 ```
 
-![Simple Web Component](./../media/SimpleComponent.png)
+![Simple Web Component](/media/SimpleComponent.png)
 
 # Styling web components and the Shadow DOM 
 The above element is not using the shadow DOM. It will inherit global styles and does not have access to the shadow DOMs life cycle methods. Using the shadow DOM in this example will separate it from the global styles so that the component will not inherit any styles and will have its own subtree in the DOM to manipulate.
@@ -132,7 +132,7 @@ class UserCard extends HTMLElement {
 
 window.customElements.define("user-card", UserCard);
 ```
-![Shadow Dom](./../media/ShadowDom.png)
+![Shadow Dom](/media/ShadowDom.png)
 
 # Multi attribute Web Components
 You can pass multiple arguments to a component.

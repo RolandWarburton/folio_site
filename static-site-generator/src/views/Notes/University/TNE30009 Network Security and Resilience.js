@@ -11,8 +11,8 @@ const W1_Lecture2 = fs.readFileSync(path.resolve(markdownDir, 'W1_Lecture2.md'),
 const W2_Lecture1 = fs.readFileSync(path.resolve(markdownDir, 'W2_Lecture1.md'), 'utf8')
 const W2_Lecture2 = fs.readFileSync(path.resolve(markdownDir, 'W2_Lecture2.md'), 'utf8')
 
-// Network Security and Resilience
-const TNE30009 = `
+// TNE30009 Network Security and Resilience
+module.exports = `
 <article>
     ${marked(Introduction)}
     ${marked(W1_Lecture1)}
@@ -21,6 +21,4 @@ const TNE30009 = `
     ${marked(W2_Lecture2)}
 </article>
 `;
-
-module.exports = TNE30009;
 

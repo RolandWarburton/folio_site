@@ -1,7 +1,6 @@
 const listFilesInDir = require('../partials/listFilesInDir')
 
-const bookmarks = `
+module.exports = `
 ${listFilesInDir('notes/bookmarks/')}
 `;
 
-module.exports = bookmarks;

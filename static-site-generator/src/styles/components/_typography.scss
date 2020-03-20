@@ -1,10 +1,12 @@
 .font {
   font-size: calc(12px + 2vw);
-  @include desktop {
-    font-size: calc(1rem + 0.25vw);
-  }
-  @include tablet {
-    font-size: calc(1rem + 0.15vw);
+  * {
+    @include desktop {
+      font-size: calc(1rem + 0.25vw);
+    }
+    @include tablet {
+      font-size: calc(1rem + 0.15vw);
+    }
   }
 }
 

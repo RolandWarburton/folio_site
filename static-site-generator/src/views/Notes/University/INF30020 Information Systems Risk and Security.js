@@ -1,10 +1,8 @@
 const marked = require('marked')
 const fetch = require('node-fetch')
 
-// Information Systems Risk and Security 
-const INF30020 = `
+// INF30020 Information Systems Risk and Security 
+module.exports = `
 ${marked('The sky was cloudless and of a deep dark blue.')}
 `;
-
-module.exports = INF30020;
 
