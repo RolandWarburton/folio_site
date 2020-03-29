@@ -1,5 +1,8 @@
-const about = `
+const page = `
 HELLLLLOOOOOO p3 :3 uwu
 `;
 
-module.exports = about;
+module.exports = {
+    page: page, 
+    target: null
+};
