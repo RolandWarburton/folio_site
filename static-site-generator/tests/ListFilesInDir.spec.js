@@ -36,6 +36,7 @@ describe("Test ListAllFilesInDir", () => {
 
         const routeMap = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'temp/routeMap.json')))
         expect(ListFilesInDir(routeMap, 'Notes/Tools/')).toEqual(NotesSlashTools);
+        expect(ListFilesInDir(routeMap, 'Notes/Bookmarks/')).toEqual('NotesSlashBookmarks');
         expect(ListFilesInDir(routeMap, 'Notes/')).toEqual(Notes);
         expect(ListFilesInDir(routeMap, 'Notes')).toEqual(Notes);
         expect(ListFilesInDir(routeMap, '/')).toEqual(root);

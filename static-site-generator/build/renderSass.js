@@ -14,8 +14,8 @@ module.exports = (entry, output) => {
         outputStyle: 'compressed'
     }, function (error, result) {
         if (!error) {
-            fs.writeFile(path.resolve(appRootPath, output), result.css, function (err) {
-                if (!err) { console.log('Copied styles to dist') }
+            fs.writeFile(path.resolve(appRootPath, output), result.css, () => {
+                //success
             });
         } else {
             console.log(error)

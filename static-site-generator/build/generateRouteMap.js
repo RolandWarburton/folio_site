@@ -24,7 +24,7 @@ module.exports = () => {
 					filepath: filepath,
 					templatePath: templatePath
 				})
-			})
+			}, "temp/markdown")
 		} else {
 			// this template target isnt a directory. it is a file
 			const fileURL = targetPath + '/' + target.title + '.js'
@@ -34,7 +34,7 @@ module.exports = () => {
 					filepath: filepath,
 					templatePath: templatePath
 				})
-			})
+			}, "src/views")
 		}
 	})
 	// console.log("Done generating template map...")

@@ -4,16 +4,19 @@ const path = require('path')
 // Takes a function called processFiles to pass each file back to its caller 
 // returns the filepath and title of a file without their extension
 // filepath should be the full filepath. or at least from 'src/views/filename.js'
-function readFiles(filepath, processFiles) {
-    // split the full path (/home/roland/...) and get the string after views. EG: about, notes/blog
-    let relFilePath = filepath.split("/static-site-generator/src/views/")[1]
+function readFile(filepath, processFiles, relativeDir = "src/views") {
+    // strip the .js from the filepath
+    const filepathStripped = path.parse(filepath).name
+    // get the filepath relative to the 'relativeDir'
+    let relFilePath = path.relative(relativeDir, filepath).split('.')[0]
+    console.log(relFilePath)
     processFiles({
         // return the filepath without an extension
-        filepath: relFilePath.split('.')[0],
+        filepath: relFilePath,
         // return the file of the filepath without an extension
-        title: path.parse(filepath).name
+        title: filepathStripped
     })
 }
 
 
-module.exports = readFiles;
+module.exports = readFile;

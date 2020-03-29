@@ -17,7 +17,7 @@ module.exports = `
 <article>
     ${marked(content)}
 </article>
-${listFilesInDir('notes/university', 'emLinks')}
+${listFilesInDir('Notes/University', 'emLinks')}
 `;
 
 

@@ -1,9 +1,36 @@
 const fs = require('fs')
 const path = require('path')
+const util = require('util')
 const readFile = require('./readFile')
 
+// const readFile = util.promisify(fs.readFile)
+// const readDir = util.promisify(fs.readdir)
 // Takes a function called processFiles to pass each file back to its caller 
-function readFiles(dir, processFiles, traverse = true) {
+// module.exports = async function readFiles(dir, processFiles) {
+// 	const fileList = [];
+// 	readDir(dir)
+// 		.then(filenames => {
+// 			filenames.forEach((filename) => {
+// 				// console.log(processFiles)
+// 				const filepath = dir + '/' + path.parse(filename).name;
+// 				// fileList.push({
+// 				// 	filepath: filepath,
+// 				// 	title: path.parse(filename).name,
+// 				// 	distpath: filepath.replace(/\s/g, ''),
+// 				// 	// template: getTemplate(routeMap, title)
+// 				// })
+// 				processFiles({
+// 					// return the filepath without an extension
+// 					filepath: filepath,
+// 					// return the filename of the filepath without an extension
+// 					title: path.parse(filename).name
+// 				})
+// 			})
+// 		})
+// }
+
+// Takes a function called processFiles to pass each file back to its caller 
+module.exports = function readFiles(dir, processFiles, relativeDir = "src/views", traverse = true) {
 	fs.readdirSync(dir)
 		.forEach(filename => {
 			const filepath = path.resolve(dir, filename)
@@ -14,20 +41,12 @@ function readFiles(dir, processFiles, traverse = true) {
 			const isDir = stat.isDirectory();
 
 			if (isFile) {
-				// console.log(`${title} ${filepath}`)
-				// get the relative path from /src/views/....
-				// const filepathRel = /\/src\/views\/(.+)/.exec(dir + '/' + path.parse(filename).name)[1]
-				readFile(filepath, processFiles)
-				
-				// processFiles({ filepath, title })
+				readFile(filepath, processFiles, "src/views")
 			}
 
 			// keep traversing new directories to map out the entire site
 			if (traverse && title != 'partials' && isDir) {
-				readFiles(filepath, processFiles)
+				readFiles(filepath, processFiles, "src/views")
 			}
 		});
 }
-
-
-module.exports = readFiles;
