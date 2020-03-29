@@ -3,16 +3,14 @@ const fs = require('fs');
 const path = require('path');
 
 const generateHtmlpage = function (templatePath, templateData, filepath) {
+    console.log(path.resolve(process.cwd(), filepath))
     // get the templateFile for this route
     const templateFile = fs.readFileSync(path.resolve(process.cwd(), templatePath), 'utf-8')
-
-    // get the pagecontent from the js file and append it to the templateData
-    const pageContent = fs.readFileSync(path.resolve(process.cwd(), 'src/views', filepath) + '.js', 'utf-8')
-    templateData.content = pageContent
-    templateData.contentPath = require(path.resolve(process.cwd(), 'src/views', filepath) + '.js')
-
+    
+    // get the page content from the js file by requiring the module
+    templateData.content = require(filepath, filepath)
+    
     const html = ejs.render(templateFile, templateData)
-    console.log(templateFile)
     return(html)
 }
 
