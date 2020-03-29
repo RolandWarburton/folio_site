@@ -9,6 +9,9 @@ const generateHtmlPage = require('./generateHtmlPage');
 const emoji = require('node-emoji');
 const minify = require('html-minifier').minify;
 const colors = require('colors');
+const mkdirp = require('mkdirp')
+
+const write = util.promisify(fs.writeFile)
 
 const minifyOptions = {
     removeAttributeQuotes: true,
@@ -29,6 +32,13 @@ const myFunction = async () => {
         html = emoji.emojify(html)
         html = minify(html, minifyOptions)
 
+        const writeDir = (entry.path != "index.js") ?
+            path.resolve(process.cwd(), 'dist', path.parse(entry.path).dir, path.parse(entry.path).name)
+            : path.resolve(process.cwd(), "dist")
+
+        console.log(writeDir)
+        mkdirp(writeDir).then(dirname => {write(writeDir + "/index.html", html)})
+        
         // routes.push(entry.path)
         routeCounter++
     }

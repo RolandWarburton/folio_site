@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 
 const generateHtmlpage = function (templatePath, templateData, filepath) {
-    console.log(path.resolve(process.cwd(), filepath))
     // get the templateFile for this route
     const templateFile = fs.readFileSync(path.resolve(process.cwd(), templatePath), 'utf-8')
     
