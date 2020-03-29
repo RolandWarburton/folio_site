@@ -9,6 +9,7 @@ const generateHtmlpage = function (templatePath, templateData, filepath) {
     // get the page content from the js file by requiring the module
     templateData.content = require(filepath, filepath)
     
+    // render html from the template provided. and bake in the templateData json object
     const html = ejs.render(templateFile, templateData)
     return(html)
 }

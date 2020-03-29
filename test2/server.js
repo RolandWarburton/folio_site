@@ -1,9 +1,6 @@
 const path = require('path')
 const fs = require('fs');
 const util = require('util')
-// const func2 = require('./func2')
-// const func1 = require('./func1')
-// const cliProgress = require('cli-progress');
 const readdirp = require('readdirp');
 const generateHtmlPage = require('./generateHtmlPage');
 const emoji = require('node-emoji');
