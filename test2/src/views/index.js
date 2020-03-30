@@ -1,4 +1,8 @@
+const listFilesInDirPartial = require('../../build/listFilesInDirPartial')
+
 const page = `
+${listFilesInDirPartial("src/views")}
+<br/>
 Hello index :3
 `;
 
