@@ -6,5 +6,6 @@ module.exports = (filepath) => {
 	fs.readdirSync(filepath).forEach((f) => {
 		if (path.parse(f).ext) files.push(f)
 	})
+	console.log(files)
 	return files;
 }

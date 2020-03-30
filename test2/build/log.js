@@ -17,7 +17,7 @@ const superHigh = (message) => {
 	console.log(`${message}`.red.bold.underline)
 }
 
-module.exports = (message, type="low") => {
+module.exports = (message, type = "low") => {
 	switch (type) {
 		case "disabled":
 			break;
@@ -30,7 +30,7 @@ module.exports = (message, type="low") => {
 		case "high":
 			if (argv.v) high(message);
 			break;
-		case "superHigh":
+		case "veryHigh":
 			superHigh(message);
 			break;
 		default:

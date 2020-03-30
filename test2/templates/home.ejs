@@ -24,6 +24,7 @@
 
 <body>
 	<div id="contentWrapper">
+		<%- include(process.cwd() + '/templates/partials/prevNext.ejs', {links}) %>
 		<%- content%>
 		<%- target%>
 	</div>

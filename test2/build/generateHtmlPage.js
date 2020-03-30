@@ -2,28 +2,47 @@ const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
+const marked = require('marked')
 const log = require('./log')
+const hljs = require('highlight.js')
+const getFilepathNeighbours = require('./getFilepathNeighbours');
+
+marked.setOptions({
+	highlight: function (code) {
+		return hljs.highlightAuto(code).value;
+	}
+});
 
 const generateHtmlpage = async function (templateData, filepath) {
 
+	links = await getFilepathNeighbours(filepath)
+	
+	templateData.links = {
+		next: links.next, prev: links.prev
+	}
+	console.log(templateData)
+
 	// get the page content from the js file by requiring the modules template
-	let templatePath = await require(filepath).template
+	let templatePath = await require(filepath.fullPath).template
 	if (templatePath == null) templatePath = "./templates/template.ejs"
 
 	// get the templateFile for this route
 	const templateFile = await fs.readFileSync(path.resolve(process.cwd(), templatePath), "utf-8")
 
 	// get the page content from the js file by requiring the modules page
-	templateData.content = await require(filepath).page
+	templateData.content = await require(filepath.fullPath).page
+
+	
 
 	// get the target (if any) from the js file by requiring the modules target
 	// .target referrers to the online content that this page wants to pull
-	templateData.target = await require(filepath).target
+	templateData.target = await require(filepath.fullPath).target
 
 	// Fetch content from github if the page exported any target link
 	if (templateData.target != null) {
 		const response = await fetch(templateData.target)
-		templateData.target = await response.text();
+		const result = await response.text();
+		templateData.target = marked(result)
 	} else {
 		// return nothing because there was no content to load
 		templateData.target = undefined

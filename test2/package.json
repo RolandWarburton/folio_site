@@ -19,6 +19,8 @@
     "ejs": "^3.0.1",
     "emojify": "^1.0.0",
     "express": "^4.17.1",
+    "fs-extra": "^9.0.0",
+    "highlight.js": "^9.18.1",
     "html-minifier": "^4.0.0",
     "jest": "^25.2.3",
     "marked": "^0.8.2",

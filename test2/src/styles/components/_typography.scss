@@ -1,0 +1,105 @@
+.font {
+  font-size: calc(12px + 2vw);
+  * {
+    @include desktop {
+      font-size: calc(1rem + 0.25vw);
+    }
+    @include tablet {
+      font-size: calc(1rem + 0.15vw);
+    }
+  }
+}
+
+body {
+  @extend .font;
+  font-family: "Roboto", sans-serif;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.title {
+  margin: 2rem 0;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+article {
+  // style ULs
+  ul {
+    margin-left: 1rem;
+    * {
+      list-style-type: disc;
+    }
+    ul {
+      margin-left: 4rem;
+      li {
+        list-style-type: upper-roman;
+      }
+      ul {
+        margin-left: 4rem;
+      }
+    }
+  }
+
+  blockquote {
+    background-color: darken($mainBackground, 10%);
+    padding: 0.125rem 2ch;
+  }
+
+  pre {
+    // color: $darkText;
+    // font-weight: bolder;
+    background-color: invert($mainBackground);
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  code {
+    article li * {
+      margin-left: 0;
+    }
+  }
+
+  // style OLs
+  ol,
+  li {
+    * {
+      list-style-type: decimal-leading-zero;
+      margin-left: 2rem;
+    }
+  }
+
+  // give headings emphasis
+  h1 {
+    @extend .underline;
+    @extend .emLink;
+    padding: 0;
+    margin-top: 4rem;
+  }
+
+  h1,
+  h2 {
+    margin-top: 4rem;
+  }
+
+  p {
+    margin: 2rem 0;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+table {
+  * {
+    text-align: left;
+    margin: 0.5rem;
+  }
+  td {
+    margin: 0.5rem;
+  }
+}

@@ -1,69 +1,24 @@
 const path = require('path')
-const fs = require('fs');
-const util = require('util')
-const readdirp = require('readdirp');
-const emoji = require('node-emoji');
-const minify = require('html-minifier').minify;
-const colors = require('colors');
-const mkdirp = require('mkdirp')
-
-const generateHtmlPage = require('./build/generateHtmlPage');
-const getFilepathNeighbours = require('./build/getFilepathNeighbours');
+const fs = require('fs-extra');
+const generateHtmlPages = require('./build/generateHtmlPages');
+const renderSass = require('./build/renderSass')
 const log = require('./build/log')
 
 
-const write = util.promisify(fs.writeFile)
+// get some file directories to use later
+const viewsDir = path.resolve(process.cwd(), 'src/views')
+const appRootPath = path.resolve(process.cwd())
+const distPath = path.resolve(appRootPath, 'dist')
 
-const minifyOptions = {
-    removeAttributeQuotes: true,
-    collapseWhitespace: true,
-    html5: true,
-    minifyCSS: true,
-    removeEmptyElements: true,
-    removeComments: true,
-    useShortDoctype: true
-}
+// make the disk folder
+if (!fs.existsSync(distPath)) fs.mkdirSync(distPath);
 
-const myFunction = async () => {
-    const routes = []
-    let routeCounter = 0
-    for await (const entry of readdirp("./views")) {
+// copy media to the dist folder
+fs.copy(path.resolve(appRootPath, 'src/media'), path.resolve(appRootPath, 'dist/media'), function (err) {
+	if (err) return console.error(err);
+});
 
-		
-		links = getFilepathNeighbours(entry)
-		const templateData = {
-			links: {next: links.next, prev: links.prev}
-		}
-        
-        // wait for the generated page to be loaded in
-        // html page comes back with all content injected
-        let html = await generateHtmlPage(templateData, entry.fullPath)
-        
-        // parse it for emoji
-        html = emoji.emojify(html)
-        
-        // make it smol
-        html = minify(html, minifyOptions)
+renderSass('src/styles/styles.scss', 'dist/app.css')
+renderSass('src/styles/light.scss', 'dist/lightTheme.css')
 
-        // get a filepath to the write directory
-        // the directory structure should look like...
-        // EG: views/notes will belong in dist/notes/index.html
-        const writeDir = (entry.path != "index.js") ?
-            path.resolve(process.cwd(), "dist", path.parse(entry.path).dir, path.parse(entry.path).name)
-            : path.resolve(process.cwd(), "dist")
-
-        // make the dir with -p (recursive) and then write it to writeDir/index.html 
-        mkdirp(writeDir).then(dirname => {write(writeDir + "/index.html", html)})
-        
-        // push it to the routes array for later
-        // routes.push(entry.path)
-
-        // keep count of the number of pages generated
-        routeCounter++
-    }
-    console.log(`generated ${routeCounter} pages!\n`.magenta)
-
-}
-
-
-myFunction()
+generateHtmlPages()

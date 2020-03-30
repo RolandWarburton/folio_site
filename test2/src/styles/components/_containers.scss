@@ -1,0 +1,40 @@
+// wraps two children. left is text, right is an image
+// the image vanishes when in mobile view
+.imageAndTextWrapper {
+  display: grid;
+  overflow: visible;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "content picture";
+
+  :first-child {
+    grid-column: 1;
+    grid-area: "content";
+  }
+
+  :last-child {
+    display: none;
+
+    @include desktop {
+      display: grid;
+      grid-column: 2;
+      background-position: right;
+      grid-area: "picture";
+      min-width: 110px;
+    }
+  }
+}
+
+// center things. attach this to the body tag to work
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // ULs will display as rows
+  ul {
+    display: flex;
+    flex-direction: row;
+    li {
+      padding: 2rem;
+    }
+  }
+}
