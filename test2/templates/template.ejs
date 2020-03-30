@@ -14,16 +14,18 @@
 	<meta name="twitter:site" content="@RolandIRL" />
 	<link rel="icon" type="image/png" href="/media/favicon.ico" />
 	<title>Roland</title>
-	<style>
+	<!-- <style>
 		html {
 			display: none;
 		}
-	</style>
-	<link rel="stylesheet" type="text/css" href="/app.css">
+	</style> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/app.css"> -->
 </head>
 
 <body>
 	<div id="contentWrapper">
+		<%# links.next%>
+		<%- include(process.cwd() + '/templates/partials/prevNext.ejs', {links}) %>
 		<%- content%>
 		<%- target%>
 	</div>
@@ -31,3 +33,4 @@
 </body>
 
 </html>
+
