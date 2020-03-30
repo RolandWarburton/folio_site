@@ -19,6 +19,7 @@ describe("Test getRoutePositionInDir", () => {
 
 describe("Test getting html filepath", () => {
 	test("Check if a path exists", () => {
-		expect(getLinkToHtmlFilepath("about.js", "index.js")).toEqual("/index.html");
+		// expect(getLinkToHtmlFilepath("about.js", "index.js")).toEqual("/index.html");
+		expect(getLinkToHtmlFilepath("index.js", "about.js")).toEqual("/about/index.html");
 	});
 });
