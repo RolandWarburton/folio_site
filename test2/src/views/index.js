@@ -1,4 +1,4 @@
-const listFilesInDirPartial = require('../../build/listFilesInDirPartial')
+const listFilesInDirPartial = require('../../templates/partials/listFilesInDirPartial')
 
 const page = `
 ${listFilesInDirPartial("src/views")}

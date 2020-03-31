@@ -1,4 +1,4 @@
-const listFilesInDir = require('./listFilesInDir')
+const listFilesInDir = require('../../build/listFilesInDir')
 const path = require('path')
 
 module.exports = (filepath) => {

@@ -26,8 +26,8 @@ module.exports = (filepath) => {
 	const prev = (filesInDir.length > 1 && filesInDir[relativeIndex - 1] != undefined) ?
 		filesInDir[relativeIndex - 1] : "-"
 
-	const nextFilepath = (next) ? getLinkToHtmlFilepath(filepath, next) : "#"
-	const prevFilepath = (prev) ? getLinkToHtmlFilepath(filepath, prev) : "#"
+	const nextFilepath = (next != "-") ? getLinkToHtmlFilepath(filepath, next) : "#"
+	const prevFilepath = (prev != "-") ? getLinkToHtmlFilepath(filepath, prev) : "#"
 
 	return {
 		next: {

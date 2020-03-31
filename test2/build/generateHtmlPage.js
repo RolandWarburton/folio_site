@@ -6,6 +6,7 @@ const marked = require('marked')
 const log = require('./log')
 const hljs = require('highlight.js')
 const getFilepathNeighbours = require('./getFilepathNeighbours');
+const getPrevPath = require('./getPrevPath');
 
 marked.setOptions({
 	highlight: function (code) {
@@ -15,12 +16,16 @@ marked.setOptions({
 
 const generateHtmlpage = async function (templateData, filepath) {
 
-	links = await getFilepathNeighbours(filepath)
+	const links = await getFilepathNeighbours(filepath)
+	const backlink = await path.normalize(getPrevPath(filepath.path))
+	const title = path.parse(filepath.path).name
 	
-	templateData.links = {
-		next: links.next, prev: links.prev
+	templateData = {
+		links: { next: links.next, prev: links.prev },
+		backlink: backlink,
+		title: title
 	}
-	console.log(templateData)
+	console.log(backlink)
 
 	// get the page content from the js file by requiring the modules template
 	let templatePath = await require(filepath.fullPath).template
