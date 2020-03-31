@@ -1,5 +1,7 @@
+const listFilesInDirPartial = require('../../templates/partials/listFilesInDirPartial')
+
 const page = `
-HELLLLLOOOOOO
+${listFilesInDirPartial("src/views/Notes")}
 `;
 
 module.exports = {

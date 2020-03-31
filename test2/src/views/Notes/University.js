@@ -1,9 +1,11 @@
+const listFilesInDirPartial = require('../../../templates/partials/listFilesInDirPartial')
+
 const page = `
-sup
+${listFilesInDirPartial("src/views/Notes/University")}
 `;
 
 module.exports = {
     page: page, 
 	target: null,
-	template: "templates/navigablePage.ejs"
+	template: "templates/template.ejs"
 };

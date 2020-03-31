@@ -1,9 +1,9 @@
 const page = `
-sup
+
 `;
 
 module.exports = {
     page: page, 
-	target: null,
+	target: ["https://raw.githubusercontent.com/RolandWarburton/knowledge/master/Linux/ricing.md"],
 	template: "templates/navigablePage.ejs"
 };
