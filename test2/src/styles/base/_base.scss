@@ -4,19 +4,11 @@ html {
 
 body {
   background-color: $mainBackground;
-  font-family: sans-serif;
   color: $lightText;
   // account for borders when calculating width
   box-sizing: border-box;
   // remove the scrollbar when its not needed
   overflow: auto;
-
-  // ULs that go directly after the body (IE. not in a #contentWrapper) should be centered
-  &ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }
 
 // for making a container full height

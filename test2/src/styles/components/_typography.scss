@@ -1,18 +1,35 @@
-.font {
-  font-size: calc(12px + 2vw);
-  * {
-    @include desktop {
-      font-size: calc(1rem + 0.25vw);
-    }
-    @include tablet {
-      font-size: calc(1rem + 0.15vw);
-    }
-  }
+html {
+  font-size: calc(16px + 0.25vw);
+  font-family: "Roboto", sans-serif;
+//   * {
+//     @include desktop {
+//       font-size: calc(1rem + 0.3vw);
+//     }
+//     @include tablet {
+//       font-size: calc(1rem + 0.15vw);
+//     }
+//   }
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.25rem;
+}
+
+h3 {
+	font-size: 1rem;
+}
+
+.dynamic-nav {
+	font-size: 0.75rem;
 }
 
 body {
-  @extend .font;
-  font-family: "Roboto", sans-serif;
+  //   @extend .font;
+//   font-size: 1rem;
 }
 
 .bold {

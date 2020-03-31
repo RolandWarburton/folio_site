@@ -8,13 +8,16 @@ const colors = require('colors');
 // the targetFilepath MUST be in the SAME directory that the filepath is
 module.exports = (filepath, targetFile) => {
 	// the path up until the current dir that we are grabbing the targetFile in
-	targetFile = (targetFile != "index.js") ? path.parse(targetFile).name : '/'
+	targetFile = (targetFile != "index.js") ? path.parse(targetFile).name : '#'
+
 	let thisDirPath = targetFile
 	if (filepath.path.split('/').length > 1) {
 		const a = filepath.path.split('/')
 		a.pop()
 		thisDirPath = '/' + a.join('/') + '/' + targetFile;
+	} else {
+		return '/' + thisDirPath
 	}
 
-	return thisDirPath
+	return ''
 }

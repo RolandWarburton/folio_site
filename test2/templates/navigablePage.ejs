@@ -24,7 +24,8 @@
 
 <body>
 	<div id="contentWrapper">
-		<%- include(process.cwd() + '/templates/partials/navBar.ejs', {links, title, backlink}) %>
+		<h1><a href="<%- backlink%>"><%- title%></a></h1>
+		<%- include(process.cwd() + '/templates/partials/prevNext.ejs', {links}) %>
 		<%- content%>
 		<%- target%>
 	</div>

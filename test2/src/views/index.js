@@ -1,13 +1,19 @@
 const listFilesInDirPartial = require('../../templates/partials/listFilesInDirPartial')
 
 const page = `
-${listFilesInDirPartial("src/views")}
-<br/>
-Hello index :3
+<div class="center">
+	${listFilesInDirPartial("src/views")}
+</div>
 `;
 
 module.exports = {
 	page: page,
-	target: "https://raw.githubusercontent.com/RolandWarburton/knowledge/master/Linux/gitOnLinux.md",
+	target: null,
 	template: "./templates/home.ejs"
 };
+
+// module.exports = {
+// 	page: page,
+// 	target: "https://raw.githubusercontent.com/RolandWarburton/knowledge/master/Linux/gitOnLinux.md",
+// 	template: "./templates/home.ejs"
+// };

@@ -25,7 +25,6 @@ const generateHtmlpage = async function (templateData, filepath) {
 		backlink: backlink,
 		title: title
 	}
-	console.log(backlink)
 
 	// get the page content from the js file by requiring the modules template
 	let templatePath = await require(filepath.fullPath).template

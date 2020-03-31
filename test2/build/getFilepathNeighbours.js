@@ -17,28 +17,32 @@ module.exports = (filepath) => {
 	// get the position of the filepath in the directory
 	const relativeIndex = getRoutePositionInDir(currentDirectory, filepath.basename)
 
+	const potentialNextLink = filesInDir[relativeIndex + 1]
+	const potentialPrevLink = filesInDir[relativeIndex - 1]
+	
 	// if the files is 1 or less then it returns the wrong values
 	// this is because the relative index is is -1 if its doesn't exist and evaluates to index 0
 	// it can still return undefined though if the relitiveIndex +- 1 is out of range
-	const next = (filesInDir.length > 1 && filesInDir[relativeIndex + 1] != undefined) ?
+	const next = (filesInDir.length > 1 && potentialNextLink != undefined && potentialNextLink != "index.js") ?
 		filesInDir[relativeIndex + 1] : "-"
 
-	const prev = (filesInDir.length > 1 && filesInDir[relativeIndex - 1] != undefined) ?
+	const prev = (filesInDir.length > 1 && potentialPrevLink != undefined && potentialPrevLink != "index.js") ?
 		filesInDir[relativeIndex - 1] : "-"
 
-	const nextFilepath = (next != "-") ? getLinkToHtmlFilepath(filepath, next) : "#"
-	const prevFilepath = (prev != "-") ? getLinkToHtmlFilepath(filepath, prev) : "#"
+	const nextFilepath = (next != "-" && next != "index.js") ? getLinkToHtmlFilepath(filepath, next) : "#"
+	const prevFilepath = (prev != "-" && next != "index.js") ? getLinkToHtmlFilepath(filepath, prev) : "#"
 
+	console.log(next)
 	return {
 		next: {
 			// get the hyperlink to its neighbor
 			filepath: nextFilepath,
-			title: next
+			title: path.parse(next).name
 		},
 		prev: {
 			// get the hyperlink to its neighbor
 			filepath: prevFilepath,
-			title: prev
+			title: path.parse(prev).name
 		}
 	}
 }
