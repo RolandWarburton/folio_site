@@ -15,9 +15,8 @@ module.exports = (filepath, targetFile) => {
 		const a = filepath.path.split('/')
 		a.pop()
 		thisDirPath = '/' + a.join('/') + '/' + targetFile;
+		return thisDirPath
 	} else {
 		return '/' + thisDirPath
 	}
-
-	return ''
 }

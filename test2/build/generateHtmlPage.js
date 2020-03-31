@@ -19,12 +19,13 @@ const generateHtmlpage = async function (templateData, filepath) {
 	const links = await getFilepathNeighbours(filepath)
 	const backlink = await path.normalize(getPrevPath(filepath.path))
 	const title = path.parse(filepath.path).name
-	
+
 	templateData = {
 		links: { next: links.next, prev: links.prev },
 		backlink: backlink,
 		title: title
 	}
+
 
 	// get the page content from the js file by requiring the modules template
 	let templatePath = await require(filepath.fullPath).template
@@ -35,8 +36,6 @@ const generateHtmlpage = async function (templateData, filepath) {
 
 	// get the page content from the js file by requiring the modules page
 	templateData.content = await require(filepath.fullPath).page
-
-	
 
 	// get the target (if any) from the js file by requiring the modules target
 	// .target referrers to the online content that this page wants to pull

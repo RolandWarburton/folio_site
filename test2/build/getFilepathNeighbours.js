@@ -32,7 +32,12 @@ module.exports = (filepath) => {
 	const nextFilepath = (next != "-" && next != "index.js") ? getLinkToHtmlFilepath(filepath, next) : "#"
 	const prevFilepath = (prev != "-" && next != "index.js") ? getLinkToHtmlFilepath(filepath, prev) : "#"
 
-	console.log(next)
+	// console.log(filepath.path)
+	if(filepath.path == "Notes/Linux/linuxIntro.js") {
+		console.log(`prev ${prevFilepath}`)
+		console.log(`next ${getLinkToHtmlFilepath(filepath, next)}`)
+	}
+	// console.log(`${filepath.path} => ${next}`)
 	return {
 		next: {
 			// get the hyperlink to its neighbor
