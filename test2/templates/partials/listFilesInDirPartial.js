@@ -10,7 +10,7 @@ module.exports = (filepath, linkStyleClass="darkHyperLink") => {
     `
     <ul class="darkHyperlink">
         ${parsedFiles.map((route, i) => `
-        <li><a class="${linkStyleClass}" href="${route}">${route}</a></li>
+        <li><a class="${linkStyleClass}" href="${route.replace(/\s/g, '')}">${route}</a></li>
       `.trim()).join('')}
     </ul>
 	`)

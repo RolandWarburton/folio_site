@@ -12,13 +12,13 @@ const generateHtmlPage = require('./generateHtmlPage')
 const write = util.promisify(fs.writeFile)
 
 const minifyOptions = {
-    removeAttributeQuotes: true,
-    collapseWhitespace: true,
-    html5: true,
-    minifyCSS: true,
-    removeEmptyElements: true,
-    removeComments: true,
-    useShortDoctype: true
+	removeAttributeQuotes: true,
+	collapseWhitespace: true,
+	html5: true,
+	minifyCSS: true,
+	removeEmptyElements: true,
+	removeComments: true,
+	useShortDoctype: true
 }
 
 module.exports = async () => {
@@ -26,7 +26,7 @@ module.exports = async () => {
 	for await (const entry of readdirp("./src/views")) {
 
 		templateData = {}
-		
+
 
 		// wait for the generated page to be loaded in
 		// html page comes back with all content injected
@@ -42,8 +42,8 @@ module.exports = async () => {
 		// the directory structure should look like...
 		// EG: views/notes will belong in dist/notes/index.html
 		const writeDir = (entry.path != "index.js") ?
-			path.resolve(process.cwd(), "dist", path.parse(entry.path).dir, path.parse(entry.path).name)
-			: path.resolve(process.cwd(), "dist")
+			path.resolve(process.cwd(), "dist", path.parse(entry.path).dir, path.parse(entry.path).name).replace(/\s/g, '')
+			: path.resolve(process.cwd(), "dist").replace(/\s/g, '')
 
 		// make the dir with -p (recursive) and then write it to writeDir/index.html 
 		mkdirp(writeDir).then(dirname => { write(writeDir + "/index.html", html) })
