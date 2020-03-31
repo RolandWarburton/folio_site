@@ -1,9 +1,9 @@
 const page = `
-HELLLLLOOOOOO p3 :3 uwu
+sup
 `;
 
 module.exports = {
     page: page, 
 	target: null,
-	template: null
+	template: "templates/navigablePage.ejs"
 };
