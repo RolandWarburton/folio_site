@@ -23,14 +23,17 @@ const minifyOptions = {
 
 module.exports = async () => {
 	let routeCounter = 0
-	for await (const entry of readdirp("./src/views")) {
+	const fp = path.resolve(process.cwd(), "githubToken.txt")
+	const githubToken = fs.readFileSync(fp)
+
+	for await (const filepath of readdirp("./src/views")) {
 
 		templateData = {}
 
 
 		// wait for the generated page to be loaded in
 		// html page comes back with all content injected
-		let html = await generateHtmlPage(templateData, entry)
+		let html = await generateHtmlPage(templateData, filepath, githubToken)
 
 		// parse it for emoji
 		html = emoji.emojify(html)
@@ -41,8 +44,8 @@ module.exports = async () => {
 		// get a filepath to the write directory
 		// the directory structure should look like...
 		// EG: views/notes will belong in dist/notes/index.html
-		const writeDir = (entry.path != "index.js") ?
-			path.resolve(process.cwd(), "dist", path.parse(entry.path).dir, path.parse(entry.path).name).replace(/\s/g, '')
+		const writeDir = (filepath.path != "index.js") ?
+			path.resolve(process.cwd(), "dist", path.parse(filepath.path).dir, path.parse(filepath.path).name).replace(/\s/g, '')
 			: path.resolve(process.cwd(), "dist").replace(/\s/g, '')
 
 		// make the dir with -p (recursive) and then write it to writeDir/index.html 

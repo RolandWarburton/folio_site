@@ -14,7 +14,7 @@ marked.setOptions({
 	}
 });
 
-const generateHtmlpage = async function (templateData, filepath) {
+const generateHtmlpage = async function (templateData, filepath, githubToken) {
 
 	const links = await getFilepathNeighbours(filepath)
 	const backlink = await path.normalize(getPrevPath(filepath.path))
@@ -49,7 +49,7 @@ const generateHtmlpage = async function (templateData, filepath) {
 		const count = templateData.target.length
 		
 		for(let i = 0; i < count; i ++) {
-			const response = await fetch(templateData.target[i]);
+			const response = await fetch(templateData.target[i].replace("TOKEN", githubToken));
 			const result = await response.text();
 			data = await data + result
 		}
