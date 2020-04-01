@@ -40,8 +40,6 @@ const generateHtmlpage = async function (templateData, filepath, githubToken) {
 	// get the target (if any) from the js file by requiring the modules target
 	// .target referrers to the online content that this page wants to pull
 	templateData.target = await require(filepath.fullPath).target
-	// templateData.target = "null"
-	// console.log(templateData.target)
 
 	// Fetch content from github if the page exported any target link
 	if (templateData.target != null) {
@@ -53,14 +51,6 @@ const generateHtmlpage = async function (templateData, filepath, githubToken) {
 			const result = await response.text();
 			data = await data + result
 		}
-		// const count = templateData.count
-		// await templateData.target.forEach(async (url) => {
-		// 	const response = await fetch(url);
-		// 	const result = await response.text();
-		// 	data = await data + result
-		// 	// console.log(data)
-		// })
-
 
 		templateData.target = marked(data);
 	} else {
